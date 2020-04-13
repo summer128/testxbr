@@ -1,0 +1,173 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 
+page{
+  letter-spacing: 2rpx;
+}
+.hide{
+  display: none;
+}
+.font16 {
+  font-size: 16rpx;
+}
+.font18 {
+  font-size: 18rpx;
+}
+.font20 {
+  font-size: 20rpx;
+}
+.font22 {
+  font-size: 22rpx;
+}
+.font24 {
+  font-size: 24rpx;
+}
+.font26 {
+  font-size: 26rpx;
+}
+.font28 {
+  font-size: 28rpx;
+}
+.font30 {
+  font-size: 30rpx;
+}
+.font32 {
+  font-size: 32rpx;
+}
+.font34 {
+  font-size: 34rpx;
+}
+.font36 {
+  font-size: 36rpx;
+}
+.font38 {
+  font-size: 38rpx;
+}
+.font40 {
+  font-size: 40rpx;
+}
+.font42 {
+  font-size: 42rpx;
+}
+.font44 {
+  font-size: 44rpx;
+}
+.font46 {
+  font-size: 46rpx;
+}
+.font48 {
+  font-size: 48rpx;
+}
+.font50 {
+  font-size: 50rpx;
+}
+.head{
+  width: 100%;
+  height: 158rpx;
+  background: #fff;
+  position: fixed;
+  top: 0;
+  z-index: 99;
+  color: #000;
+  line-height: 178rpx;
+  text-align: center;
+}
+.head image{
+  width: 25rpx;
+  height: 45rpx;
+  position: absolute;
+  left: 0;
+  bottom: 20rpx;
+  /* padding: 26rpx 80rpx 26rpx 18rpx; */
+  padding-top: 26rpx;
+  padding-right: 80rpx;
+  padding-bottom: 26rpx;
+  padding-left: 18rpx;
+}
+.top{
+  margin-top:158rpx;
+}
+.bold{
+  font-weight: bold;
+}
+.flex_start{
+  display: flex;
+  justify-content: start;
+}
+.flex_around{
+  display: flex;
+  justify-content: space-around;
+}
+.flex_between{
+  display: flex;
+  justify-content: space-between;
+}
+.app-fl{
+  float: left;
+}
+.app-fr{
+  float: right;
+  font-size: 30rpx;
+}
+.app-of{
+  overflow: hidden;
+}
+.color{
+  color: #666666;
+}
+.color1{
+  font-size: 40rpx;
+  color: #333333;
+}
+.textcenter{
+  text-align: center;
+  font-size: 12px;
+  margin-top: 10rpx;
+  color: 	#666666;
+}
+.textleft{
+  text-align: left
+}
+.textright{
+  text-align: right
+}
+.mtop10{
+  margin-top: 10rpx;
+}
+.mtop20{
+  margin-top: 20rpx;
+}
+.mtop30{
+  margin-top: 30rpx;
+}
+.mtop40{
+  margin-top: 40rpx;
+}
+.mtop50{
+  margin-top: 50rpx;
+}
+.mtop60{
+  margin-top: 60rpx;
+}
+.mtop70{
+  margin-top: 70rpx;
+}
+.mtop80{
+  margin-top: 80rpx;
+}
+.mtop90{
+  margin-top: 90rpx;
+}
+.mtop100{
+  margin-top: 100rpx;
+}
+.xiugai_color{
+  color: blue;
+}
