@@ -172,6 +172,10 @@
   border-radius: 50%;
   text-align: center;
   line-height: 34rpx;
+<<<<<<< HEAD
+=======
+  color: white;
+>>>>>>> master
   font-size: 20rpx;
   position: absolute;
   right: 6rpx;

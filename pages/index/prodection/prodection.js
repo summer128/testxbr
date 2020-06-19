@@ -1,9 +1,15 @@
 const app = getApp()
+<<<<<<< HEAD
 Page({
 
   /**
    * 页面的初始数据
    */
+=======
+const util = require('../../../utils/util.js')
+const api = require('../../../config/api.js')
+Page({
+>>>>>>> master
   data: {
     article:null,
     listname: [],
@@ -35,6 +41,7 @@ Page({
       ishidden: myindex,
       titleid: e.currentTarget.dataset.id
     })
+<<<<<<< HEAD
     wx.request({
       url: app.globalData.urlPath3 +'/home/article/category',
       data: {
@@ -50,6 +57,21 @@ Page({
         })
       }
     })
+=======
+    util.post(
+      api.realTimeInfo+'/article/category',
+      {
+          pageNum:that.data.num,
+          pageSize:6,
+          categoryId: e.currentTarget.dataset.id
+      }).then((res)=>{
+        that.setData({
+          article: res.data.list,
+        })
+      }).catch((errMsg)=>{
+
+      })
+>>>>>>> master
   },
  
   /**
@@ -69,6 +91,7 @@ Page({
         }   
       })
   },
+<<<<<<< HEAD
  
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -108,6 +131,8 @@ Page({
   /**
    * 页面上拉触底事件的处理函数
    */
+=======
+>>>>>>> master
   onReachBottom: function () {
     var that=this
       wx.showToast({

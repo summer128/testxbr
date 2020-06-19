@@ -537,6 +537,7 @@ page {
 .cartlist{
   width: 100%;
   height: 310rpx;
+<<<<<<< HEAD
   /* position: absolute;
   top: 180rpx;
   left: 0; */
@@ -550,6 +551,18 @@ page {
     position: relative;
     top: 0;
     left: 219.5rpx;
+=======
+  background-color: #fff;
+  border-radius:0px 0px 20rpx 20rpx;
+}
+.shopcar{
+    width: 350rpx;
+    height: 220rpx;
+    position: relative;
+    top: 60rpx;
+    left: 50%;
+    margin-left: -174rpx;
+>>>>>>> master
 }
 .cartlist view{
   font-size:30rpx;
@@ -557,8 +570,13 @@ page {
   font-weight:400;
   color:rgba(153,153,153,1);
   position: relative;
+<<<<<<< HEAD
   top: 15rpx;
   left: 250rpx;
+=======
+  bottom: 28rpx;
+  left: 260rpx;
+>>>>>>> master
 }
 
 
@@ -568,7 +586,11 @@ page {
   background: url(https://pic.shanyide.cn/xiaochengxu58.png) no-repeat 160rpx 0;
   background-size:460rpx 276rpx;
   position: fixed;
+<<<<<<< HEAD
   top: 600rpx;
+=======
+  top: 620rpx;
+>>>>>>> master
   left: 50%;
   transform: translate(-50%,-50%);
   text-align: center;

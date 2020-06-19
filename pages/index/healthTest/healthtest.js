@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 // pages/index/healthTest/healthtest.js
+=======
+const util = require('../../../utils/util.js')
+const api = require('../../../config/api.js')
+>>>>>>> master
 Page({
   data: {
     health_list:[]
@@ -14,6 +19,7 @@ Page({
       frontColor: '#000000',
       backgroundColor: '#ffffff'
     })
+<<<<<<< HEAD
     wx.request({
       url: 'https://www.shanyide.cn/api/v3/home/exam/list',
       method: 'get',
@@ -27,6 +33,15 @@ Page({
         })
         console.log('测试',res.data.list,'添加完color之后')
       }
+=======
+    util.get(api.healthTest+'/list').then((res)=>{
+      console.log('测试',res)
+        that.setData({
+          health_list:res.data.list
+        })
+    }).catch((errMsg)=>{
+      console.log('测试',errMsg)
+>>>>>>> master
     })
   },
   // 测试入口
@@ -40,6 +55,7 @@ Page({
     wx.navigateTo({
       url: 'testEntrance/testEntrance?test_infom='+ JSON.stringify(entrance_message),
     })
+<<<<<<< HEAD
     
   },
   onShow: function () {
@@ -57,5 +73,7 @@ Page({
    */
   onShareAppMessage: function () {
 
+=======
+>>>>>>> master
   }
 })

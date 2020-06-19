@@ -12,7 +12,11 @@
 </view>
 <view wx:if="{{ishidden==0}}">
     <view class="waitbox2" wx:if="{{orderList[0].length==0}}">
+<<<<<<< HEAD
       <image src="https://pic.shanyide.cn/xiaochengxu7.png"></image>
+=======
+      <image src="https://pic.shanyide.cn/wx_waitpaynull.png"></image>
+>>>>>>> master
       <view>暂无订单</view>
     </view>
     <block wx:for="{{orderList[0]}}" wx:key="index" wx:if="{{ishidden==0}}">
@@ -37,7 +41,11 @@
 </view>
 <view wx:if="{{ishidden==1}}">
     <view class="waitbox2" wx:if="{{orderList[1].length==0}}">
+<<<<<<< HEAD
                 <image src="https://pic.shanyide.cn/xiaochengxu7.png"></image>
+=======
+                <image src="https://pic.shanyide.cn/wx_waitpaynull.png"></image>
+>>>>>>> master
                 <view>暂无订单</view>
     </view>
     <block wx:for="{{orderList[1]}}" wx:key="index" wx:if="{{ishidden==1}}">
@@ -61,7 +69,11 @@
 </view>
 <view wx:if="{{ishidden==2}}">
     <view class="waitbox2" wx:if="{{orderList[2].length==0}}">
+<<<<<<< HEAD
                 <image src="https://pic.shanyide.cn/xiaochengxu7.png"></image>
+=======
+                <image src="https://pic.shanyide.cn/wx_waitpaynull.png"></image>
+>>>>>>> master
                 <view>暂无订单</view>
     </view>
     <block wx:for="{{orderList[2]}}" wx:key="index" wx:if="{{ishidden==2}}">
@@ -86,8 +98,13 @@
 </view>
 <view wx:if="{{ishidden==3}}">
     <view class="waitbox2" wx:if="{{orderList[3].length==0}}">
+<<<<<<< HEAD
                 <image src="https://pic.shanyide.cn/xiaochengxu7.png"></image>
                 <view>暂无订单</view>
+=======
+      <image src="https://pic.shanyide.cn/wx_waitpaynull.png"></image>
+      <view>暂无订单</view>
+>>>>>>> master
     </view>
     <block wx:for="{{orderList[3]}}" wx:key="index" wx:if="{{ishidden==3}}">
         <view class="box_list" bindtap="tzzzzz" data-info="{{item}}">
@@ -121,11 +138,19 @@
  
   <view class="foru_head">
     <view class="fl_img">
+<<<<<<< HEAD
       <image src="https://pic.shanyide.cn/xiaochengxu21.png"></image>
     </view>
     <view class="cen">为你推荐</view>
     <view class="fr_img">
       <image src="https://pic.shanyide.cn/xiaochengxu20.png"></image>
+=======
+      <image src="https://pic.shanyide.cn/wx_right_icon.png"></image>
+    </view>
+    <view class="cen">为你推荐</view>
+    <view class="fr_img">
+      <image src="https://pic.shanyide.cn/wx_left_icon.png"></image>
+>>>>>>> master
     </view>
   </view>
   <view class="foru_imgbox">

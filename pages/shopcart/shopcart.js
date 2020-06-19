@@ -473,7 +473,11 @@ Page({
   all_select(){
     for (var i = 0; i < this.data.goodList.length; i++) {
       // console.log(this.data.goodList.length,'33333333333333333333',this.data.selectAllStatus)
+<<<<<<< HEAD
       // console.log('点击全选的状态',this.data.goodList[i].checked)
+=======
+      console.log('点击全选的状态',this.data.goodList[i].checked)
+>>>>>>> master
       this.data.goodList[i].checked = this.data.selectAllStatus;            // 改变所有商品状态
     }
     this.setData({

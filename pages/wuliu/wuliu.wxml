@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!-- <view class="status-bar" style="height:{{statusBarHeight}}px"></view>
 <view class="status-bar1" style="position: fixed;top: {{statusBarHeight}}px;">物流信息</view>
 <image src="https://pic.shanyide.cn/xiaochengxu8.png" class="headimg" bindtap="back"></image> -->
@@ -13,6 +14,17 @@
           <view class="line-box">
             <view class="top-line "></view>
             <view class="bottom-line "></view>
+=======
+<view class="logistics-container">
+  <view class="logistics-info">
+    <view class="logistics-box">
+      <view class="logistics-item" wx:for="{{wuliu}}" wx:key="index">
+        <view class="times">123</view>
+        <view class="logistics-item-left">
+          <view class="line-box">
+            <view class="top-line"></view>
+            <view class="bottom-line"></view>
+>>>>>>> master
           </view>
           <view class="center-circle"></view>
         </view>
@@ -21,6 +33,7 @@
           <view class="logistics-item-time">{{item.time}}</view>
         </view>
       </view>
+<<<<<<< HEAD
 
       
     </view>
@@ -28,3 +41,13 @@
     
   </view>
 </view>
+=======
+    </view>
+  </view>
+</view>
+
+<!-- <view class="logistics">
+  <image src="https://pic.shanyide.cn/wx_wuliu_null.png"></image>
+  <view>暂无物流消息</view>
+</view> -->
+>>>>>>> master

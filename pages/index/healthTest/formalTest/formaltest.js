@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 // pages/index/healthTest/formalTest/formaltest.js
+=======
+>>>>>>> master
 Page({
 
   /**
@@ -68,11 +71,14 @@ Page({
     wx.navigateTo({
       url: '../testResult/testresult?id='+ this.data.tests_id,
     })
+<<<<<<< HEAD
   },
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
 
+=======
+>>>>>>> master
   }
 })

@@ -6,10 +6,13 @@
 .head1{
   width: 100%;
   height: 196rpx;
+<<<<<<< HEAD
   margin-top: 127rpx;
   /* position: relative;
   top: -55rpx;
   left: 0; */
+=======
+>>>>>>> master
 }
 .head1 image{
   width: 100%;
@@ -417,6 +420,7 @@
   font-size: 36rpx;
   color:#F6810E;
 }
+<<<<<<< HEAD
 .box111{
   width: 100%;
   height:100%;
@@ -481,6 +485,10 @@
   color: #fff;
   margin-top: 40rpx;
 }
+=======
+
+
+>>>>>>> master
 
 
 
@@ -567,6 +575,13 @@
   font-weight: 400;
   color: rgba(51,51,51,1);
 }
+<<<<<<< HEAD
+=======
+.box30 text{
+  padding-left: 12rpx;
+}
+
+>>>>>>> master
 .box31{
     width: 92%;
   margin: 20rpx auto 0;

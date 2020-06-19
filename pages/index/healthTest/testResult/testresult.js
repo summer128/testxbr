@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 // pages/index/healthTest/testResult/testresult.js
+=======
+const util = require('../../../../utils/util.js')
+const api = require('../../../../config/api.js')
+>>>>>>> master
 Page({
 
   /**
@@ -14,6 +19,7 @@ Page({
   onLoad: function (options) {
     console.log(options)
     var that = this
+<<<<<<< HEAD
     wx.request({
       url: `https://www.shanyide.cn/api/v3/home/exam/result/${options.id}`,
       success(res){
@@ -24,6 +30,26 @@ Page({
         })
       }
     })
+=======
+    util.get(api.healthTest+'/result'+'/'+options.id).then((res)=>{
+      that.setData({
+        result_text:res.data.result.title,
+        result_id:res.data.result.id
+      })
+    }).catch((errMsg)=>{
+      console.log(errMsg,'健康测试结果')
+    })
+    // wx.request({
+    //   url: `https://www.shanyide.cn/api/v3/home/exam/result/${options.id}`,
+    //   success(res){
+    //     console.log(res.data.result)
+    //     that.setData({
+    //       result_text:res.data.result.title,
+    //       result_id:res.data.result.id
+    //     })
+    //   }
+    // })
+>>>>>>> master
   },
 
   /**

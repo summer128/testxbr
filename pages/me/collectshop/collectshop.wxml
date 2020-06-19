@@ -31,8 +31,17 @@
 
 
 <view class="hh" wx:if="{{!delList[0]}}">
+<<<<<<< HEAD
   <image src="/images/shop/xiaochengxu80.png"></image>
 </view>
 <view class="hhh" wx:if="{{!delList[0]}}">
     <view class="hhhh">收藏空空如也</view>
 </view>
+=======
+  <image src="https://pic.shanyide.cn/wx_favoritenull.png"></image>
+  <view class="hhhh">收藏空空如也</view>
+</view>
+<!-- <view class="hhh" wx:if="{{!delList[0]}}">
+    <view class="hhhh">收藏空空如也</view>
+</view> -->
+>>>>>>> master

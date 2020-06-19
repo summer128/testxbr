@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // pages/me/collectshop/collectshop.js
 const app = getApp()
 Page({
@@ -5,6 +6,12 @@ Page({
   /**
    * 页面的初始数据
    */
+=======
+const util = require('../../../utils/util.js')
+const api = require('../../../config/api.js')
+const app = getApp()
+Page({
+>>>>>>> master
   data: {
       collectList:null,
       x: 0, // 注意，这里通过x属性设置的宽度的单位是px
@@ -47,6 +54,7 @@ Page({
     })
     console.log(e.currentTarget.dataset.delid)
     var goodsid = e.currentTarget.dataset.delid
+<<<<<<< HEAD
     wx.request({
       url: app.globalData.urlPath1 +'/app/goods/favorite',
       method:'post',
@@ -63,6 +71,19 @@ Page({
         console.log(res)
       }
     })
+=======
+    util.post(
+      api.shopCity+'/favorite',
+      {
+        'sid': wx.getStorageSync("sid"),
+        goodsId:goodsid
+      }
+      ).then((res)=>{
+        console.log(res,'删除商品收藏')
+      }).catch((errMsg)=>{
+        console.log(errMsg,'删除商品收藏')
+      })
+>>>>>>> master
   },
   /**
    * 生命周期函数--监听页面显示
@@ -70,6 +91,10 @@ Page({
   onShow: function () {
     var that = this
     if (wx.getStorageSync("token")){
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
       wx.request({
         url: app.globalData.urlPath1 + '/app/goods/favorite?pageNum=0&pageSize=100',
         method: 'get',

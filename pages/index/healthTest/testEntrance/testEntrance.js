@@ -1,9 +1,15 @@
+<<<<<<< HEAD
 // pages/index/healthTest/testEntrance/testEntrance.js
 Page({
 
   /**
    * 页面的初始数据
    */
+=======
+const util = require('../../../../utils/util.js')
+const api = require('../../../../config/api.js')
+Page({
+>>>>>>> master
   data: {
     // testtitle:'23',
     testid:'',
@@ -16,11 +22,15 @@ Page({
       delta: 1
     })
   },
+<<<<<<< HEAD
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
 
+=======
+  onLoad: function (options) {
+>>>>>>> master
     var that = this
     wx.setNavigationBarTitle({
       title: JSON.parse(options.test_infom).test_title,
@@ -37,6 +47,7 @@ Page({
       // testtitle:JSON.parse(options.test_infom).test_title,
       testid:JSON.parse(options.test_infom).test_id
     })
+<<<<<<< HEAD
     wx.request({
       url: `https://www.shanyide.cn/api/v3/home/exam/info/${that.data.testid}`,
       method: 'get',
@@ -46,6 +57,10 @@ Page({
       success(res) {
         // console.log(res,'颜色')
         var sign = ['A','B','C','D']
+=======
+    util.get(api.healthTest+'/info'+'/'+that.data.testid).then((res)=>{
+      var sign = ['A','B','C','D']
+>>>>>>> master
         
         for(var i=0;i<res.data.data.length;i++){
           res.data.data[i].signs = sign
@@ -57,8 +72,13 @@ Page({
           button_color:res.data.info.buttonRGB,
           formaltest:res.data
         })
+<<<<<<< HEAD
         console.log(res,'颜色')
       }
+=======
+    }).catch((errMsg)=>{
+      console.log(errMsg,'健康测试入口')
+>>>>>>> master
     })
   },
   // 开始答题

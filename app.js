@@ -1,6 +1,10 @@
 //app.js
 //const mtjwxsdk = require("./utils/mtj-wx-sdk.js");
 // const app = getApp()
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 App({
   
   onLaunch: function () {

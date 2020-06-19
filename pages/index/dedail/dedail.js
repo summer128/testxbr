@@ -1,10 +1,13 @@
 var wxp = require('../../../wxParse-master/wxParse-master/wxParse/wxParse.js');
 const app=getApp()
 Page({
+<<<<<<< HEAD
 
   /**
    * 页面的初始数据
    */
+=======
+>>>>>>> master
   data: {
     data1:null,
   },
@@ -14,6 +17,7 @@ Page({
     })
   },
   tz(e) {
+<<<<<<< HEAD
     // console.log(e.currentTarget.dataset.id)
     wx.navigateTo({
       url: "../../product/product?id=" + e.currentTarget.dataset.id,
@@ -28,6 +32,15 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
+=======
+    console.log(e.currentTarget.dataset.id)
+    wx.navigateTo({
+      url: "../../product/product?id=" + e.currentTarget.dataset.id
+    })
+  },
+  onLoad: function (options) {
+    console.log(options,'防护手册的详情页面')
+>>>>>>> master
     var info = JSON.parse(unescape(options.info))
     console.log(info)
     var that=this
@@ -55,6 +68,7 @@ Page({
         }
       })
       
+<<<<<<< HEAD
   },
 
   /**
@@ -104,5 +118,7 @@ Page({
    */
   onShareAppMessage: function () {
 
+=======
+>>>>>>> master
   }
 })
