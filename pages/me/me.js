@@ -129,7 +129,7 @@ Page({
         showindex: false
       })
       // 获取手机号
-      util.post(api.my+'/appletsUser',{
+      util.post(api.urlPath1+'/app/users/appletsUser',{
         encryptedData: e.detail.encryptedData,
         iv: e.detail.iv,
         session_key: wx.getStorageSync("session_key"),
@@ -137,9 +137,8 @@ Page({
         openid: wx.getStorageSync("openid")
       }).then((res)=>{
         console.log(res,'获取手机号')
-        console.log(api.getToken)
         // 获取token
-        util.post(api.getToken,{sid: res.data.result.sid}).then((res)=>{
+        util.post(api.urlToken+'/token',{sid: res.data.result.sid}).then((res)=>{
           console.log('获取手机号的res',res)
             if (res.data.token) { 
               wx.setStorageSync("token", res.data.token)
@@ -192,7 +191,7 @@ Page({
     var that=this
     // 待支付上面的数量
     // 获取我的待支付，待收货，代发货的数量
-    util.get(api.my).then((res)=>{
+    util.get(api.urlPath1+'/app/users').then((res)=>{
       console.log('待支付等三个数量',res)
       if(res.data.result.paid == undefined && res.data.result.delivering == undefined){
         console.log('没有那几个参数')

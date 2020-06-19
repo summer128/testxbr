@@ -45,7 +45,7 @@ Page({
     console.log(e.currentTarget.dataset.delid)
     var goodsid = e.currentTarget.dataset.delid
     util.post(
-      api.shopCity+'/favorite',
+      api.urlPath1+'/app/goods/favorite',
       {
         'sid': wx.getStorageSync("sid"),
         goodsId:goodsid
@@ -56,31 +56,18 @@ Page({
         console.log(errMsg,'删除商品收藏')
       })
   },
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
     var that = this
     if (wx.getStorageSync("token")){
-      wx.request({
-        url: app.globalData.urlPath1 + '/app/goods/favorite?pageNum=0&pageSize=100',
-        method: 'get',
-        header: {
-          'token': wx.getStorageSync("token"),
-          'authorization': wx.getStorageSync("sid")
-        },
-        success(res) {
-          console.log(res)  ///获取出来所有的收藏商品信息
-          console.log(res.data.result)
-          if(res.data.status !== 200){
-            console.log('收藏为空')
-          }else{
-            that.setData({
-              delList: res.data.result,
-            })
-          }
-          
+      util.get(api.favorite).then((res)=>{
+        if(res.data.status !== 200){
+        }else{
+          that.setData({
+            delList: res.data.result,
+          })
         }
+      }).catch((errMsg)=>{
+        console.log(errMsg,'收藏')
       })
     }else{
       wx.showModal({
@@ -96,9 +83,5 @@ Page({
         }
       })
     }
-    
-     
-    
   }
-
 })

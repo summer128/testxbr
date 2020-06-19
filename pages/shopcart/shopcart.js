@@ -1,12 +1,9 @@
 
 const app=getApp()
-
+const util = require('../../utils/util.js')
+const api = require('../../config/api.js')
 const orginalPrice = 0; //由于0.00在赋值时是0，用toFixed()取余
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     num: 1,
     forucontent:null,
@@ -140,21 +137,11 @@ Page({
     var goods_Cart = that.data.selectedproduct
     console.log(goods_Cart)
     var skuList = [{ "id":goods_Cart[0].skuId, "number":goods_Cart[0].goodsNum}]
-    wx.request({
-      url: app.globalData.urlPath1 + '/app/orders/coupon?skuList=' + JSON.stringify(skuList),
-      method: 'get',
-      header: {
-        'token': wx.getStorageSync("token"),
-        'authorization': wx.getStorageSync("sid")
-      },
-      success(res){
-        console.log(res)
-        wx.navigateTo({
-          url: '../orders/orders?list=' + JSON.stringify(goods_Cart) + '&isFreeDelivery=' + res.data.result.isFreeDelivery,
-        })
-      }
+    util.get(api.urlPath1+ '/app/orders/coupon?skuList=' + JSON.stringify(skuList)).then((res)=>{
+      wx.navigateTo({
+        url: '../orders/orders?list=' + JSON.stringify(goods_Cart) + '&isFreeDelivery=' + res.data.result.isFreeDelivery,
+      })
     })
-    
   },
   collet:function(e){
       console.log(e)
@@ -202,46 +189,18 @@ Page({
       selected: !this.data.selected
     })
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
- 
-  
-  
   onLoad: function (options) {
     var that=this
     
     console.log(app.globalData.userInfo)
-    wx.request({
-      url: app.globalData.urlPath1 + '/app/address/default',
-      method: "get",
-      header: {
-        'token': wx.getStorageSync("token"),
-         'authorization': wx.getStorageSync("sid")
-      },
-      success(res) {
-        console.log(res)
-        console.log(res.data.result) /////地址id
-        console.log(res.data.result.id)     ///////用户信息
+      util.get(api.urlPath1+ '/app/address/default').then((res)=>{
         that.setData({
           dzlist: res.data.result,
           dzid: res.data.result.id,
-         
           id: res.data.result.id
         })
-        
-      }
-    })
-    
+      })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  },
-
   // 编辑--删除
   delete:function(){
     var that=this
@@ -262,21 +221,12 @@ Page({
       console.log('888888888888')
       for (var i = 0; i < that.data.goodList.length;i++){
         console.log( that.data.selectedproduct)
-        wx.request({
-          url: app.globalData.urlPath1 + '/app/buyerCart/' + that.data.goodList[i].skuId,
-          method: 'delete',
-          header: {
-            'token': wx.getStorageSync("token"),
-            'authorization': wx.getStorageSync("sid")
-          },
-          success(res) {
-            console.log('else',res)
-            that.setData({
-              goodList:res.data.result,
-              selectAllStatus:false
-            })
-          }
-        })
+        util.deletes(api.urlPath1+ '/app/buyerCart/' + that.data.goodList[i].skuId).then((res)=>{
+          that.setData({
+            goodList:res.data.result,
+            selectAllStatus:false
+          })
+        })
         that.setData({
           totalPrices:0,
           totalCounts:0
@@ -296,23 +246,13 @@ Page({
       console.log('777777777777')
       for (var i = 0; i < that.data.selectedproduct.length;i++){
             console.log( that.data.selectedproduct)
-            wx.request({
-              url: app.globalData.urlPath1 + '/app/buyerCart/' + that.data.selectedproduct[i].skuId,
-              method: 'delete',
-              header: {
-                'token': wx.getStorageSync("token"),
-                'authorization': wx.getStorageSync("sid")
-              },
-              success(res) {
-                console.log('else',res)
-                that.data.selectedproduct.splice(0,1)
+            util.deletes(api.urlPath1+ '/app/buyerCart/' + that.data.selectedproduct[i].skuId).then((res)=>{
+              that.data.selectedproduct.splice(0,1)
                 that.setData({
                   goodList:res.data.result,
                   selectAllStatus:false
                 })
-                console.log(that.data.selectedproduct)
-              }
-            })
+            })
             that.setData({
               totalPrices:0,
               totalCounts:0
@@ -347,28 +287,14 @@ Page({
       })
     }
 
-    wx.request({
-      url: app.globalData.urlPath1 + '/app/goods/recommend',
-      data: {},
-      success(res) {
-        that.setData({
-          forucontent: res.data.result
-        })
-      }
+    util.get(api.urlPath1 + '/app/goods/recommend').then((res)=>{
+      that.setData({
+        forucontent: res.data.result
+      })
     })
   
-    
-    wx.request({
-      url: app.globalData.urlPath1 + '/app/buyerCart',
-      method: 'get',
-      header: {
-        'token': wx.getStorageSync("token"),
-        'authorization': wx.getStorageSync("sid")
-      },
-      success(res) {
-      
-        console.log(res)
-        var  aa = res.data.status == 200 ? that.data.state = 200 : that.data.state = 401
+    util.get(api.urlPath1+ '/app/buyerCart').then((res)=>{
+      var  aa = res.data.status == 200 ? that.data.state = 200 : that.data.state = 401
         console.log(aa)
         that.setData({
           listlist:res.data.result,
@@ -408,7 +334,6 @@ Page({
           goodList: res.data.result,
          
         })
-      }
     })
   },
 

@@ -24,22 +24,25 @@ Page({
       complete: function (res) { },
     })
   },
- 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
     var that=this
-      wx.request({
-        url: app.globalData.urlPath3+'/category',
-        data:{},
-        success(res){
-          console.log(res.data.data)
-          that.setData({
-            content:res.data.data
-          })
-        }
-      })
+     util.get(api.urlPath3+'/category').then((res)=>{
+        that.setData({
+          content:res.data.data
+        })
+      }).catch((errMsg)=>{
+        console.log(errMsg,'收藏')
+      })
+      // wx.request({
+      //   url: app.globalData.urlPath3+'/category',
+      //   data:{},
+      //   success(res){
+      //     console.log(res.data.data)
+      //     that.setData({
+      //       content:res.data.data
+      //     })
+      //   }
+      // })
   },
   click1: function (e) {
     // 获取标签元素上自定义的 data-myindex 属性的值

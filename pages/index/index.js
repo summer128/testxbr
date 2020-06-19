@@ -14,10 +14,8 @@ var minute = date.getMinutes()
 var second = date.getSeconds()
 
 
-
 //获取应用实例
 const app = getApp()
-
 Page({
   data: {
     userInfo: {},
@@ -89,93 +87,6 @@ Page({
     }
     
   },
- 
-  /////////////////////////////////////////////////////////////////////////////////////////
-  // getPhoneNumber: function (e) {
-  //   console.log(e)
-  //   //  console.log(e)
-  //   var that = this;
-  //   that.setData({
-  //     imgurl: wx.getStorageSync("userInfo").avatarUrl,
-  //     showimg: true,
-  //     username: wx.getStorageSync("userInfo").nickName
-  //   })
-  //   // console.log(wx.getStorageSync("userInfo").nickName)
-  //   // console.log(e.detail.encryptedData)
-  //   if (e.detail.errMsg == "getPhoneNumber:ok") {
-
-  //     that.setData({
-  //       showinfo: true,
-  //       showbd: false,
-  //       user_nickName: true,
-  //       showindex:false
-  //     })
-  //     wx.request({
-  //       url: app.globalData.urlPath1 + '/app/users/appletsUser',
-  //       data: {
-  //         encryptedData: e.detail.encryptedData,
-  //         iv: e.detail.iv,
-  //         session_key: wx.getStorageSync("session_key"),
-  //         userInfo: wx.getStorageSync("userInfo"),
-  //         openid: wx.getStorageSync("openid")
-  //       },
-  //       method: "post",
-  //       success: function (res) {
-  //         console.log('获取用户手机号',res)
-  //         wx.request({
-  //           url: app.globalData.urlPath + '/api/cash/v2/token',
-  //           data: {
-  //             sid: res.data.result.sid
-  //           },
-  //           method: "post",
-  //           success(res) {
-  //             if (res.data.token) {
-  //               wx.setStorageSync("token", res.data.token)
-  //             } else {
-  //               wx.showModal({
-  //                 title: '提示',
-  //                 content: '获取失败，请重新绑定',
-  //               })
-  //             }
-  //           }
-  //         })
-  //         ////////////////
-  //         console.log(res)
-  //         if (res.data.result.phoneNumber) {
-  //           that.setData({
-  //             showinfo: true,
-  //             showbd: false,
-  //             user_nickName: true,
-  //             user: '请点击登录'
-  //           })
-  //           wx.showLoading({
-  //             title: '绑定成功',
-  //           })
-
-  //           setTimeout(function () {
-  //             wx.hideLoading()
-  //           }, 2000)
-  //         } else {
-  //           wx.showLoading({
-  //             title: '绑定失败',
-  //           })
-
-  //           setTimeout(function () {
-  //             wx.hideLoading()
-  //           }, 1000)
-  //         }
-  //         console.log(res.data.result.phoneNumber)
-  //         console.log(res.data.result.sid)
-  //         wx.setStorageSync("phoneNumber", res.data.result.phoneNumber)
-  //         wx.setStorageSync("sid", res.data.result.sid)
-  //        }
-  //     })
-  //   }
-
-  // },
-
-
-
   onAuth_phone(e) {
     var that = this;
     if (e.detail.errMsg == "getPhoneNumber:ok") {
@@ -202,20 +113,8 @@ Page({
       url: '../delivergoods/delivergoods',
     })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-    console.log()
-
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
+    console.log('11111111')
     var that = this
     if (wx.getStorageSync("token")){
         that.setData({
@@ -237,36 +136,20 @@ Page({
         })
       }
     })
-
-
-    // wx.request({
-    //   url: app.globalData.urlPath1 + '/app/goods/favorite?pageNum=0&pageSize=100',
-    //   method: 'get',
-    //   header: {
-    //     'token': wx.getStorageSync("token"),
-    //     'authorization': wx.getStorageSync("sid")
-    //   },
-    //   success(res) {
-    //     console.log(res.data.result.length)
-    //     that.setData({
-    //       collectNum: res.data.result.length,
-    //     })
-    //   }
-    // })
   },
   getpage(){
     var that = this
     //////////////记载本页面数据/////////////////////////
-    util.get(api.realTimeInfo).then((res)=>{
-      console.log(res)
-        console.log(res.data.classroom.id)
+    util.get(api.urlPath3+'/home').then((res)=>{
+      // console.log(res)
+      //   console.log(res.data.classroom.id)
         that.setData({
           info: res.data.adtopicList,
           health_id:res.data.classroom.id
         })
         if(res.errMsg = "request:ok"){
           // 健康小课堂
-          util.get(api.healthClass+'/'+res.data.classroom.id).then((res)=>{
+          util.get(api.urlPath3+'/classroom/flush/'+res.data.classroom.id).then((res)=>{
             that.setData({
               health_problem:res.data.title,
               health_content:res.data.content
@@ -283,13 +166,8 @@ Page({
     var that=this
   ///////////////希百瑞小课堂///////////////////
   
-  console.log(that.data.health_id)
-
-  console.log(that.data.statusBarHeight)
-  
-    /////////////////////////////////////
-   
-    // console.log(hour)
+  // console.log(that.data.health_id)
+  // console.log(that.data.statusBarHeight)
     that.getpage()
     if (app.globalData.userInfo) {
       this.setData({
@@ -326,9 +204,6 @@ Page({
       duration: 1000
     })
   },
-  onPullDownRefresh: function () {
-    
-  },
   updateBlogs: function () {
       console.log('1')
   },
@@ -347,7 +222,6 @@ Page({
     this.setData({
       isChecked:!this.data.isChecked
     })
-    // console.log(this.data.isChecked)
   },
   /////////健康测评/////////
   health_test(){

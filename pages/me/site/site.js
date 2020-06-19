@@ -1,12 +1,7 @@
-// pages/me/site/site.js
 const app = getApp()
-
+const util = require('../../../utils/util.js')
+const api = require('../../../config/api.js')
 Page({
-
-  /**
-   * 页面的初始数据
-   */
-
   data: {
     num: 0,
     flag1: false,
@@ -69,20 +64,14 @@ Page({
           detail: this.data.detail == null ? that.data.click_lists.detail : this.data.detail,
           isDefault: 0
         };
-        wx.request({
-          url: app.globalData.urlPath1+'/app/address',
-          method: 'put',
-          data: {
+        util.put(
+          api.urlPath1+'/app/address',
+          {
             addressInfo:JSON.stringify(addressInfo),
             'sid': wx.getStorageSync("sid"),
             id:that.data.click_listid
-          },
-          header: {
-            'content-type': "application/x-www-form-urlencoded",
-            'token': wx.getStorageSync("token"),
-          },
-          success(res){
-            // console.log(res)
+          }
+          ).then((res)=>{
             if (res.data.status == 200){
               wx.showModal({
                 title: '修改成功',
@@ -97,8 +86,9 @@ Page({
                 }
               })
             }
-          }
-        }) 
+        }).catch((errMsg)=>{
+          console.log(errMsg,'保存地址')
+        })
     }else{
       // console.log('添加地址')
       var addressInfo = {
@@ -111,20 +101,13 @@ Page({
         detail: this.data.detail,
         isDefault: 0
       };
-      wx.request({
-        url: app.globalData.urlPath1+'/app/address',
-        method: 'post',
-        data: {
+       util.post(
+        api.urlPath1+'/app/address',
+        {
           addressInfo: JSON.stringify(addressInfo),
           'sid': wx.getStorageSync("sid")
-        },
-        header: {
-          'content-type': "application/x-www-form-urlencoded",
-          'token': wx.getStorageSync("token"),
-        },
-        success(res) {
-          console.log(res)
-          console.log(res.data.result =="receiver can not be null")
+        }
+        ).then((res)=>{
           if (res.data.status == 200){
             wx.showModal({
               title: '保存成功',
@@ -139,8 +122,9 @@ Page({
               }
             })
           }
-        }
-      })
+        }).catch((errMsg)=>{
+          console.log(errMsg,'添加地址')
+        })
     }
   },
   // 设置的默认地址
@@ -174,36 +158,22 @@ Page({
       console.log('设置默认', e.currentTarget.dataset.id)
      
       console.log(e.currentTarget.dataset.id)
-      wx.request({
-        url: app.globalData.urlPath1 + '/app/address/default',
-        method: 'put',
-        data: {
+      util.put(
+        api.urlPath1+'/app/address/default',
+        {
           id: e.currentTarget.dataset.id,
           'sid': wx.getStorageSync("sid")
-        },
-        header: {
-          'content-type': "application/x-www-form-urlencoded",
-          'token': wx.getStorageSync("token"),
-        },
-        success(res) {
-          console.log(res)
-         
         }
-      })
+        ).then((res)=>{
+        
+      }).catch((errMsg)=>{
+        console.log(errMsg,'收藏')
+      })
     }
   },
   // 删除收货地址
   setValue:function(){
-    console.log
-    wx.request({
-      url: app.globalData.urlPath1 +'/app/address/'+this.data.click_listid,
-      method:'delete',
-      header: {
-        'token': wx.getStorageSync("token"),
-        'authorization': wx.getStorageSync("sid")
-      },
-      success(res){
-        console.log(res)
+     util.deletes(api.urlPath1+'/app/address/'+`${this.data.click_listid}`).then((res)=>{
         if (res.data.status == 200) {
           wx.showModal({
             title: '删除成功',
@@ -218,8 +188,9 @@ Page({
             }
           })
         }
-      }
-    })
+      }).catch((errMsg)=>{
+        console.log(errMsg,'收藏')
+      })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -254,39 +225,6 @@ Page({
           flag1: false
         })
       }
-    
-    // that.setData({
-    //   id:click_lists.id
-    // })
-    // if (click_lists.receiver){
-    //     that.setData({
-    //       receiver: click_lists.receiver
-    //     })
-    // }else{
-    //   receiver:''
-    // }
-    // if (click_lists.phone) {
-    //   that.setData({
-    //     phone: click_lists.phone
-    //   })
-    // } else {
-    //   phone: ''
-    // }
-    // if (click_lists.region) {
-    //   that.setData({
-    //     region: click_lists.region
-    //   })
-    // } else {
-    //   region: ''
-    // }
-    // if (click_lists.detail) {
-    //   that.setData({
-    //     detail: click_lists.detail
-    //   })
-    // } else {
-    //   detail: ''
-    // }
-
     }
   }
 })

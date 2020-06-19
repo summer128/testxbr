@@ -34,7 +34,7 @@ Page({
       titleid: e.currentTarget.dataset.id
     })
     util.post(
-      api.realTimeInfo+'/article/category',
+      api.urlPath3+'/home/article/category',
       {
           pageNum:that.data.num,
           pageSize:6,
@@ -53,17 +53,23 @@ Page({
    */
   onLoad: function (options) {
     var that=this
-      wx.request({
-        url: app.globalData.urlPath3+'/home/article/category/list',
-        data:{},
-        success(res){
-            console.log(res)
-            that.setData({
-              article:res.data.result.article,
-              categoryList: res.data.result.categoryList
-            })
-        }   
-      })
+     util.get(api.urlPath3+'/home/article/category/list').then((res)=>{
+        that.setData({
+          article:res.data.result.article,
+          categoryList: res.data.result.categoryList
+        })
+      })
+      // wx.request({
+      //   url: app.globalData.urlPath3+'/home/article/category/list',
+      //   data:{},
+      //   success(res){
+      //       console.log(res)
+      //       that.setData({
+      //         article:res.data.result.article,
+      //         categoryList: res.data.result.categoryList
+      //       })
+      //   }   
+      // })
   },
   onReachBottom: function () {
     var that=this
@@ -73,29 +79,49 @@ Page({
         duration: 500,
         success: function () { 
           console.log(that.data.categoryId)
-            wx.request({
-              url: app.globalData.urlPath3 + '/home/article/category',
-              data: {
-                pageNum: that.data.num++,
-                pageSize: 6,
-                categoryId: that.data.titleid
-              },
-              method: 'post',
-              success(res){
-                console.log(res)
-                if(!res.data.list.length){
-                    wx.showToast({
-                      title: '没有更多数据啦',
-                      icon:'loading'
-                    })
-                }else{
-                    that.setData({
-                      article: that.data.article.concat(res.data.list),
-                      // categoryList: res.data.result.categoryList
-                    })
-                }
+          util.post(
+            api.urlPath3+'/home/article/category',
+            {
+              pageNum: that.data.num++,
+              pageSize: 6,
+              categoryId: that.data.titleid
+            }
+            ).then((res)=>{
+              if(!res.data.list.length){
+                wx.showToast({
+                  title: '没有更多数据啦',
+                  icon:'loading'
+                })
+              }else{
+                  that.setData({
+                    article: that.data.article.concat(res.data.list),
+                    // categoryList: res.data.result.categoryList
+                  })
               }
-            })
+          })
+            // wx.request({
+            //   url: app.globalData.urlPath3 + '/home/article/category',
+            //   data: {
+            //     pageNum: that.data.num++,
+            //     pageSize: 6,
+            //     categoryId: that.data.titleid
+            //   },
+            //   method: 'post',
+            //   success(res){
+            //     console.log(res)
+            //     if(!res.data.list.length){
+            //         wx.showToast({
+            //           title: '没有更多数据啦',
+            //           icon:'loading'
+            //         })
+            //     }else{
+            //         that.setData({
+            //           article: that.data.article.concat(res.data.list),
+            //           // categoryList: res.data.result.categoryList
+            //         })
+            //     }
+            //   }
+            // })
         },
       })
 

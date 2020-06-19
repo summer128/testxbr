@@ -1,20 +1,11 @@
 const app = getApp()
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     onshow: false,
     onshow1: false,
     show:true,
     dz: null,
     wechat:'KMSC925'
-  },
-  back:function(){
-    wx.navigateBack({
-      delta: 1
-    })
   },
   lianxi: function () {
     this.setData({
@@ -71,60 +62,28 @@ Page({
     var that = this
     app.copy(that.data.info.orderInfo.orderNumber)
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
     var that = this
-    wx.request({
-      url: app.globalData.urlPath1 + '/app/address/default',
-      method: 'get',
-      header: {
-        'token': wx.getStorageSync("token"),
-        'authorization': wx.getStorageSync("sid")
-      },
-      success(res) {
-        console.log(res)
-        that.setData({
-          dz: res.data.result
-        })
-      }
+    util.get(api.urlPath1+'/app/address/default').then(()=>{
+      that.setData({
+        dz: res.data.result
+      })
+    }).catch((errMsg)=>{
+      console.log(errMsg,'错误信息')
     })
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-  
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+    // wx.request({
+    //   url: app.globalData.urlPath1 + '/app/address/default',
+    //   method: 'get',
+    //   header: {
+    //     'token': wx.getStorageSync("token"),
+    //     'authorization': wx.getStorageSync("sid")
+    //   },
+    //   success(res) {
+    //     console.log(res)
+    //     that.setData({
+    //       dz: res.data.result
+    //     })
+    //   }
+    // })
   }
 })

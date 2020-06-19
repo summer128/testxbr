@@ -1,5 +1,7 @@
 // pages/order/order.js
 const app = getApp()
+const util = require('../../utils/util.js')
+const api = require('../../config/api.js')
 Page({
 
   /**
@@ -50,28 +52,19 @@ Page({
       price: this.data.totalprice1
     }
     skuarr.push(info)
-    
-    wx.request({
-      url: app.globalData.urlPath1+'/app/orders',
-      data:{
+
+    util.post(
+      api.urlPath1+'/app/orders',
+      {
         skuList: JSON.stringify(skuarr),
         addressId:this.data.dzid,
         paymentPlatform:0,
         type:2,
         openid: wx.getStorageSync("openid"),
         'sid': wx.getStorageSync("sid")
-      },
-      method:"post",
-      header: {
-        'content-type': "application/x-www-form-urlencoded",
-        'token': wx.getStorageSync("token"),
-      },
-      success(res){
-        console.log(res)
-        console.log(res.data.result.timestamp)
-        console.log(res.data.result.noncestr)
-        console.log(res.data.result.package)
-        console.log(res.data.result)
+      }
+      ).then((res)=>{
+        console.log(res,'微信支付')
         var sign = wx.getStorageSync("appid")
         let orderNumber = res.data.result.orderNumber
         wx.requestPayment({
@@ -95,8 +88,56 @@ Page({
             console.log(res)
           }
         })
-      }
-    })
+    }).catch((errMsg)=>{
+      console.log(errMsg,'收藏')
+    })
+
+    // wx.request({
+    //   url: app.globalData.urlPath1+'/app/orders',
+    //   data:{
+    //     skuList: JSON.stringify(skuarr),
+    //     addressId:this.data.dzid,
+    //     paymentPlatform:0,
+    //     type:2,
+    //     openid: wx.getStorageSync("openid"),
+    //     'sid': wx.getStorageSync("sid")
+    //   },
+    //   method:"post",
+    //   header: {
+    //     'content-type': "application/x-www-form-urlencoded",
+    //     'token': wx.getStorageSync("token"),
+    //   },
+    //   success(res){
+    //     console.log(res)
+    //     console.log(res.data.result.timestamp)
+    //     console.log(res.data.result.noncestr)
+    //     console.log(res.data.result.package)
+    //     console.log(res.data.result)
+    //     var sign = wx.getStorageSync("appid")
+    //     let orderNumber = res.data.result.orderNumber
+    //     wx.requestPayment({
+    //       timeStamp: res.data.result.timeStamp,
+    //       nonceStr: res.data.result.nonceStr,
+    //       package: res.data.result.package,
+    //       signType: 'MD5',
+    //       paySign: res.data.result.sign,
+    //       success(res){
+    //         console.log(res)
+    //         if (res.meeMsg = "requestPayment:ok"){
+    //           wx.reLaunch({
+    //             url: '../product/success/success'
+    //           })
+    //         }
+    //       },
+    //       fail(res){
+    //         console.log(res)
+    //       },
+    //       complete(res){
+    //         console.log(res)
+    //       }
+    //     })
+    //   }
+    // })
    
   },
   close:function(){
@@ -208,45 +249,72 @@ Page({
     console.log(size.itemSkuList[0].skuId)
     
     //////////////////////获取地址列表开始/////////////////////////////////
-    wx.request({
-      url: app.globalData.urlPath1 +'/app/address/default',
-      method: "get",
-      header: {
-        'token': wx.getStorageSync("token"),
-         'authorization': wx.getStorageSync("sid")
-      },
-     
-      success(res) {
-        console.log(res)
-        console.log(res.data.result) /////地址id
-        console.log(res.data.result)     ///////用户信息
-        if(res.data.result.id){
-          console.log('1')
-        }else{
-          console.log('2')
-          wx.showModal({
-            title: '提示',
-            content: '请您先填写地址',
-            success (res) {
-              if (res.confirm) {
-                wx.navigateTo({
-                  url: '../me/shippingAddress/shippingAddress',
-                })
-              } else if (res.cancel) {
-                console.log('用户点击取消')
-              }
+    util.get(api.urlPath1+'/app/address/default').then((res)=>{
+      if(res.data.result.id){
+        console.log('1')
+      }else{
+        console.log('2')
+        wx.showModal({
+          title: '提示',
+          content: '请您先填写地址',
+          success (res) {
+            if (res.confirm) {
+              wx.navigateTo({
+                url: '../me/shippingAddress/shippingAddress',
+              })
+            } else if (res.cancel) {
+              console.log('用户点击取消')
             }
-          })
-        }
-        that.setData({
-          dzlist: res.data.result,
-          dzid: res.data.result.id,
-          skuList: JSON.stringify(newskuarray),
-          id:size.itemSkuList[0].skuId
+          }
         })
-       
       }
+      that.setData({
+        dzlist: res.data.result,
+        dzid: res.data.result.id,
+        skuList: JSON.stringify(newskuarray),
+        id:size.itemSkuList[0].skuId
+      })
+    }).catch((errMsg)=>{
+      console.log(errMsg)
     })
+    // wx.request({
+    //   url: app.globalData.urlPath1 +'/app/address/default',
+    //   method: "get",
+    //   header: {
+    //     'token': wx.getStorageSync("token"),
+    //      'authorization': wx.getStorageSync("sid")
+    //   },
+     
+    //   success(res) {
+    //     console.log(res)
+    //     console.log(res.data.result) /////地址id
+    //     console.log(res.data.result)     ///////用户信息
+    //     if(res.data.result.id){
+    //       console.log('1')
+    //     }else{
+    //       console.log('2')
+    //       wx.showModal({
+    //         title: '提示',
+    //         content: '请您先填写地址',
+    //         success (res) {
+    //           if (res.confirm) {
+    //             wx.navigateTo({
+    //               url: '../me/shippingAddress/shippingAddress',
+    //             })
+    //           } else if (res.cancel) {
+    //             console.log('用户点击取消')
+    //           }
+    //         }
+    //       })
+    //     }
+    //     that.setData({
+    //       dzlist: res.data.result,
+    //       dzid: res.data.result.id,
+    //       skuList: JSON.stringify(newskuarray),
+    //       id:size.itemSkuList[0].skuId
+    //     })
+    //   }
+    // })
     ///////////////////////获取地址列表结束////////////////////////////////
     var msg = JSON.parse(option.msg)
     var price1 = msg.goodsInfo.price;

@@ -1,5 +1,7 @@
 // pages/product/product.js
 const app = getApp()
+const util = require('../../utils/util.js')
+const api = require('../../config/api.js')
 Page({
   addCount: function (e) {
     console.log("刚刚您点击了加1");
@@ -80,23 +82,18 @@ Page({
         icon: 'success',
         duration: 2000
       })
-      
-      wx.request({
-        url: app.globalData.urlPath1 + '/app/buyerCart',
-        method: 'post',
-        data: {
+
+       util.post(
+        api.urlPath1+ '/app/buyerCart',
+        {
           skuId: this.data.gg,
           amount: this.data.num
-        },
-        header: {
-          'content-type': "application/x-www-form-urlencoded",
-          'token': wx.getStorageSync("token"),
-          'authorization': wx.getStorageSync("sid"),
-        },
-        success(res) {
-          console.log(res)
         }
-      })
+        ).then((res)=>{
+ 
+        }).catch((errMsg)=>{
+          console.log(errMsg)
+        })
     }else{
       wx.showModal({
         title: '请您先授权登录',
@@ -157,21 +154,17 @@ Page({
    
     console.log(e.currentTarget.dataset.id)
     if (wx.getStorageSync("token")){
-            wx.request({
-              url: app.globalData.urlPath1 + '/app/goods/favorite',
-              method: 'post',
-              data: {
-                'sid': wx.getStorageSync("sid"),
-                'goodsId': e.currentTarget.dataset.id
-              },
-              header: {
-                'content-type': "application/x-www-form-urlencoded",
-                'token': wx.getStorageSync("token"),
-              },
-              success(res) {
-                console.log('收藏',res)
-              }
-            })
+           util.post(
+            api.urlPath1+ '/app/goods/favorite',
+            {
+              'sid': wx.getStorageSync("sid"),
+              'goodsId': e.currentTarget.dataset.id
+            }
+            ).then((res)=>{
+              console.log('收藏',res)
+            }).catch((errMsg)=>{
+              console.log(errMsg,'收藏')
+            })
     }else{
       wx.showModal({
           title: '请您先授权登录',
@@ -356,46 +349,29 @@ Page({
       console.log('之前未被收藏过')
     }
     //////////////////////获取地址列表开始/////////////////////////////////
-    wx.request({
-      url: app.globalData.urlPath1 +'/app/address/default',
-      method: "get",
-      header: {
-        'token': wx.getStorageSync("token"),
-        'authorization': wx.getStorageSync("sid")
-      },
-      success(res) {
-        // console.log(res)
-        // console.log(res.data.result)
+     util.get(api.urlPath1+'/app/address/default').then((res)=>{
         that.setData({
           dzlist: res.data.result
         })
-      }
-    })
-
-    
-    
+      }).catch((errMsg)=>{
+        console.log(errMsg)
+      })
     ///////////////////////获取地址列表结束////////////////////////////////
     
     // console.log(options.id)
     that.setData({
       productid:like_id
     })
-    wx.request({
-      url: app.globalData.urlPath1+'/app/goods/'+like_id,
-      data:{},
-      success(res){
-        console.log(res.data.result)
-        
-        that.setData({
-          swiperimg: res.data.result.goodsPictureList,
-          productinfo: res.data.result.goodsInfo,
-          msg: res.data.result,
-          size: res.data.result.itemSkuList[0],
-          gg: res.data.result.itemSkuList[0].skuId
-        })
-      }
-    })
 
+    util.get(api.urlPath1+'/app/goods/'+like_id).then((res)=>{
+      that.setData({
+        swiperimg: res.data.result.goodsPictureList,
+        productinfo: res.data.result.goodsInfo,
+        msg: res.data.result,
+        size: res.data.result.itemSkuList[0],
+        gg: res.data.result.itemSkuList[0].skuId
+      })
+    })
   },
   now_buy:function(e){
     console.log(e)
@@ -407,21 +383,27 @@ Page({
       console.log(that.data.num)
       var skuList = [{ "id": that.data.msg.itemSkuList[0].skuId, "number": that.data.num }]
       console.log(skuList)
-      wx.request({
-        url: app.globalData.urlPath1 + '/app/orders/coupon?skuList=' + JSON.stringify(skuList),
-        method:'get',
-        header: {
-          'token': wx.getStorageSync("token"),
-          'authorization': wx.getStorageSync("sid")
-        },
-        success(res){
-          console.log(res.data.result.isFreeDelivery)
-          wx.setStorageSync('isFreeDelivery', res.data.result.isFreeDelivery)
-          wx.navigateTo({
-            url: '../order/order?msg=' + model + "&size=" + size + '&isFreeDelivery=' + res.data.result.isFreeDelivery,
-          })
-        }
+      util.get(api.urlPath1+ '/app/orders/coupon?skuList=' + JSON.stringify(skuList)).then((res)=>{
+        wx.setStorageSync('isFreeDelivery', res.data.result.isFreeDelivery)
+        wx.navigateTo({
+          url: '../order/order?msg=' + model + "&size=" + size + '&isFreeDelivery=' + res.data.result.isFreeDelivery,
+        })
       })
+      // wx.request({
+      //   url: app.globalData.urlPath1 + '/app/orders/coupon?skuList=' + JSON.stringify(skuList),
+      //   method:'get',
+      //   header: {
+      //     'token': wx.getStorageSync("token"),
+      //     'authorization': wx.getStorageSync("sid")
+      //   },
+      //   success(res){
+      //     console.log(res.data.result.isFreeDelivery)
+      //     wx.setStorageSync('isFreeDelivery', res.data.result.isFreeDelivery)
+      //     wx.navigateTo({
+      //       url: '../order/order?msg=' + model + "&size=" + size + '&isFreeDelivery=' + res.data.result.isFreeDelivery,
+      //     })
+      //   }
+      // })
       
     }else{
       wx.showModal({
@@ -482,47 +464,6 @@ Page({
     this.setData({
       showModal4: false
     });
-  },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-  
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
   },
   onConfirm: function () {
     this.hideModal();

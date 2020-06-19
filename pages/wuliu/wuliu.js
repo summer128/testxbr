@@ -1,18 +1,14 @@
 
 const app = getApp()
+const util = require('../../utils/util.js')
+const api = require('../../config/api.js')
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     statusBarHeight: app.globalData.statusBarHeight,
     wuliu:null,//物流信息列表
-    // status: ["查询异常", "暂无记录", "在途中", "派送中", "已签收", "用户拒签", "疑难件", "无效单", "超时单", "签收失败","退回"],
+    null_logistics:true,
+    
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
     var that = this
     // var info = JSON.parse(unescape(options.info))
@@ -25,29 +21,30 @@ Page({
   },
   onShow: function () {
       var that=this
-      wx.request({
-        url: app.globalData.urlPath1 +'/app/orders/shipInfo/'+that.data.info.orderInfo.id,
-        method:'get',
-        header: {
-          'token': wx.getStorageSync("token"),
-          'authorization': wx.getStorageSync("sid")
-        },
-        success(res){
-          console.log(res.data.result,'物流信息')
-          console.log(res.data.result.shipName,res.data.result.shipNumber,res.data.result['token'])
-          // await HttpUtil().get('http://q.kdpt.net/api' + '?id=${result['token']}&com=${result['shipName']}&nu=${result['shipNumber']}&show=json&order=desc&format=kuaidi100').then((value) 
-          wx.request({
-            // url: 'http://q.kdpt.net/api?id=' + res.data.result.token + '&com=' + res.data.result.shipName + '&nu=' + res.data.result.shipNumber +'&show='+'json'+'&order'+'desc'+'&format='+'kuaidi100',
-            url: 'http://q.kdpt.net/api?id=' + res.data.result.token + '&com=' + 'shunfeng' + '&nu=' +'299328255922'+'&show='+'json'+'&order'+'desc'+'&format='+'kuaidi100',
-            method:'get',
-            success(res){
-              console.log(res)
+      util.get(api.urlPath1 +'/app/orders/shipInfo/'+that.data.info.orderInfo.id).then((res)=>{
+        console.log(res.data.result,'物流信息')
+        console.log(res.data.result.shipName,res.data.result.shipNumber,res.data.result['token'])
+        util.get(
+          // api.logistics + `?id=${res.data.result['token']}&com=${res.data.result['shipName']}&nu=${res.data.result['shipNumber']}&show=json&order=desc&format=kuaidi100'`
+          api.logistics +'?id='+ res.data.result.token + '&com=' + 'shunfeng' + '&nu=' +'299328255922'+'&show='+'json'+'&order'+'desc'+'&format='+'kuaidi100' 
+          ).then((res)=>{
+            if(res.data.status == 0){
+              console.log('没有物流信息')
+              console.log(that.data.null_logistics)
               that.setData({
-                wuliu:res.data.data
+                null_logistics:true,
               })
+            }else{
+              console.log('有物流信息')
+              that.setData({
+                wuliu:res.data.data,
+                null_logistics:false
+              })
+              console.log(that.data.null_logistics)
             }
+          }).catch((errMsg)=>{
+            console.log(errMsg,'物流错误信息')
           })
-        }
       })
   }
 })

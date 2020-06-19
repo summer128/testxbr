@@ -1,12 +1,8 @@
 
 const app = getApp()
-const util = require('../../utils/util.js')
-
+const util = require('../../utils/util')
+const api = require('../../config/api')
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     onshow:false,
     onshow1: false,
@@ -22,19 +18,13 @@ Page({
   sure:function(){
     var that=this
     console.log(that.data.info)
-    wx.request({
-      url: app.globalData.urlPath1 + '/app/orders/pay',
-      method: 'post',
-      header: {
-        'content-type': "application/x-www-form-urlencoded",
-        'token': wx.getStorageSync("token"),
-      },
-      data: {
+     util.post(
+      api.urlPath1+ '/app/orders/pay',
+      {
         'sid': wx.getStorageSync("sid"),
         orderNumber: that.data.info.orderInfo.orderNumber
-      },
-      success(res) {
-        console.log(res)
+      }
+      ).then((res)=>{
         wx.requestPayment({
           timeStamp: res.data.result.timestamp,
           nonceStr: res.data.result.noncestr,
@@ -51,8 +41,38 @@ Page({
             console.log(res)
           }
         })
-      }
-    })
+      })
+    // wx.request({
+    //   url: app.globalData.urlPath1 + '/app/orders/pay',
+    //   method: 'post',
+    //   header: {
+    //     'content-type': "application/x-www-form-urlencoded",
+    //     'token': wx.getStorageSync("token"),
+    //   },
+    //   data: {
+    //     'sid': wx.getStorageSync("sid"),
+    //     orderNumber: that.data.info.orderInfo.orderNumber
+    //   },
+    //   success(res) {
+    //     console.log(res)
+    //     wx.requestPayment({
+    //       timeStamp: res.data.result.timestamp,
+    //       nonceStr: res.data.result.noncestr,
+    //       package: res.data.result.package,
+    //       signType: 'MD5',
+    //       paySign: res.data.result.sign,
+    //       success(res) {
+    //         console.log(res)
+    //       },
+    //       fail(res) {
+    //         console.log(res)
+    //       },
+    //       complete(res) {
+    //         console.log(res)
+    //       }
+    //     })
+    //   }
+    // })
   },
   back:function(){
     wx.navigateBack({
@@ -118,30 +138,19 @@ Page({
   closeorder:function(e){
     console.log(this.data.text)
     console.log(e.currentTarget.dataset.id)
-    wx.request({
-      url: app.globalData.urlPath1 + '/app/orders/cancel',
-      method:'post',
-      data: {
+    util.post(
+      api.urlPath1 + '/app/orders/cancel',
+      {
         id: e.currentTarget.dataset.id,
         resson:this.data.text,
         'sid': wx.getStorageSync("sid")
-      },
-      header: {
-        'content-type': "application/x-www-form-urlencoded",
-        'token': wx.getStorageSync("token"),
-      },
-      success(res){
-        console.log(res)
+      }
+      ).then((res)=>{
         wx.navigateBack({
           delta: 1
         })
-      }
     })
-  
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
     var that=this
     var info=JSON.parse(unescape(options.info))
@@ -159,32 +168,12 @@ Page({
     var that = this
     app.copy(that.data.info.orderInfo.orderNumber)
   },
-  
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
     var that=this
-      wx.request({
-        url: app.globalData.urlPath1 +'/app/address/default',
-        method:'get',
-        header: {
-          'token': wx.getStorageSync("token"),
-          'authorization': wx.getStorageSync("sid")
-        },
-        success(res){
-          console.log(res)
-          that.setData({
-            dz:res.data.result
-          })
-        }
+    util.get(api.urlPath1 +'/app/address/default').then((res)=>{
+      that.setData({
+        dz:res.data.result
       })
+    })
   }
 })

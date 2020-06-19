@@ -1,5 +1,7 @@
 
 const app = getApp()
+const util = require('../../utils/util.js')
+const api = require('../../config/api.js')
 Page({
 
   /**
@@ -48,24 +50,17 @@ pay:function(){
   }
   console.log(skuarr)
   console.log(this.data.dzlist.id)
-  wx.request({
-    url: app.globalData.urlPath1 + '/app/orders',
-    data: {
+  util.post(
+    api.urlPath1 + '/app/orders',
+    {
       skuList: JSON.stringify(skuarr),
       addressId: this.data.dzlist.id,
       paymentPlatform: 0,
       type: 2,
       openid: wx.getStorageSync("openid"),
       'sid': wx.getStorageSync("sid")
-    },
-    method: "post",
-    header: {
-      'content-type': "application/x-www-form-urlencoded",
-      'token': wx.getStorageSync("token"),
-    },
-    success(res) {
-      console.log(res)
-     
+    }
+    ).then((res)=>{
       var sign = wx.getStorageSync("appid")
       let orderNumber = res.data.result.orderNumber
       wx.requestPayment({
@@ -88,8 +83,49 @@ pay:function(){
           console.log(res)
         }
       })
-    }
   })
+  // wx.request({
+  //   url: app.globalData.urlPath1 + '/app/orders',
+  //   data: {
+  //     skuList: JSON.stringify(skuarr),
+  //     addressId: this.data.dzlist.id,
+  //     paymentPlatform: 0,
+  //     type: 2,
+  //     openid: wx.getStorageSync("openid"),
+  //     'sid': wx.getStorageSync("sid")
+  //   },
+  //   method: "post",
+  //   header: {
+  //     'content-type': "application/x-www-form-urlencoded",
+  //     'token': wx.getStorageSync("token"),
+  //   },
+  //   success(res) {
+  //     console.log(res)
+     
+  //     var sign = wx.getStorageSync("appid")
+  //     let orderNumber = res.data.result.orderNumber
+  //     wx.requestPayment({
+  //       timeStamp: res.data.result.timeStamp,
+  //       nonceStr: res.data.result.nonceStr,
+  //       package: res.data.result.package,
+  //       signType: 'MD5',
+  //       paySign: res.data.result.sign,
+  //       success(res) {
+  //         console.log(res)
+         
+  //       },
+  //       fail(res) {
+  //         console.log(res)
+  //         console.log(that.data.shoplist)
+  //         // console.log(that.data.goodList)
+  //         // 如果未支付成功返回购物车那一页，并且
+  //       },
+  //       complete(res) {
+  //         console.log(res)
+  //       }
+  //     })
+  //   }
+  // })
 },
   /**
    * 生命周期函数--监听页面加载
@@ -148,42 +184,66 @@ pay:function(){
     var that=this
      
       /////////////////获取默认地址///////////////////
-    wx.request({
-      url: app.globalData.urlPath1 + '/app/address/default',
-      method: "get",
-      header: {
-        'token': wx.getStorageSync("token"),
-        'authorization': wx.getStorageSync("sid")
-      },
-
-      success(res) {
-        console.log(res.data)
-        if(res.data.status == 401){
-        }
-        if(res.data.result.id){
-        }else{
-            console.log('22222','填写信息地址')
-            wx.showModal({
-              title: '提示',
-              content: '请您先填写地址',
-              success(res){
-                if (res.confirm){
-                  wx.navigateTo({
-                    url: '../me/shippingAddress/shippingAddress',
-                  })
-                }else{
-                  wx.navigateTo({
-                    url: '../me/shippingAddress/shippingAddress',
-                  })
-                }
+    util.get(api.urlPath1+'/app/address/default').then((res)=>{
+      if(res.data.result.id){
+      }else{
+          console.log('22222','填写信息地址')
+          wx.showModal({
+            title: '提示',
+            content: '请您先填写地址',
+            success(res){
+              if (res.confirm){
+                wx.navigateTo({
+                  url: '../me/shippingAddress/shippingAddress',
+                })
+              }else{
+                wx.navigateTo({
+                  url: '../me/shippingAddress/shippingAddress',
+                })
               }
-            })
-        }
-        that.setData({
-          dzlist:res.data.result
-        })
+            }
+          })
       }
-    })
+      that.setData({
+        dzlist:res.data.result
+      })
+    }).catch((errMsg)=>{
+      console.log(errMsg,'获取默认地址')
+    })
+    // wx.request({
+    //   url: app.globalData.urlPath1 + '/app/address/default',
+    //   method: "get",
+    //   header: {
+    //     'token': wx.getStorageSync("token"),
+    //     'authorization': wx.getStorageSync("sid")
+    //   },
+
+    //   success(res) {
+    //     console.log(res.data)
+    //     if(res.data.result.id){
+    //     }else{
+    //         console.log('22222','填写信息地址')
+    //         wx.showModal({
+    //           title: '提示',
+    //           content: '请您先填写地址',
+    //           success(res){
+    //             if (res.confirm){
+    //               wx.navigateTo({
+    //                 url: '../me/shippingAddress/shippingAddress',
+    //               })
+    //             }else{
+    //               wx.navigateTo({
+    //                 url: '../me/shippingAddress/shippingAddress',
+    //               })
+    //             }
+    //           }
+    //         })
+    //     }
+    //     that.setData({
+    //       dzlist:res.data.result
+    //     })
+    //   }
+    // })
   },
   ////更换地址
   change_address(){

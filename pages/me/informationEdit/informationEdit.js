@@ -1,9 +1,7 @@
 const app = getApp()
+const util = require('../../../utils/util.js')
+const api = require('../../../config/api.js')
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     birthday:false,
     nickname:'',
@@ -58,25 +56,38 @@ Page({
   // 确认保存
   sure_save(){
     var that = this
-    wx.request({
-      url: app.globalData.urlPath1 + '/app/users/profile',
-      method: 'put',
-      header: {
-        'token': wx.getStorageSync("token"),
-        'authorization': wx.getStorageSync("sid")
-      },
-      data:{
+    util.put(
+      api.urlPath1+'/app/users/profile',
+      {
         "nickName": that.data.nickname,
         "gender": that.data.select_sex,
         "birthday": that.data.birthday_date,
-      },
-      success(res) {
-        console.log(res)
-        console.log(that.data.birthday_date)
+      }
+      ).then((res)=>{
         var behind_name = res.data.result.nickName
         var local_story = wx.getStorageSync('userInfo').nickName
         wx.setStorageSync(local_story,behind_name)
-      }
     })
+
+    // wx.request({
+    //   url: app.globalData.urlPath1 + '/app/users/profile',
+    //   method: 'put',
+    //   header: {
+    //     'token': wx.getStorageSync("token"),
+    //     'authorization': wx.getStorageSync("sid")
+    //   },
+    //   data:{
+    //     "nickName": that.data.nickname,
+    //     "gender": that.data.select_sex,
+    //     "birthday": that.data.birthday_date,
+    //   },
+    //   success(res) {
+    //     console.log(res)
+    //     console.log(that.data.birthday_date)
+    //     var behind_name = res.data.result.nickName
+    //     var local_story = wx.getStorageSync('userInfo').nickName
+    //     wx.setStorageSync(local_story,behind_name)
+    //   }
+    // })
   }
 })

@@ -30,7 +30,7 @@ Page({
       // testtitle:JSON.parse(options.test_infom).test_title,
       testid:JSON.parse(options.test_infom).test_id
     })
-    util.get(api.healthTest+'/info'+'/'+that.data.testid).then((res)=>{
+    util.get(api.urlPath3+'/home/exam/info'+'/'+that.data.testid).then((res)=>{
       var sign = ['A','B','C','D']
         
         for(var i=0;i<res.data.data.length;i++){

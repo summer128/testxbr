@@ -19,7 +19,7 @@ Page({
   getdatalist: function () { //可在onLoad中设置为进入页面默认加载
     var that = this;
     // 先拉在自动获取数据  每次10条
-    util.get(api.shopCity+'/home/recommend'+'?pageNum='+that.data.pagenum).then((res)=>{
+    util.get(api.urlPath1+'/app/goods/home/recommend'+'?pageNum='+that.data.pagenum).then((res)=>{
       var arr1 = that.data.datalist; //从data获取当前datalist数组
         var arr2 = res.data.result; //从此次请求返回的数据中获取新数组
         arr1 = arr1.concat(arr2); //合并数组
@@ -40,11 +40,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options,'--------------')
     ////////////这是商城首页数据请求开始////////////////////////////
     var that=this
     //此处为使用封装的post请求
-    util.get(api.shopCity+'/home').then((res) => {
+    util.get(api.urlPath1+'/app/goods/home').then((res) => {
       // console.log(res,'封装的')
       that.setData({
         newArrival: res.data.result.newArrival,
@@ -58,7 +57,7 @@ Page({
      console.log(errMsg,'错误信息')
     })
 
-    util.get(api.shopCity+'?'+'pageNum='+that.data.pagenum).then((res)=>{
+    util.get(api.urlPath1+'/app/goods?pageNum='+that.data.pagenum).then((res)=>{
       // console.log(res,'商城列表')
       that.setData({
         datalist:res.data.result
@@ -70,7 +69,7 @@ Page({
   },
   tz(e){
     var that = this
-    util.get(api.shopCity+'/'+ e.currentTarget.dataset.id).then((res)=>{
+    util.get(api.urlPath1+'/app/goods/'+ e.currentTarget.dataset.id).then((res)=>{
       console.log(res,'是否收藏')
       that.setData({
         isFavorite:res.data.result.isFavorite

@@ -1,21 +1,23 @@
 //util.js
-/**
- * GET请求封装
- */
+/* GET请求封装 */
 function get(url, data = {}) {
   return request(url, data, 'GET')
 }
 
-/**
- * POST请求封装
- */
+/* POST请求封装 */
 function post(url, data = {}) {
   return request(url, data, 'POST')
 }
+/*PUT请求封装 */
+function put(url, data = {}) {
+  return request(url, data, 'PUT')
+}
 
-/**
- * 微信的request
- */
+/*DELETE请求封装 */
+function deletes(url, data = {}){
+  return request(url, data, 'DELETE')
+}
+
 function request(url, data = {}, method = "GET") {
   // 改了
   var contentType = 'application/x-www-form-urlencoded'
@@ -40,7 +42,6 @@ function request(url, data = {}, method = "GET") {
         console.log(res)
         if (res.statusCode == 200) {
           //请求正常200
-          //AES解密返回的数据
           var daesData = res
           try {
             // v1接口判断data.status  v2接口判断data.statusCode  v3接口data里面没有status，所以daesData.statusCode
@@ -48,7 +49,19 @@ function request(url, data = {}, method = "GET") {
               //正常
               resolve(daesData);
             } else {
-              //错误
+              //错误==重新获取sid
+              wx.request({
+                url:  app.globalData.urlPath1 + '/app/users/changeSid',
+                method:'post',
+                data:{
+                  phone:wx.getStorageSync('phoneNumber')
+                },
+                success(res){
+                  console.log(res,'sid')
+                  var sid_num = res.data
+                  wx.setStorageSync('sid',sid_num)
+                }
+              })
               reject(daesData.message)
             }
           } catch (error) {
@@ -56,23 +69,7 @@ function request(url, data = {}, method = "GET") {
             reject("数据解码失败")
           }
         } else if (res.statusCode == 401) {
-          //此处验证了token的登录失效，如果不需要，可以去掉。
-          //未登录，跳转登录界面
-          // reject("登录已过期")
-          // wx.showModal({
-          //   title: '提示',
-          //   content: '登录已过期，请立即登录，否则无法正常使用',
-          //   success(res) {
-          //     if (res.confirm) {
-          //       console.log('用户点击确定')
-          //       wx.navigateTo({
-          //         url: '/pages/login/login?toPageUrl=401',
-          //       })
-          //     } else if (res.cancel) {
-          //       console.log('用户点击取消')
-          //     }
-          //   }
-          // })
+          console.log('res.statusCode',res.statusCode)
         } else {
           //请求失败
           reject("请求失败：" + res.statusCode)
@@ -115,5 +112,7 @@ module.exports = {
   getTimeLeft: getTimeLeft,
   request,
   get,
-  post
+  post,
+  put,
+  deletes
 }

@@ -15,13 +15,11 @@ Page({
       frontColor: '#000000',
       backgroundColor: '#ffffff'
     })
-    util.get(api.healthTest+'/list').then((res)=>{
+    util.get(api.urlPath3+'/home/exam/list').then((res)=>{
       console.log('测试',res)
         that.setData({
           health_list:res.data.list
         })
-    }).catch((errMsg)=>{
-      console.log('测试',errMsg)
     })
   },
   // 测试入口

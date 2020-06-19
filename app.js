@@ -1,6 +1,8 @@
 //app.js
 //const mtjwxsdk = require("./utils/mtj-wx-sdk.js");
 // const app = getApp()
+const util = require('utils/util.js')
+const api = require('config/api.js')
 App({
   
   onLaunch: function () {
@@ -46,32 +48,46 @@ App({
         that.globalData.appid = e.miniProgram.appId
         wx.setStorageSync('appid', "wx48764e3d8e81f0a5")
         // console.log(that.globalData.secret)
-        wx.request({
-          url: that.globalData.urlPath1 + "/app/users/wxLogin",
-          method:"post",
-          data: {
+        util.post(
+          api.urlPath1+ "/app/users/wxLogin",
+          {
             code:res.code,
             appid: e.miniProgram.appId,
             secret:that.globalData.secret,
             type:2
-          },
-          header: {
-                 "Content-Type": "application/json;charset=UTF-8"
-                 },
-          success: res => {
-
-            console.log(res);
-            
+          }
+          ).then((res)=>{
             that.globalData.openid = res.data.result.openid;
             that.globalData.session_key = res.data.result.session_key;
             wx.setStorageSync("openid", res.data.result.openid)
             wx.setStorageSync("session_key", res.data.result.session_key)
+          })
+        // wx.request({
+        //   url: that.globalData.urlPath1 + "/app/users/wxLogin",
+        //   method:"post",
+        //   data: {
+        //     code:res.code,
+        //     appid: e.miniProgram.appId,
+        //     secret:that.globalData.secret,
+        //     type:2
+        //   },
+        //   header: {
+        //          "Content-Type": "application/json;charset=UTF-8"
+        //          },
+        //   success: res => {
+
+        //     console.log(res);
+            
+        //     that.globalData.openid = res.data.result.openid;
+        //     that.globalData.session_key = res.data.result.session_key;
+        //     wx.setStorageSync("openid", res.data.result.openid)
+        //     wx.setStorageSync("session_key", res.data.result.session_key)
            
 
-          },
-          fail: res => {
-          }
-        })
+        //   },
+        //   fail: res => {
+        //   }
+        // })
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         
       }

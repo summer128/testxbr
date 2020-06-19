@@ -1,5 +1,7 @@
 var wxp = require('../../../wxParse-master/wxParse-master/wxParse/wxParse.js');
 const app=getApp()
+const util = require('../../../utils/util.js')
+const api = require('../../../config/api.js')
 Page({
   data: {
     data1:null,
@@ -21,12 +23,8 @@ Page({
     console.log(info)
     var that=this
       console.log(info.id)
-      wx.request({
-        url: app.globalData.urlPath3+'/home/article/'+info.id,
-        data:{},
-        success(res){
-          console.log(res)
-          that.setData({
+      util.get(api.urlPath3+'/home/article/'+info.id).then((res)=>{
+        that.setData({
             data1:res.data
           })
           wx.request({
@@ -36,13 +34,8 @@ Page({
               console.log(res)
               var htmlCode = res.data
               wxp.wxParse('htmlCode', 'html', htmlCode, that, 0);
-              that.setData({
-                
-              })
             }
           })
-        }
-      })
-      
+      })
   }
 })

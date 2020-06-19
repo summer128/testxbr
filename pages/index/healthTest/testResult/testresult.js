@@ -1,21 +1,13 @@
 const util = require('../../../../utils/util.js')
 const api = require('../../../../config/api.js')
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     result_id:''
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
     console.log(options)
     var that = this
-    util.get(api.healthTest+'/result'+'/'+options.id).then((res)=>{
+    util.get(api.urlPath3+'/home/exam/result/'+options.id).then((res)=>{
       that.setData({
         result_text:res.data.result.title,
         result_id:res.data.result.id
@@ -23,28 +15,7 @@ Page({
     }).catch((errMsg)=>{
       console.log(errMsg,'健康测试结果')
     })
-    // wx.request({
-    //   url: `https://www.shanyide.cn/api/v3/home/exam/result/${options.id}`,
-    //   success(res){
-    //     console.log(res.data.result)
-    //     that.setData({
-    //       result_text:res.data.result.title,
-    //       result_id:res.data.result.id
-    //     })
-    //   }
-    // })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 分享
-   */
   onShareAppMessage: function( options ){
     console.log('/............')
     var that = this;

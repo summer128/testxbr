@@ -1,8 +1,4 @@
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     tests_id:'',
     problemidx:1,
