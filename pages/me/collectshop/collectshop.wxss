@@ -1,9 +1,5 @@
 page{
-<<<<<<< HEAD
-  background-color: #f3f5f7;
-=======
   background-color: #fff;
->>>>>>> master
 }
 .title{
   width: 100%;
@@ -156,18 +152,6 @@ movable-view{
  font-size:36rpx;
 }
 .hh{
-<<<<<<< HEAD
-  position: absolute;
-  top: 450rpx;
-  width: 100%;
-  height: 260rpx;
-  /* margin-top: 243rpx; */
-}
-.hh image{
-  width: 434rpx;
-  height: 100%;
-  margin: 0 auto;
-=======
   width: 350rpx;
   height: 278rpx;
   position: absolute;
@@ -180,27 +164,16 @@ movable-view{
 .hh image{
   width: 350rpx;
   height: 100%;
->>>>>>> master
   display: block;
 }
 .hhh{
   width: 100%;
   height: 28rpx;
-<<<<<<< HEAD
-  /* margin-top: 310rpx; */
-    position: relative;
-  top: 470rpx;
-}
-.hhhh{
-  width: 120px;
-  height: 100%;
-=======
   position: absolute;
   top: 270px;
 }
 .hhhh{
   width: 120px;
->>>>>>> master
   line-height: 28rpx;
   margin: 0 auto;
   text-align: center;
@@ -208,11 +181,8 @@ movable-view{
   font-family:PingFang SC;
   font-weight:400;
   color:rgba(153,153,153,1);
-<<<<<<< HEAD
-=======
   position: absolute;
   top: 200rpx;
   left: 46rpx;
 
->>>>>>> master
 }

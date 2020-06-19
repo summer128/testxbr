@@ -163,12 +163,9 @@ Page({
         console.log(res,'切换地址')
         if(res.data.status == 200){
           that.back()
-<<<<<<< HEAD
-=======
           // wx.navigateTo({
           //   url: '../../orders/orders',
           // })
->>>>>>> master
         }
       }
     }) 

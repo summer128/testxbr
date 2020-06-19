@@ -36,22 +36,14 @@
                     <image src="https://pic.shanyide.cn/xiaochengxu22.png"></image>
                   </view>
                   <view class="ico_name">待发货</view>
-<<<<<<< HEAD
-                  <view class="wait_nums" wx:if="{{wait_delivered == 0 ?  false : true }}" style="opacity:{{waitpay_show}}" >{{wait_delivered}}</view>
-=======
                   <view class="wait_nums" wx:if="{{wait_delivered == 0 ?  false : true }}" style="opacity:{{waitpay_show}}">{{wait_delivered}}</view>
->>>>>>> master
             </view>
             <view class="list_box list_box1" bindtap="waitPut" data-ishidden="2">
                   <view class="icofont">
                     <image src="https://pic.shanyide.cn/xiaochengxu34.png"></image>
                   </view>
                   <view class="ico_name">待收货</view>
-<<<<<<< HEAD
-                  <view class="wait_nums" wx:if="{{wait_received == 0  ?  false : true }}" style="opacity:{{waitpay_show}}">{{wait_received}}</view>
-=======
                 <view class="wait_nums" wx:if="{{wait_received == 0  ?  false : true }}" style="opacity:{{waitpay_show}}">{{wait_received}}</view>
->>>>>>> master
             </view>
             <view class="clear"></view>
         </view>

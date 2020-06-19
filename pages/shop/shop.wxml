@@ -41,19 +41,11 @@
     <!-- /////////////////////////////为你推荐开始//////////////////////////////////// -->
     <view class="foru_title">
       <view class="foru_img">
-<<<<<<< HEAD
-        <image src="https://pic.shanyide.cn/xiaochengxu21.png"></image>
-      </view>
-      <view class="font28 foru_text">为你推荐</view>
-      <view class="foru_img">
-        <image src="https://pic.shanyide.cn/xiaochengxu20.png"></image>
-=======
         <image src="https://pic.shanyide.cn/wx_right_icon.png"></image>
       </view>
       <view class="font28 foru_text">为你推荐</view>
       <view class="foru_img">
         <image src="https://pic.shanyide.cn/wx_left_icon.png"></image>
->>>>>>> master
       </view>
     </view>
     <block wx:for="{{datalist}}" wx:key="index">

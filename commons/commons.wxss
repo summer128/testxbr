@@ -2,14 +2,6 @@
   width: 100%;
   height: 31rpx;
   margin-top: 30rpx;
-<<<<<<< HEAD
-}.fl_img{
-  margin-left: 260rpx;
-}
-.fl_img,.fr_img{
-  width: 31rpx;
-  height: 31rpx;
-=======
   line-height: 28rpx;
 
 }
@@ -23,7 +15,6 @@
 .fl_img,.fr_img{
   width: 35rpx;
   height: 20rpx;
->>>>>>> master
   float: left;
 }
 .fl_img image,.fr_img image{

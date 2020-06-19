@@ -1,13 +1,6 @@
 var wxp = require('../../../wxParse-master/wxParse-master/wxParse/wxParse.js');
 const app=getApp()
 Page({
-<<<<<<< HEAD
-
-  /**
-   * 页面的初始数据
-   */
-=======
->>>>>>> master
   data: {
     data1:null,
   },
@@ -17,22 +10,6 @@ Page({
     })
   },
   tz(e) {
-<<<<<<< HEAD
-    // console.log(e.currentTarget.dataset.id)
-    wx.navigateTo({
-      url: "../../product/product?id=" + e.currentTarget.dataset.id,
-      success: function (res) { },
-      fail: function (res) { },
-      complete: function (res) { },
-    })
-  },
-  
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    console.log(options)
-=======
     console.log(e.currentTarget.dataset.id)
     wx.navigateTo({
       url: "../../product/product?id=" + e.currentTarget.dataset.id
@@ -40,7 +17,6 @@ Page({
   },
   onLoad: function (options) {
     console.log(options,'防护手册的详情页面')
->>>>>>> master
     var info = JSON.parse(unescape(options.info))
     console.log(info)
     var that=this
@@ -68,57 +44,5 @@ Page({
         }
       })
       
-<<<<<<< HEAD
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-=======
->>>>>>> master
   }
 })

@@ -97,18 +97,6 @@
   color:rgba(153,153,153,1);
 }
 .box111{
-<<<<<<< HEAD
-  position: relative;
-  top: 280rpx;
-  width: 100%;
-  height: 260rpx;
-  margin-top: -50rpx;
-}
-.box111 image{
-  width: 434rpx;
-  height: 100%;
-  margin: 0 auto;
-=======
   width: 480rpx;
   height: 366rpx;
   position: absolute;
@@ -120,7 +108,6 @@
 .box111 image{
   width: 480rpx;
   height: 100%;
->>>>>>> master
   display: block;
 }
 .box1111{
@@ -130,10 +117,6 @@
 }
 .box2111{
   width: 200px;
-<<<<<<< HEAD
-  height: 100%;
-=======
->>>>>>> master
   line-height: 28rpx;
   margin: 0 auto;
   text-align: center;
@@ -141,10 +124,7 @@
   font-family:PingFang SC;
   font-weight:400;
   color:rgba(153,153,153,1);
-<<<<<<< HEAD
-=======
   position: absolute;
   top: 260rpx;
 
->>>>>>> master
 }

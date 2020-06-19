@@ -53,14 +53,10 @@ Page({
       info: info
     })
   },
-<<<<<<< HEAD
-
-=======
   orderNum_copy(){
     var that = this
     app.copy(that.data.info.orderInfo.orderNumber)
   },
->>>>>>> master
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

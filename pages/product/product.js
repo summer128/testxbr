@@ -336,16 +336,10 @@ Page({
    */
   onLoad: function (options) {
     console.log('商城商品跳转获取数据',options)
-<<<<<<< HEAD
-    // console.log('商城商品跳转获取数据11',JSON.parse(options.id).id)
-    console.log( options.id.length)
-    if(options.id.length == 3){
-=======
     console.log(options.id.length)
     // console.log('商城商品跳转获取数据11',JSON.parse(options.id).id)
     console.log( options.id.length)
     if(options.id.length == 4 || options.id.length == 3){
->>>>>>> master
       var like_id = options.id
     }else{
       var like_id = JSON.parse(options.id).id
@@ -386,10 +380,6 @@ Page({
     that.setData({
       productid:like_id
     })
-<<<<<<< HEAD
-    console.log(like_id)
-=======
->>>>>>> master
     wx.request({
       url: app.globalData.urlPath1+'/app/goods/'+like_id,
       data:{},

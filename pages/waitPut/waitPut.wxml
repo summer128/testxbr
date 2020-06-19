@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-<view class="headback">待收货</view>
-<image src="https://pic.shanyide.cn/xiaochengxu8.png" class="headimg" bindtap="back"></image>
-=======
 <!-- <view class="headback">待收货</view>
 <image src="https://pic.shanyide.cn/xiaochengxu8.png" class="headimg" bindtap="back"></image> -->
->>>>>>> master
 <view class="head1">
     <image src="https://pic.shanyide.cn/xiaochengxu1.png"></image>
     <view class="head1_name">待收货</view>
@@ -62,22 +57,6 @@
           <view class="box14">实付金额：￥{{info.orderInfo.totalPrice}}</view>
       </view>
       <view class="box15">
-<<<<<<< HEAD
-          <view class="box17">订单信息</view>
-          <view class="box18">订单编号：122324343535</view>
-          <view class="box16 box19">
-              <view>下单时间:</view>
-              <view>2910-29-12</view>
-              <view>18：21：12</view>
-          </view>
-          <view class="box30">
-              支付方式:微信
-          </view>
-          <view class="box31">
-                <view class="box32">付款时间:</view>
-                <view class="box33">2910-07-01</view>
-                <view class="box34">18:34:20</view>
-=======
         <view class="box17">订单信息</view>
         <view class="box18">
             <text>订单编号：{{info.orderInfo.orderNumber}}</text>
@@ -94,7 +73,6 @@
           <view class="box31">
                 <view class="box32">付款时间:</view>
                 <view class="make_orders"> {{info.orderInfo.pendingTime}}</view>
->>>>>>> master
           </view>
       </view>
      

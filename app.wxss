@@ -346,9 +346,6 @@ page{
 }
 .make_order{
   padding-left: 18rpx;
-<<<<<<< HEAD
-}
-=======
 }
 
 
@@ -416,4 +413,3 @@ page{
   color: #fff;
   margin-top: 40rpx;
 }
->>>>>>> master

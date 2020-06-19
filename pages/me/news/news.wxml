@@ -1,14 +1,6 @@
 <!-- <view class="headback">消息</view> -->
 <view class="box">
-<<<<<<< HEAD
-  <image src="https://pic.shanyide.cn/xiaochengxu10.png"></image>
-</view>
-<view class="box1">
-    <view class="box2">暂无消息</view>
-</view>
-=======
   <image src="https://pic.shanyide.cn/wx_msg_null.png"></image>
   <view class="box2">暂无消息</view>
 </view>
 
->>>>>>> master

@@ -185,19 +185,11 @@ page{
 }
 .foru_title{
   width: 240rpx;
-<<<<<<< HEAD
-  height: 31rpx;
-  margin: 40rpx auto 60rpx;
-  text-align: center;
-  font-weight: 500;
-  line-height: 64rpx;
-=======
   height: 30rpx;
   margin: 40rpx auto 60rpx;
   text-align: center;
   font-weight: 500;
   line-height: 52rpx;
->>>>>>> master
 }
 .foru_text{
   width: 160rpx;
@@ -208,13 +200,8 @@ page{
   font-size: 32rpx;
 }
 .foru_img{
-<<<<<<< HEAD
-  width: 40rpx;
-  height: 100%;
-=======
   width: 35rpx;
   height:20rpx;
->>>>>>> master
   float: left;
 }
 .foru_img image{

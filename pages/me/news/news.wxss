@@ -1,25 +1,4 @@
 .box{
-<<<<<<< HEAD
-  position: relative;
-  top: 280rpx;
-  width: 100%;
-  height: 260rpx;
-}
-.box image{
-  width: 434rpx;
-  height: 100%;
-  margin: 0 auto;
-  display: block;
-}
-.box1{
-  width: 100%;
-  height: 28rpx;
-  margin-top: 310rpx;
-}
-.box2{
-  width: 120px;
-  height: 100%;
-=======
   
   width: 340rpx;
   height: 292rpx;
@@ -42,7 +21,6 @@
 } */
 .box2{
   width: 120px;
->>>>>>> master
   line-height: 28rpx;
   margin: 0 auto;
   text-align: center;
@@ -50,12 +28,9 @@
   font-family:PingFang SC;
   font-weight:400;
   color:rgba(153,153,153,1);
-<<<<<<< HEAD
-=======
   top: 220rpx;
   position: absolute;
   left: 50%;
   margin-left: -130rpx;
 
->>>>>>> master
 }

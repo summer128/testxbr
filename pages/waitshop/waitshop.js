@@ -23,11 +23,7 @@ Page({
     zt:null,
   },
   kanwuliu:function(e){
-<<<<<<< HEAD
-    console.log(e)
-=======
     console.log(e,'查看物流')
->>>>>>> master
     console.log('看物流')
     var info = JSON.stringify(e.currentTarget.dataset.info)
     wx.navigateTo({

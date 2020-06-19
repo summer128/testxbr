@@ -17,10 +17,6 @@
                     <button open-type="share" id="shar" data-info="{{item}}">
                       <image src="https://pic.shanyide.cn/xiaochengxu41.png" bindtap="shar" class="mt2"></image>
                     </button>
-<<<<<<< HEAD
-                    
-=======
->>>>>>> master
                 </view>
             </view>
     </block>

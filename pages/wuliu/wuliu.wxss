@@ -19,8 +19,6 @@
 .content{
   background-color: red;
 } */
-<<<<<<< HEAD
-=======
 .logistics{
   width: 480rpx;
   height: 298rpx;
@@ -50,7 +48,6 @@
 
 
 
->>>>>>> master
 page{
   
   background-color: #f2f2f2;
@@ -202,8 +199,6 @@ page{
 .logistics-item:nth-child(1) .logistics-item-text{
   
   color: #027aff;
-<<<<<<< HEAD
-=======
 }
 
 .times{
@@ -213,5 +208,4 @@ page{
   color:rgba(153,153,153,1);
   margin-top: 72rpx;
 
->>>>>>> master
 }

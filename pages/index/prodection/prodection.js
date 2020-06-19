@@ -1,15 +1,7 @@
 const app = getApp()
-<<<<<<< HEAD
-Page({
-
-  /**
-   * 页面的初始数据
-   */
-=======
 const util = require('../../../utils/util.js')
 const api = require('../../../config/api.js')
 Page({
->>>>>>> master
   data: {
     article:null,
     listname: [],
@@ -41,23 +33,6 @@ Page({
       ishidden: myindex,
       titleid: e.currentTarget.dataset.id
     })
-<<<<<<< HEAD
-    wx.request({
-      url: app.globalData.urlPath3 +'/home/article/category',
-      data: {
-          pageNum:that.data.num,
-          pageSize:6,
-          categoryId: e.currentTarget.dataset.id
-      },
-      method:'post',
-      success(res) {
-        console.log(res)
-        that.setData({
-          article: res.data.list,
-        })
-      }
-    })
-=======
     util.post(
       api.realTimeInfo+'/article/category',
       {
@@ -71,7 +46,6 @@ Page({
       }).catch((errMsg)=>{
 
       })
->>>>>>> master
   },
  
   /**
@@ -91,48 +65,6 @@ Page({
         }   
       })
   },
-<<<<<<< HEAD
- 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-=======
->>>>>>> master
   onReachBottom: function () {
     var that=this
       wx.showToast({

@@ -63,11 +63,7 @@
         </view>
       
     <view class="cartlist" wx:if="{{!goodList[0]}}" style="padding-top:{{is_show == false ? '20rpx' : ''}}">
-<<<<<<< HEAD
-      <image src="https://pic.shanyide.cn/xiaochengxu58.png" class="shopcar"></image>
-=======
       <image src="https://pic.shanyide.cn/wx_shopnull.png" class="shopcar"></image>
->>>>>>> master
       <view>购物车空空如也~</view>
     </view>
 

@@ -210,13 +210,6 @@
   background-color: #fff;
   border-radius:0px 0px 20rpx 20rpx;
   margin-bottom: 20rpx;
-<<<<<<< HEAD
-}
-.waitbox2 image{
-  width: 311rpx;
-  height: 187rpx;
-  margin: 86.5rpx 0 0 219.5rpx;
-=======
   position: relative;
 }
 .waitbox2 image{
@@ -226,7 +219,6 @@
   left: 50%;
   top: 70rpx;
   margin-left: -175rpx;
->>>>>>> master
 }
 .waitbox2 view{
   text-align: center;
@@ -234,14 +226,11 @@
   font-family:PingFang SC;
   font-weight:400;
   color:rgba(153,153,153,1);
-<<<<<<< HEAD
-=======
   position: absolute;
   bottom: 62rpx;
   left: 50%;
   margin-left: -52rpx;
 
->>>>>>> master
 }
 
 
