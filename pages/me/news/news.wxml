@@ -1,0 +1,6 @@
+<!-- <view class="headback">消息</view> -->
+<view class="box">
+  <image src="https://pic.shanyide.cn/wx_msg_null.png"></image>
+  <view class="box2">暂无消息</view>
+</view>
+

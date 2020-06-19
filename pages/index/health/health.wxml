@@ -1,0 +1,33 @@
+
+<image src="https://pic.shanyide.cn/xiaochengxu8.png" class="headimg" bindtap="back"></image>
+<view class="img_top">
+    <image src="/images/shop/xiaochengxu70.png"></image>
+    <view class="title">
+          <image src="https://pic.shanyide.cn/xiaochengxu11.png"></image>
+          <view>家庭防护</view>
+          <image src="https://pic.shanyide.cn/xiaochengxu14.png"></image>
+    </view>
+</view>
+<view class="qq">
+      <block wx:for="{{list}}" wx:key="index">
+           <view class="qq_one" data-id="{{item.id}}" bindtap="tz">
+                <image src="{{item.url}}" class="shop_img"></image>
+                <view class="qq_name">{{item.name}}</view>
+                <view class="qq_price">原价:{{item.originPrice}}</view>
+                <view class="qq_price1">
+                      <view>￥{{item.price}}</view>
+                      <image src="https://pic.shanyide.cn/xiaochengxu16.png"></image>
+                </view> 
+           </view>
+      </block>
+</view>
+<view class="footer_ww">
+    <image src="/images/shop/xiaochengxu67.png" class="ww1"></image>
+    <image src="/images/shop/xiaochengxu71.png" class="ww2"></image>
+    <image src="/images/shop/xiaochengxu73.png" class="ww3"></image>
+    <image src="/images/shop/xiaochengxu72.png" class="ww4"></image>
+    <view class="ww5">微信号：KMSC925</view>
+    <view class="ww6">偏远地区不发货，物流问</view>
+    <view class="ww7">题请添加微信咨询客服</view>
+    <view class="ww8">本次活动最终解释权归希百瑞健康商城所有</view>
+</view>

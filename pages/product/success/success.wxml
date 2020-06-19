@@ -1,0 +1,15 @@
+<view class="imgbox">
+    <image src="https://pic.shanyide.cn/xiaochengxu9.png"></image>
+</view>
+<view class="suc_title">
+    <view>付款成功</view>
+</view>
+<view class="suc_con">
+    <view>我们将尽快给您发货</view>
+</view>
+<view class="back">
+    <view class="footer">
+        <view class="footer_l" bindtap="lookorder">查看订单</view>
+        <view class="footer_r" bindtap="comeOn">继续逛逛</view>
+    </view>
+</view>  

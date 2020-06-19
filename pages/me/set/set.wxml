@@ -1,0 +1,19 @@
+<!-- <view class="headback">设置</view> -->
+<!-- <image src="https://pic.shanyide.cn/xiaochengxu8.png" class="headimg" bindtap="back"></image> -->
+<view class="box">
+	<view class="warp">
+		<view class="list_one" bindtap="shippingAddress">
+			<view>收货地址</view>
+			<image src="https://pic.shanyide.cn/xiaochengxu6.png"></image>
+		</view>
+		<!-- <view class="list_one" bindtap="informationedit">
+			<view>个人信息</view>
+			<image src="https://pic.shanyide.cn/xiaochengxu6.png"></image>
+		</view> -->
+		<view class="list_one" bindtap="aboutUs">
+			<view>关于我们</view>
+			<image src="https://pic.shanyide.cn/xiaochengxu6.png"></image>
+		</view>
+
+	</view>
+</view>

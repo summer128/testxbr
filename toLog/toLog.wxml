@@ -1,0 +1,12 @@
+<view class="head">
+  <text>编辑</text>
+</view>
+<view class="imgbox">
+    <image src="/images/me/logo1.png"></image>
+</view>
+<view class="hintbox">
+    <view>登录后才能正常使用购物车</view>
+</view>
+<view class="loginbox" bindtap="login">
+    <view>授权登录</view>
+</view>

@@ -1,0 +1,10 @@
+<!-- <view class="status-bar" style="height:{{statusBarHeight}}px"></view>
+<view class="status-bar1" style="position: fixed;top: {{statusBarHeight}}px;">我的余额</view> -->
+<!-- <image src="https://pic.shanyide.cn/xiaochengxu8.png" class="headimg" bindtap="back"></image> -->
+<view class="background">
+    <view class="my_yue">
+        <view class="box1">我的余额</view>
+        <view class="box2">0.00</view>
+    </view>
+    <view class="btn" bindtap="ps">提现</view>
+</view>

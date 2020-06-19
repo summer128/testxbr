@@ -1,0 +1,64 @@
+<!-- 
+<view class="status-bar" style="height:{{statusBarHeight}}px"></view>
+<view class="status-bar1" style="position: fixed;top: {{statusBarHeight}}px;">商城</view> -->
+<view class="background">
+  <view class="background1">
+    <!-- /////////////////////轮播图开始/////////////////////////////////////// -->
+    <view class="lunbo">
+      <swiper indicator-dots="true" indicator-active-color="rgba(255,255,255,1)" autoplay="true" class="swiper">
+        <block wx:for="{{slideList}}" wx:key="index">
+          <swiper-item class="lunbo_for" data-id="{{item.id}}">
+            <image src="{{item.imgUrl}}"></image>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    <!-- //////////////////////轮播图结束////////////////////////////////////// -->
+    <view class="x_list mtop40">
+     
+      <block wx:for="{{fatherCategoryIdList}}" wx:key="index">
+        <view class="x_one" bindtap="smartWear" data-id="{{item.id}}" data-name="{{item.name}}">
+          <image src="{{item.thumbnail}}"></image>
+          <text>{{item.name}}</text>
+        </view>
+      </block>
+        <view class="clear"></view>
+    </view>
+    <view class="new">
+     
+      <view class="new_title">每日上新</view>
+      <view class="newbox">
+        <block wx:for="{{newArrival}}" wx:key="index">
+          <view class="new_list new_list1" bindtap="tz" data-id="{{item.id}}">
+            <view class="list_img">
+              <image src="{{item.url}}"></image>
+            </view>
+            <view class="list_name">{{item.name}}</view>
+          </view>
+        </block>
+      </view>
+    </view>
+    <!-- /////////////////////////////为你推荐开始//////////////////////////////////// -->
+    <view class="foru_title">
+      <view class="foru_img">
+        <image src="https://pic.shanyide.cn/wx_right_icon.png"></image>
+      </view>
+      <view class="font28 foru_text">为你推荐</view>
+      <view class="foru_img">
+        <image src="https://pic.shanyide.cn/wx_left_icon.png"></image>
+      </view>
+    </view>
+    <block wx:for="{{datalist}}" wx:key="index">
+      <view class="foru_box foru_box1" data-id="{{item.id}}" bindtap="tz">
+        <view class="box_img">
+          <image src="{{item.url}}"></image>
+        </view>
+        <view class="foru_list_int">{{item.name}}</view>
+        <view class="foru_list_price">￥{{item.price}}
+          <text class="font20"></text>
+        </view>
+      </view>
+    </block>
+<!-- //////////////////////////////为你推荐结束/////////////////////////////////// -->
+  </view>
+</view>

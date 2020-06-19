@@ -1,0 +1,26 @@
+<!-- 
+<view class="status-bar" style="height:{{statusBarHeight}}px"></view>
+<view class="status-bar1" style="position: fixed;top: {{statusBarHeight}}px;">{{title}}</view>
+<image src="https://pic.shanyide.cn/xiaochengxu8.png" class="headimg" bindtap="back"></image> -->
+
+<scroll-view scroll-x="true" class="nav" style=" white-space: nowrap; display: flex">
+      <block wx:for="{{ list }}" wx:key="index">
+          <view class="navlist" bindtap="select" data-id="{{item.id}}" data-myindex="{{index}}">
+                <view class="navone" style="border:{{index == 2 ? 'none' : ''}}">{{item.name}}</view>
+                <view class="{{index==ishidden?'active':''}}"></view>
+          </view>
+      </block>
+</scroll-view>
+   
+<view class="background">
+      <block wx:for="{{result}}" wx:key="index"> 
+          <view class="box1" data-id="{{item.id}}" bindtap="tz" id="box1">
+              <image src="{{item.url}}" class="box2"></image>
+              <view class="box3">{{item.name}}</view>
+              <view class="box4">￥{{item.price}}</view>
+          </view>
+         
+      </block>
+      
+      
+</view>

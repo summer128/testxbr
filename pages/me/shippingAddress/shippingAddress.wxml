@@ -1,0 +1,26 @@
+<!-- <view class="head_null">
+    <view class="headback">收货地址</view>
+</view> -->
+<!-- <image src="https://pic.shanyide.cn/xiaochengxu8.png" class="headimg" bindtap="back"></image> -->
+<view class="list_one" >
+    <block wx:for="{{dzlist}}" wx:key="index" >  
+          <view class="warp" bindtap="change_address" data-item="{{item}}">
+                <view class="address_box" >
+                    <view class="name">{{item.receiver}}	{{item.phone}}</view>
+                    <view class="dz">{{item.province}}{{item.detail}}</view>
+                    <view class="ico" wx:if="{{item.isDefault}}">默认</view>
+                </view>
+                <view class="bj" catchtap="edit" data-id="{{item}}">编辑</view>
+          </view>
+    </block>
+</view>
+<view class="box111" wx:if="{{dz}}">
+  <image src="https://pic.shanyide.cn/wx_nulladdress.png"></image>
+  <view class="box2111">您还没有收货地址哦!</view>
+</view>
+<!-- <view class="box1111" wx:if="{{dz}}">
+    <view class="box2111">您还没有收货地址哦!</view>
+</view> -->
+<view class="footer">
+    <view class="footer_btn" bindtap="site_new">新建地址</view>
+</view>

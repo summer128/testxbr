@@ -1,0 +1,12 @@
+<!-- <view class="head_null">
+    <view class="headbacks">健康测评</view>
+</view> -->
+<!-- <image src="https://pic.shanyide.cn/xiaochengxu8.png" class="headimgs" bindtap="back"></image> -->
+<view class="backgrounds test_container">
+  <block wx:for="{{health_list}}" wx:key="id">
+    <view class="test_type"  bindtap="test_entrance" data-test_id="{{item.id}}" data-value2="{{item.title}}">
+      <image src="{{item.thumbnail}}"></image>
+      <view class="jion_nums">{{item.label}}人参与</view>
+    </view>
+  </block>
+</view>

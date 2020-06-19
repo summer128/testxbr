@@ -1,0 +1,54 @@
+.foru_head{
+  width: 100%;
+  height: 31rpx;
+  margin-top: 30rpx;
+  line-height: 28rpx;
+
+}
+.fl_img{
+  margin-left: 260rpx;
+  margin-right: 10rpx;
+}
+.fr_img{
+  margin-left: 10rpx;
+}
+.fl_img,.fr_img{
+  width: 35rpx;
+  height: 20rpx;
+  float: left;
+}
+.fl_img image,.fr_img image{
+    width: 100%;
+    height: 100%;
+}
+.cen{
+  /* width: 140rpx; */
+  height: 31rpx;
+  float: left;
+  font-size:32rpx;
+  font-family:PingFang SC;
+  font-weight:500;
+  color:rgba(51,51,51,1);
+  line-height: 31rpx;
+}
+.foru_imgbox{
+  width: 96%;
+  height: 1200rpx;
+  margin: 0 auto;
+  margin-top: 50rpx;
+}
+.for_img{
+  width: 344rpx;
+  height: 520rpx;
+  float: left;
+  margin-bottom: 20rpx;
+  background-color: #fff;
+  margin-left: 10rpx;
+  border-radius:20rpx;
+}
+.for_img image{
+  width: 346rpx;
+  height: 346rpx;
+  display: block;
+  /* margin: 30rpx auto 30rpx; */
+}

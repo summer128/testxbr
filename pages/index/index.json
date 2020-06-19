@@ -1,3 +1,7 @@
 {
-  "usingComponents": {}
+  "enablePullDownRefresh": true,
+  "usingComponents": {},
+  "navigationBarTitleText": "首页",
+  "navigationBarBackgroundColor": "#87D534",
+  "navigationBarTextStyle": "white"
 }

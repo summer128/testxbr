@@ -1,0 +1,68 @@
+.background{
+  height: 1180rpx;
+  /* margin-top: 200rpx; */
+}
+.my_yue{
+  width:690rpx;
+  height:260rpx;
+  background:url(https://pic.shanyide.cn/xiaochengxu66.png);
+  border-radius:20rpx;
+  margin: 30rpx auto 0;
+  filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+  -moz-background-size:100% 100%;
+  background-size:100% 100%;
+}
+.box1{
+  width: 100%;
+  height: 31rpx;
+  text-align: center;
+  line-height: 31rpx;
+  font-size:32rpx;
+  font-family:PingFang SC;
+  font-weight:500;
+  color:rgba(255,255,255,1);
+  padding-top: 60rpx;
+}
+.box2{
+  width: 100%;
+  height: 44rpx;
+  text-align: center;
+  line-height: 44rpx;
+  font-size:56rpx;
+  font-family:PingFang SC;
+  font-weight:bold;
+  color:rgba(255,255,255,1);
+  margin-top: 30rpx;
+}
+.btn{
+  width: 610rpx;
+  height: 88rpx;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 88rpx;
+  background:linear-gradient(90deg,rgba(135,213,36,1),rgba(111,222,38,1));
+  box-shadow:1rpx 8rpx 11rpx 4rpx rgba(134,218,48,0.15);
+  opacity:0.95;
+  border-radius:44rpx;
+  color: #fff;
+  margin-top: 50rpx;
+  }
+  /* //////////////////////////////////////// */
+.status-bar{
+  width: 100%;
+  background-color: #87D534;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+}
+.status-bar1{
+  width: 100%;
+  height: 80rpx;
+  text-align: center;
+  line-height: 80rpx;
+  background-color:#87D534;
+  z-index: 99;
+  color: #fff;
+ font-size:36rpx;
+}

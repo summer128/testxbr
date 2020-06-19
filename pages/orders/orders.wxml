@@ -1,0 +1,88 @@
+
+<!-- <view class="status-bar" style="height:{{statusBarHeight}}px"></view>
+<view class="status-bar1" style="position: fixed;top: {{statusBarHeight}}px;">确认订单</view>
+<image src="https://pic.shanyide.cn/xiaochengxu8.png" class="headimg" bindtap="back"></image> -->
+<view class="background">
+    <view class="order_head" bindtap="change_address">
+        <view class="box1">
+            <view class="view1">默认</view>
+            <view class="d_dz">{{dzlist.province}}</view>
+        </view>
+        <view class="box2">
+            <view class="x_dz">{{dzlist.detail}}</view>
+            <view class="select_dz">
+                <image src="https://pic.shanyide.cn/xiaochengxu6.png"></image>
+            </view>
+        </view>
+        <view class="box3">
+            <view class="user_name">{{dzlist.user}}</view>
+            <view class="user_phone">{{dzlist.receiver}}{{dzlist.phone}}</view>
+        </view>
+        <view class="head_footer">
+          <image src="https://pic.shanyide.cn/xiaochengxu37.png"></image>
+        </view>
+    </view>
+    <view class="order_details" wx:for="{{shoplist}}" wx:key="index">
+        <view class="details_box">
+            <view class="shop_img">
+                <image src="{{item.url}}"></image>
+            </view>
+            <view class="shop_content">
+                <view class="product_con">{{item.goodsName}}</view>
+                <view class="color_num">
+                    <view class="product_color">颜色:黑色</view>
+                    <view class="product_num">x{{item.goodsNum}}</view>
+                </view>
+                <view class="product_price">￥{{item.goodsPrice}}</view>
+            </view>
+        </view>
+       
+        <view class="remark">
+            <view class="remark_title">订单备注</view>
+            <input class="remark_int" auto-focus placeholder="填写之前建议和商家协商一致" bindinput="bz"/>
+        </view> 
+    </view>
+    <view class="compute">
+        <view class="shop_price">
+            <view class="name1">商品金额</view>
+            <view class="price1">￥{{countprice}}</view>
+        </view>
+       
+            <view class="shop_price">
+            <view class="name1">运费</view>
+            <view class="price1 price2">+￥{{postage}}</view>
+        </view>
+    </view>
+    <view class="none_box">
+    </view>
+    <view class="order_footer">
+        <view class="footer_num">共{{countnum}}件,</view>
+        <view class="footer_price">合计:<text class="font">￥{{countprice1}}</text></view>
+        <view class="footer_btn" bindtap="showDialogBtn" data-list="{{shoplist}}">提交订单</view>
+    </view>
+</view>
+
+
+
+
+<view class="page" wx:if="{{pay}}">
+    <view class="paybox">
+          <view class="pay_title">
+                <view>确认付款</view>
+                <image src="https://pic.shanyide.cn/xiaochengxu42.png" bindtap="close"></image>
+          </view>
+          <view class="pay_con">
+              <view class="pay_f">付款方式</view>
+              <view class="pay_pri">￥{{countprice1}}</view>
+              <view class="pay_img">
+                微信
+                 
+              </view>
+          </view> 
+          <view class="pay_btn" bindtap="pay">
+            立即支付
+          </view>
+    </view>
+</view>
+
+

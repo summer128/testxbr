@@ -1,0 +1,49 @@
+.background image{
+  width: 100%;
+  height: 100vh;
+  display: inline-block;
+  position: fixed;
+  top:0;
+  left: 0;
+}
+.entrance_box{
+  width: 100%;
+  height: 800rpx;
+}
+.people_nums{
+  width: 230rpx;
+  height: 60rpx;
+  position: fixed;
+  right: 0;
+  top:20rpx;
+  border-radius:30px 0px 0px 30px;
+  /* background: #8FB1DE; */
+  font-size: 26rpx; 
+  font-family:PingFang SC;
+  font-weight:500;
+  color: #F3F5F7;
+  text-align: center;
+  line-height: 60rpx;
+}
+.nums{
+  color: #F6810E;
+  
+}
+.start-button{
+  width: 400rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  color:#FFFFFF;
+  font-size: 32rpx;
+  text-align: center;
+  border-radius:40px;
+  position: fixed;
+  bottom: 210rpx;
+  left: 50%;
+  margin-left: -200rpx;
+}
+.background-img{
+  height: 100vh;
+  background-repeat:no-repeat; 
+  background-size: 100% 100%;
+}

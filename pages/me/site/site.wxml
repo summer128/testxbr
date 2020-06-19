@@ -1,0 +1,52 @@
+<!-- <view class="headback">地址</view>
+<image src="https://pic.shanyide.cn/xiaochengxu8.png" class="headimg" bindtap="back"></image> -->
+<view class="background">
+    <view class="head_back"></view>
+    <view class="user_list">
+        <view class="table">
+            <view>联系人</view>
+            <input value="{{click_lists.receiver}}" bindinput="receiver" placeholder="请填写收货人的姓名"></input>
+        </view>
+        <view class="table">
+            <view>联系电话</view>
+            <input value="{{click_lists.phone}}" bindinput="phone" type="number" maxlength="11" placeholder="请填写收货人的手机号"></input>
+        </view>
+        <view class="table">
+            <view>所在地区</view>
+            <input value="{{click_lists.region}}" bindinput="region" placeholder="省市区县、乡镇等"></input>
+        </view>
+        <view class="table dbox">
+            <view>详细地址</view>
+            <input value="{{click_lists.detail}}" bindinput="detail" placeholder="街道、楼牌号等"></input>
+        </view>
+    </view>
+    <view class="default">
+        <view class="site">
+            <view class="cs_l">
+                <view class="text1">设置默认地址</view>
+                <view class="text2">
+                    <view class="text21">提醒：</view>
+                    <view class="text22">每次下单会使用默认地址请在下单时仔细确认哦!</view>
+                </view>
+            </view>
+            <view class="cs_r" bindtap="delectColor" wx:if='{{flag1}}' data-id="{{id1}}">
+                
+                <view class="bor2"></view>
+               
+            </view>
+            <view class="cs_rr" bindtap="delectColor" wx:if="{{!flag1}}" data-id="{{id1}}">
+                <view class="bor3"></view>
+            </view>
+        </view>
+       
+    </view>
+    <view class="delete_site">
+        <view class="mar1" bindtap="setValue">
+            <image src="https://pic.shanyide.cn/xiaochengxu5.png"></image>
+            <view>删除收货地址</view>
+        </view>
+    </view>
+    <view class="site_sure">
+        <view bindtap="save">保存并使用</view>
+    </view>
+</view>

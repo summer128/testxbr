@@ -1,0 +1,171 @@
+
+<!-- <view class="status-bar" style="height:{{statusBarHeight}}px"></view>
+<view class="status-bar1" style="position: fixed;top: {{statusBarHeight}}px;">全部订单</view>
+<image src="https://pic.shanyide.cn/xiaochengxu8.png" class="headimg" bindtap="back"></image> -->
+<view class="background">
+<view class="my_order">
+  <view wx:for="{{list}}" wx:key="index" class="boxx">
+    <view class="fl {{index==ishidden?'active1':''}}" bindtap="chancolor" data-myindex="{{index}}">
+    {{item}}
+    </view>
+  </view>
+</view>
+<view wx:if="{{ishidden==0}}">
+    <view class="waitbox2" wx:if="{{orderList[0].length==0}}">
+      <image src="https://pic.shanyide.cn/wx_waitpaynull.png"></image>
+      <view>暂无订单</view>
+    </view>
+    <block wx:for="{{orderList[0]}}" wx:key="index" wx:if="{{ishidden==0}}">
+        <view class="box_list" data-info="{{item}}">
+            <view class="list_one">
+              <view class="one_name">订单编号：{{item.orderInfo.orderNumber}}</view>
+              <view class="one_zt">待付款</view>
+            </view>
+            <view class="list_two" bindtap="tzz" data-info="{{item}}">
+              <view class="content_l">
+                <image src="{{item.goodsPictureList[0]}}"></image>
+              </view>
+              <view class="content_c">{{item.goodsInfo.name}}</view>
+              <view class="content_r">共1件</view>
+            </view>
+            <view class="list_three">
+              <view class="look1" bindtap="closeorder" data-id="{{item}}">取消订单</view>
+              <view class="sure" bindtap="now_pay" data-msg="{{item}}">立即支付</view>
+            </view>
+        </view>
+    </block>
+</view>
+<view wx:if="{{ishidden==1}}">
+    <view class="waitbox2" wx:if="{{orderList[1].length==0}}">
+                <image src="https://pic.shanyide.cn/wx_waitpaynull.png"></image>
+                <view>暂无订单</view>
+    </view>
+    <block wx:for="{{orderList[1]}}" wx:key="index" wx:if="{{ishidden==1}}">
+        <view class="box_list" data-info="{{item}}">
+            <view class="list_one">
+              <view class="one_name">订单编号：{{item.orderInfo.orderNumber}}</view>
+              <view class="one_zt">待发货</view>
+            </view>
+            <view class="list_two" bindtap="tzzz" data-info="{{item}}">
+              <view class="content_l">
+                <image src="{{item.goodsPictureList[0]}}"></image>
+              </view>
+              <view class="content_c">{{item.goodsInfo.name}}</view>
+              <view class="content_r">共1件</view>
+            </view>
+            <view class="list_three">
+              <view class="look">￥{{item.orderInfo.payPrice}}</view>
+            </view>
+        </view>
+    </block>
+</view>
+<view wx:if="{{ishidden==2}}">
+    <view class="waitbox2" wx:if="{{orderList[2].length==0}}">
+                <image src="https://pic.shanyide.cn/wx_waitpaynull.png"></image>
+                <view>暂无订单</view>
+    </view>
+    <block wx:for="{{orderList[2]}}" wx:key="index" wx:if="{{ishidden==2}}">
+        <view class="box_list">
+            <view class="list_one">
+              <view class="one_name">订单编号：{{item.orderInfo.orderNumber}}</view>
+              <view class="one_zt">待收货</view>
+            </view>
+            <view class="list_two" bindtap="tzzzz" data-info="{{item}}">
+              <view class="content_l">
+                <image src="{{item.goodsPictureList[0]}}"></image>
+              </view>
+              <view class="content_c">{{item.goodsInfo.name}}</view>
+              <view class="content_r">共1件</view>
+            </view>
+            <view class="list_three">
+              <view class="look1" bindtap="kanwuliu" data-info="{{item}}">查看物流</view>
+              <view class="sure" bindtap="shouhuo" data-info="{{item}}">确认收货</view>
+            </view>
+        </view>
+    </block>
+</view>
+<view wx:if="{{ishidden==3}}">
+    <view class="waitbox2" wx:if="{{orderList[3].length==0}}">
+      <image src="https://pic.shanyide.cn/wx_waitpaynull.png"></image>
+      <view>暂无订单</view>
+    </view>
+    <block wx:for="{{orderList[3]}}" wx:key="index" wx:if="{{ishidden==3}}">
+        <view class="box_list" bindtap="tzzzzz" data-info="{{item}}">
+            <view class="list_one">
+              <view class="one_name">订单编号：{{item.orderInfo.orderNumber}}</view>
+              <view class="one_zt" wx:if="{{item.orderInfo.status===0}}">待付款</view>
+              <view class="one_zt" wx:if="{{item.orderInfo.status===1}}">已付款</view>
+              <view class="one_zt" wx:if="{{item.orderInfo.status===2}}">退款中</view>
+              <view class="one_zt" wx:if="{{item.orderInfo.status===3}}">售后中</view>
+              <view class="one_zt" wx:if="{{item.orderInfo.status===4}}">退款完成</view>
+              <view class="one_zt" wx:if="{{item.orderInfo.status===5}}">已发货</view>
+              <view class="one_zt" wx:if="{{item.orderInfo.status===6}}">已取消</view>
+              <view class="one_zt" wx:if="{{item.orderInfo.status===7}}">已收货</view>
+              <view class="one_zt" wx:if="{{item.orderInfo.status===8}}">超时</view>
+              <view class="one_zt" wx:if="{{item.orderInfo.status===9}}">已完成</view>
+            </view>
+            <view class="list_two">
+              <view class="content_l">
+                <image src="{{item.goodsPictureList[0]}}"></image>
+              </view>
+              <view class="content_c">{{item.goodsInfo.name}}</view>
+              <view class="content_r">共1件</view>
+            </view>
+            <view class="list_three">
+              
+              <view class="look">总价:{{item.orderInfo.payPrice}}</view>
+            </view>
+        </view>
+    </block>
+</view>
+ 
+  <view class="foru_head">
+    <view class="fl_img">
+      <image src="https://pic.shanyide.cn/wx_right_icon.png"></image>
+    </view>
+    <view class="cen">为你推荐</view>
+    <view class="fr_img">
+      <image src="https://pic.shanyide.cn/wx_left_icon.png"></image>
+    </view>
+  </view>
+  <view class="foru_imgbox">
+    <block wx:for="{{forucontent}}" wx:key="index">
+      <view class="for_img" bindtap="tz" data-id="{{item.id}}">
+        <image src="{{item.url}}"></image>
+        <view class="namebox">{{item.name}}</view>
+        <view class="pricebox">{{item.price}}</view>
+      </view>
+    </block>
+  </view>
+</view>
+
+
+
+
+<view class="boxa" wx:if="{{onshow1}}">
+    <view class="boxab">
+          <view class="boxc">
+              <view>取消订单</view>
+              <image src="https://pic.shanyide.cn/xiaochengxu42.png" bindtap="close"></image>
+          </view>
+          <view class="boxe">请选择取消订单的原因（必选）:
+          </view>
+          <view class="boxd boxz" bindtap="close1">
+              <image src="{{ico1==true?'https://pic.shanyide.cn/xiaochengxu57.png':'https://pic.shanyide.cn/xiaochengxu47.png'}}"></image>
+              <view>不想买了</view>
+          </view>
+          <view class="boxd boxz" bindtap="close2">
+              <image src="{{ico2==true?'https://pic.shanyide.cn/xiaochengxu57.png':'https://pic.shanyide.cn/xiaochengxu47.png'}}"></image>
+              <view>信息填写错误，重新拍</view>
+          </view>
+          <view class="boxd boxz" bindtap="close3">
+              <image src="{{ico3==true?'https://pic.shanyide.cn/xiaochengxu57.png':'https://pic.shanyide.cn/xiaochengxu47.png'}}"></image>
+              <view>卖家缺货</view>
+          </view>
+          <view class="boxd boxz" bindtap="close4">
+              <image src="{{ico4==true?'https://pic.shanyide.cn/xiaochengxu57.png':'https://pic.shanyide.cn/xiaochengxu47.png'}}"></image>
+              <view>其他原因</view>
+          </view>
+          <view class="boxf" bindtap="sure" data-id="{{info.orderInfo.id}}">提交</view>
+    </view>
+</view>

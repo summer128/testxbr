@@ -1,0 +1,25 @@
+<template name="for_you">
+  <view class="foru_head">
+      <view class="fl_img">
+            <image src="../../images/index/icon@2x.png"></image>
+      </view>
+      <view class="cen">为你推荐</view>
+      <view class="fr_img">
+            <image src="../../images/index/icon-@2x.png"></image>
+      </view>
+  </view>
+  <view class="foru_imgbox">
+      <view class="for_img">
+          <image src="{{adtopicList[0].coverUrl}}"></image>
+      </view>
+      <!-- <view class="for_img">
+          <image src="../../images/product/012.jpg"></image>
+      </view>
+      <view class="for_img">
+          <image src="../../images/product/012.jpg"></image>
+      </view>
+      <view class="for_img">
+          <image src="../../images/product/012.jpg"></image>
+      </view> -->
+  </view>
+</template>

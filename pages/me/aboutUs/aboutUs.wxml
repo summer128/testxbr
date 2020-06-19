@@ -1,0 +1,25 @@
+<!-- <view class="headback">关于我们</view>
+<image src="https://pic.shanyide.cn/xiaochengxu8.png" class="headimg" bindtap="back"></image> -->
+<view class="box">
+    <view class="warp">
+          <view class="con1">
+              <image src="https://pic.shanyide.cn/xiaochengxu26.png"></image>
+          </view>
+          <view class="con2">希百瑞介绍：</view>
+          <view class="con3">希百瑞健康商城，是基于“大健康+云平台+大数据+AI人工智能”战略，打造的专注于健康类产品服务、涵盖健康生活诸元的专业性知识新电商平台；整合大健康产业各方资源（用户、商家、医护），为广大用户提供全方位的健康管理服务，立志成为泛健康领域第一（电子商务）平台。</view>
+          <view class="con4">现目前，公司已经和国内外多家医院及高新技术企业合作，在全国范围内布局健康生态产业链，旨在以科技驱动健康技术助力医疗。</view>
+          <view class="con5">
+              <view class="con51">我们的使命：</view>
+              <view class="con52">让健康长寿成为第一需求</view>
+          </view>
+          <view class="con6">
+              <view class="con61">我们的愿景：</view>
+              <view class="con62">希翼安康念于斯，万千家庭瑞如斯。</view>
+          </view>
+          <view class="con7">北京膳宜德医学研究院有限公司版权所有</view>
+          
+    </view>
+    <view class="con8">
+          <image src="https://pic.shanyide.cn/xiaochengxu25.png"></image>
+    </view> 
+</view>

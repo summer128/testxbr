@@ -1,0 +1,45 @@
+<template name="content">
+  <view class="box3">
+    <view class="top">
+      <image src="" class="pro_img1"></image>
+      <view class="con_r">
+        <view class="font1">心率血压监测器阿斯加德点击啥这...</view>
+        <view class="color1">
+          <view>颜色:黑色</view>
+          <view>x1</view>
+        </view>
+        <view class="price2">￥21.76</view>
+      </view>
+    </view>
+    <view class="bottom">
+      <view class="beizhu">订单备注</view>
+      <input placeholder="填写之前建议和商家协商一致" placeholder-class="input-placeholder" class="remark_int"></input>
+      <view class="tuimoney" bindtap="tuiqian" wx:if="{{show}}">申请退款</view>
+    </view>
+  </view>
+  <view class="back4"></view>
+  <view class="box5" bindtap="lianxi">
+    <image src="https://pic.shanyide.cn/xiaochengxu31.png"></image>
+    <view>联系客服</view>
+  </view>
+  <view class="back4"></view>
+  <view class="box6">
+    <view class="box6_l">
+      <view>商品金额</view>
+      <view>运费</view>
+    </view>
+    <view class="boxr">
+      <view>￥99.88</view>
+      <view>+￥12.00</view>
+      <view>实付金额:￥110.88</view>
+    </view>
+  </view>
+  <view class="back4"></view>
+  <view class="box7">
+    <view id="info">订单信息</view>
+    <view>顶单编号:629827182177778</view>
+    <view>下单时间:</view>
+    <view>支付方式:微信</view>
+    <view>付款时间:</view>
+  </view>
+</template>

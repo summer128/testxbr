@@ -1,0 +1,58 @@
+<view class="headback">交易关闭</view>
+<image src="https://pic.shanyide.cn/xiaochengxu8.png" class="headimg" bindtap="back"></image>
+<view class="head1">
+    <image src="https://pic.shanyide.cn/xiaochengxu3.png"></image>
+    <view class="head1_name">交易关闭</view>
+    <view class="head1_con">我不想买了</view>
+</view>
+<import src="../../../headHandler/headHandler"/>
+
+<template is="headHandler" data="{{title}}"></template>
+
+<view class="box1">
+      <view class="box2">
+          <view class="box3">
+              <view class="box4">
+                  <image src=""></image>
+                  <view class="box7">
+                      <view class="t1">心率血压监测器阿斯加德点击啥这...</view>
+                      <view class="box8">
+                          <view>颜色:黑色</view>
+                          <view>x1</view>
+                      </view>
+                      <view class="t2">￥21.76</view>
+                  </view>
+              </view>
+             
+              <view class="box6">
+                  <view class="t3">订单备注</view>
+                  <input placeholder="填写之前建议和商家协商一致" placeholder-style="color:#999999;font-size:26rpx;" class="remark_int"></input>
+              </view>
+          </view>
+      </view>
+      <view class="box9">
+          <view class="box10" bindtap="service">
+               
+          </view> 
+      </view>
+      <view class="box11">
+          <view class="box12">
+              <view>商品金额</view>
+              <view class="fr">￥99.88</view>
+          </view>
+          <view class="box13">
+              <view>运费</view>
+              <view class="fr">+￥12.00</view>
+          </view>
+          <view class="box14">实付金额：￥111</view>
+      </view>
+      <view class="box15">
+          <view class="box17">订单信息</view>
+          <view class="box18">订单编号：122324343535</view>
+          <view class="box16 box19">
+              <view>下单时间:</view>
+              <view>2910-29-12</view>
+              <view>18：21：12</view>
+          </view>
+      </view>
+</view>
