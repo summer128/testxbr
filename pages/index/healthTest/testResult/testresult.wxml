@@ -1,0 +1,21 @@
+<view class="result_container">
+  <view class="result">
+      <view class="result_head">
+        <view class="health_ico">
+        <view class="green"></view>
+        <view class="yellow"></view>
+      </view>
+      <view class="result_text">测试结果</view>
+    </view>
+    <view class="result_describe">{{result_text}}</view>
+    <view class="result_refer">测试结果仅供参考</view>
+  </view>
+  <view class="qrcode_box">
+    <view class="qrcode_img">
+      <image src="https://pic.shanyide.cn/xbr-QR.jpeg"></image>
+    </view>
+    <view class="attention">关注AA健康,快来参与</view>
+  </view>
+  <!-- <view class="share">赶快让大家一块测测</view> -->
+  <button open-type="share" catchtap='onShareAppMessage' class="share" style="width: 500rpx;">赶紧让大家一块测测</button>
+</view>

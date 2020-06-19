@@ -1,0 +1,32 @@
+<!-- <view class="status-bar" style="height:{{statusBarHeight}}px"></view>
+<view class="status-bar1" style="position: fixed;top: {{statusBarHeight}}px;">分享有礼</view>
+<image src="https://pic.shanyide.cn/xiaochengxu8.png" class="headimg" bindtap="back"></image> -->
+<view class="shar_img">
+	<swiper class="swiper" indicator-dots="true" indicator-color="#" indicator-active-color="#ffffff" autoplay="true" interval="3000" next-margin="100px;">
+		<swiper-item class="swiper_list">
+			<image src="https://pic.shanyide.cn/xiaochengxu49.png"></image>
+
+		</swiper-item>
+		<swiper-item class="swiper_list">
+			<image src="https://pic.shanyide.cn/xiaochengxu52.png"></image>
+		</swiper-item>
+		<swiper-item class="swiper_list">
+			<image src="https://pic.shanyide.cn/xiaochengxu55.png"></image>
+		</swiper-item>
+	</swiper>
+</view>
+<view class="shar_footer">
+	<view class="footer_top">
+		<image src="https://pic.shanyide.cn/xiaochengxu21.png"></image>
+		<view>分享</view>
+		<image src="https://pic.shanyide.cn/xiaochengxu20.png"></image>
+	</view>
+	<view class="footer_bottom">
+		<button open-type="share" id="shar" class="ico_img_shar">
+			<image src="https://pic.shanyide.cn/xiaochengxu54.png"></image>
+			<view>微信好友</view>
+		</button>
+
+	</view>
+</view>
+<image src="/images/shop/xiaochengxu67.png" class="sharimg"></image>

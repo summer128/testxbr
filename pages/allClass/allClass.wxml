@@ -1,0 +1,19 @@
+<view class="status-bar" style="height:{{statusBarHeight}}px"></view>
+<view class="status-bar1" style="position: fixed;top: {{statusBarHeight}}px;">全部分类</view>
+<image src="https://pic.shanyide.cn/xiaochengxu8.png" class="headimg" bindtap="back"></image>
+<view class="box">
+        <view class="box1">
+            <view class="box2 {{index==ishidden?'active':''}}" wx:for="{{ content }}" wx:key="index" bindtap='click1' data-myindex="{{index}}" data-id="{{item.id}}">
+                <view class="box3 {{index==ishidden?'active':''}}">{{item.fatherName}}</view>
+                <view class="box11 {{index==ishidden?'active1':''}}"></view>
+            </view>
+        </view>
+        <block wx:for="{{content}}" wx:key="index">
+          <view class="box4" wx:for="{{item.childCategory}}" wx:key="index" hidden="{{ishidden != index}}">
+                    <view class="box5" data-id="{{item.id}}" bindtap="tz">
+                        <image src="{{item.thumbnail}}"></image>
+                        <view class="box6">{{item.name}}</view>
+                    </view>
+          </view>
+        </block>
+</view>

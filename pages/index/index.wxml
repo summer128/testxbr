@@ -1,13 +1,82 @@
-<!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
+<!-- <view class="status-bar" style="height:{{statusBarHeight}}px"></view>
+<view class="status-bar1" style="position: fixed;top: {{statusBarHeight}}px;">首页</view> -->
+<view class="background">
+
+	<view class="x_list">
+		<view class="head_tab1 head_tab" bindtap="prodection">
+			<view class="tab_div">
+				<image src="https://pic.shanyide.cn/xiaochengxu17.png"></image>
+			</view>
+			<view class="tab_name">防护手册</view>
+		</view>
+		<!-- <view class="head_tab2 head_tab" bindtap="health">
+			<view class="tab_div">
+				<image src="https://pic.shanyide.cn/xiaochengxu18.png"></image>
+			</view>
+			<view class="tab_name">疫情专区</view>
+		</view> -->
+
+		<view class="head_tab2 head_tab" bindtap="health_test">
+			<view class="tab_div">
+				<image src="https://pic.shanyide.cn/xiaochengxu18.png"></image>
+			</view>
+			<view class="tab_name">健康测评</view>
+		</view>
+	</view>
+
+	<view class="health_container">
+		<view class="health_head">
+			<view class="health_ico">
+				<view class="green"></view>
+				<view class="yellow"></view>
+			</view>
+			<view class="health_refresh" bindtap="refresh">
+				<image class="{{isChecked?'':'health_refresh_again'}}" src="/images/shop/healthRefresh.png"></image>
+			</view>
+			<view class="health_title">
+				希百瑞小课堂
+			</view>
+		</view>
+		<view class="health_wt">
+			{{health_problem}}
+		</view>
+		<view class="health_answers">
+		{{health_content}}
+		</view>
+	</view>
+
+	<view class="content_list mtop30">
+		<view class="leftright_center">
+			<view class="health_ico">
+				<view class="green"></view>
+				<view class="yellow"></view>
+			</view>
+			<view class="right_refresh" bindtap="more">
+				更多
+			</view>
+			<view class="center_title">
+				推荐话题
+			</view>
+		</view>
+		<!-- <view class="list_title">
+			<view class="title_ico">
+				<image src="https://pic.shanyide.cn/xiaochengxu19.png"></image>
+			</view>
+			<view class="title_name">推荐话题</view>
+			<view class="more" bindtap="more">更多</view>
+		</view> -->
+		<block wx:for="{{info}}" wx:key="index">
+			<view class="list_one" bindtap="dedail" data-info="{{item}}">
+				<view class="one_img">
+					<image src="{{item.thumbnail}}"></image>
+				</view>
+				<view class="one_title">{{item.title}}</view>
+				<view class="one_content">{{item.summary}}</view>
+				<view class="num_look">
+					<image src="https://pic.shanyide.cn/xiaochengxu56.png"></image>
+				</view>
+				<view class="look_num">{{item.pageView}}</view>
+			</view>
+		</block>
+	</view>
 </view>

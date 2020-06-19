@@ -1,0 +1,10 @@
+<template name="headHandler">
+    <view class="card">
+        <view class="col">
+            <view class="user_dz">{{dz.region}}</view>
+            <view class="user_xx">{{dz.detail}}</view>
+            <view class="user_phone">{{dz.receiver}} {{dz.phone}}</view>
+        </view>
+        <image src="https://pic.shanyide.cn/xiaochengxu6.png"></image>
+    </view>
+</template>

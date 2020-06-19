@@ -1,0 +1,45 @@
+<!-- <view class="head_null">
+    <view class="headback">个人信息</view>
+</view> -->
+<image src="https://pic.shanyide.cn/xiaochengxu8.png" class="headimg" bindtap="back"></image>
+<view class="container">
+  <view class="edit_img">
+   <image src="{{avatarurl}}" class="avatarurl"></image>
+  </view>
+  <view class="nickname_container">
+    <view class="nickname">昵称</view>
+    <input placeholder="未填写" value="{{nickname}}" class="edit_nickname" placeholder-style="color:#999999;" bindinput='nicknameChange'></input>
+  </view>
+
+  <view class="nickname_container">
+    <view class="nickname">性别</view>
+   <view class="edit_sex">
+    <radio-group class="radio-group" bindchange="radioChange">
+        <label class="radio">
+            <radio value="0" class="sex"/>男
+            <radio value="2" class="sex"/>女
+        </label>
+    </radio-group>
+   </view>
+  </view>
+
+  <view class="nickname_container">
+    <view class="nickname">手机号</view>
+    <input placeholder="{{phoneNumber}}" class="edit_phonenumber" placeholder-style="color:#999999;"></input>
+  </view>
+  <view class="nickname_container">
+    <view class="nickname">生日</view>
+    <!-- <input placeholder="17801248939" class="edit_nickname"></input> -->
+    <view class="edit_birthday">
+      <view class="section">
+      <picker mode="date" value="{{birthday_date}}"  bindchange="bindDateChange">
+        <view class="picker">
+         {{birthday?birthday_date:'未填写'}}
+        </view>
+      </picker>
+    </view>
+    </view>
+  </view>
+  <button class="is_save" type="primary" bindtap="sure_save">确认保存</button>
+</view>
+

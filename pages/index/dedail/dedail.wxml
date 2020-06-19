@@ -1,0 +1,20 @@
+<!-- <view class="headback">防疫手册</view> -->
+<!-- <image src="https://pic.shanyide.cn/xiaochengxu8.png" class="headimg" bindtap="back"></image> -->
+<view class="mt180"></view>
+<image src="{{data1.document.coverUrl}}" class="headimg1"></image>
+ <import src="../../../wxParse-master/wxParse-master/wxParse/wxParse.wxml" />
+  <template is="wxParse" data="{{wxParseData:htmlCode.nodes}}" />
+  <view class="footer">
+      <view class="warp">
+            <view class="footer_l">
+                <image src="{{data1.thumbnail[0].url}}"></image>
+            </view>
+            <view class="footer_r" bindtap="tz" data-id="{{data1.productInfo.id}}">
+                <view class="r_top">{{data1.productInfo.name}}</view>
+                <view class="r_bottom">
+                    <view class="b_l">￥{{data1.productInfo.price}}</view>
+                    <view class="b_r">立即购买</view>
+                </view>
+            </view>
+      </view>
+  </view>

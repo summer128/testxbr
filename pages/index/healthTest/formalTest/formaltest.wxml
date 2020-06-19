@@ -1,0 +1,33 @@
+<!-- <view class="head_test">
+    <view class="test_headback">{{tests_title}}</view>
+</view> -->
+<view class="test_headimg" bindtap="back"></view>
+<view class="test_conntainer" wx:if="{{problemidx == problemindex}}" wx:for="{{problemdata}}" wx:key="problemindex" wx:for-index="problemindex" wx:for-item="problemitems" data-index="problemindex">
+  <view class="test_problem">
+   <view class="problem_head">
+    <view class="health_icos">
+      <view class="green"></view>
+      <view class="yellow"></view>
+    </view>
+    <view class="problems">{{problemindex}}、{{problemitems.title}}</view>
+   </view>
+  </view>
+   <view class="select_you">选出最符合你的答案</view>
+  <view class="select_answer" bindtap="next_problem" wx:for="{{problemitems.optionTitle}}" wx:key="selectindex" wx:for-index="selectindex" wx:for-item="selectitems" data-selectindex="{{selectindex}}">
+    <view  data-problemindex = "{{problemindex}}" >
+      <view class="yesorno">
+          {{selectitems}}
+      </view>
+      <!-- class="{{selectindex == click_is ? 'opacity_sign' : 'test_sign'}}" -->
+      <view  class="opacity_sign" style=" opacity: {{click_is ==  selectindex ? 1 : opacity}};" class="{{click_is ==  selectindex   ? 'opacity_sign' : 'test_sign'}}">
+          {{problemitems.signs[selectindex]}}
+      </view>
+    </view>
+  </view>
+
+  <view class="test_nums">
+    <text>{{problemindex}}</text>/{{problemlength - 1}}
+  </view>
+   
+  <button wx:if="{{is_submit}}" type="primary" class="test_submit" style="width: 614rpx;" bindtap="test_result">提交</button>
+</view>

@@ -1,0 +1,60 @@
+.container{
+  padding:15rpx;
+}
+.edit_img{
+  width: 100%;
+  height: 150rpx;
+  padding: 100rpx 0;
+  position: relative;
+}
+.avatarurl{
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.nickname_container{
+  width: 100% - 20rpx;
+  height: 120rpx;
+  border-bottom: 3rpx solid #EEEEEE;
+  font-size: 28rpx;
+  padding:0 30rpx
+}
+.nickname{
+  line-height: 120rpx;
+  float: left;
+}
+.edit_nickname{
+  width: 140rpx;
+  height: 50rpx;
+  margin-top: 35rpx;
+  float: right;
+}
+.edit_sex,.edit_phonenumber{
+  width: 200rpx;
+  height: 50rpx;
+  margin-top: 35rpx;
+  float: right;
+}
+.edit_phonenumber{
+  width:180rpx;
+}
+.sex{
+  transform:scale(0.7);
+}
+.edit_birthday{
+  width:170rpx;
+  height: 50rpx;
+  float: right;
+}
+.picker{
+  margin-top: 40rpx;
+  color: #999999;
+}
+.is_save{
+  margin-top: 100rpx;
+  color: #999999;
+}

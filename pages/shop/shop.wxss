@@ -1,0 +1,275 @@
+page{
+  background-color: #F3F5F7;
+}
+.background{
+  height: 3850rpx;
+  /* margin-top: 127rpx; */
+}
+.background1{
+  background-color: rgba(255, 255, 255, 1);
+  height: 570rpx;
+  border-radius: 0rpx 0rpx 20rpx 20rpx;
+  color: #fff;
+}
+.head{
+  background-color: #87D534;
+}
+.lunbo{
+  width: 702rpx;
+  height: 320rpx;
+  /* background-color: pink; */
+  box-shadow: 0rpx 12rpx 24rpx 0rpx rgba(136, 136, 136, 0.16);
+  border-radius: 20rpx;
+  margin: 20rpx auto 0;
+}
+.swiper{
+  width: 100%;
+  height: 100%;
+}
+.lunbo_for{
+  width: 100%;
+  height: 100%;
+  border-radius: 20rpx;
+}
+.lunbo_for image{
+  width: 100%;
+  height: 100%;
+  border-radius: 20rpx;
+}
+/* .banner{
+  width: 100%;
+  height: 320rpx;
+  margin:  0 auto;
+  background-color: #fff;
+} */
+/* .lunbo{
+  margin: 0 auto;
+  width: 702rpx;
+  height: 320rpx;
+  background: rgba(229, 229, 229, 1);
+  box-shadow: 0rpx 12rpx 24rpx 0rpx rgba(136, 136, 136, 0.16);
+  border-radius: 20rpx;
+} */
+/* .lunbo1{
+  width: 100%;
+  height: 100%;
+} */
+.x_list{
+  width: 94%;
+  margin: 40rpx auto 0;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+}
+.x_one{
+  width: 25%;
+  /* height: 130rpx; */
+  display: flex;
+  flex-direction: column;
+  /* margin-left: 31.66rpx; */
+  /* float: left; */
+}
+.x_one image{
+  width: 88rpx;
+  height: 88rpx;
+  display: block;
+  margin: 0 auto;
+}
+.x_one text{
+  width: 100%;
+  text-align: center;
+  font-size: 28rpx;
+  font-weight: 400;
+  margin-top: 24rpx;
+  /* padding: 24rpx auto 0rpx; */
+  color: rgba(51, 51, 51, 1)
+}
+/* .x_one1{
+  float:right;
+} */
+.clear{
+  clear: both;
+}
+.new{
+  width: 702rpx;
+  height: 430rpx;
+  background: url(https://pic.shanyide.cn/xiaochengxu63.png);
+  filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+  -moz-background-size:100% 100%;
+  background-size:100% 100%;
+  opacity: 0.73;
+  border-radius: 16rpx 10rpx 10rpx 10rpx;
+  margin: 80rpx auto 0;
+  position: relative;
+}
+.new_title{
+  width: 150rpx;
+  line-height: 30rpx;
+  height: 30rpx;
+  font-size: 32rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
+  color: rgba(51, 51, 51, 1);
+  position: absolute;
+  left: 80rpx;
+  top: 40rpx;
+}
+.ico{
+  width: 30rpx;
+  height: 20rpx;
+  position: absolute;
+  left: 20rpx;
+  top: 40rpx;
+}
+.ico image{
+  width: 100%;
+  height: 100%;
+}
+.new_list{
+  width: 211rpx;
+  height: 320rpx;
+  background: #fff;
+  border-radius: 0 0 20rpx 20rpx;
+}
+.newbox{
+  position: absolute;
+  top: 100rpx;
+  left: 20rpx;
+}
+.new_list1{
+  /* position: absolute;
+  left: 20rpx;
+  top: 100rpx; */
+  margin-right: 15rpx;
+  float: left;
+}
+.new_list2{
+  position: absolute;
+  left: 251rpx;
+  top: 100rpx;
+}
+.new_list3{
+  position: absolute;
+  left: 472rpx;
+  top: 100rpx;
+}
+.list_img{
+  width: 100%;
+  height: 211rpx;
+}
+.list_img image{
+  width: 100%;
+  height: 100%;
+}
+.list_name{
+  width: 80%;
+  height: 70rpx;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 26rpx;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  overflow: hidden;
+   text-overflow: -o-ellipsis-lastline;
+  /* overflow: hidden; */
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  /* display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis; */
+}
+.foru_title{
+  width: 240rpx;
+  height: 31rpx;
+  margin: 40rpx auto 60rpx;
+  text-align: center;
+  font-weight: 500;
+  line-height: 64rpx;
+}
+.foru_text{
+  width: 160rpx;
+  height: 100%;
+  float: left;
+  line-height: 58rpx;
+  color: #333;
+  font-size: 32rpx;
+}
+.foru_img{
+  width: 40rpx;
+  height: 100%;
+  float: left;
+}
+.foru_img image{
+  width: 100%;
+  height: 100%;
+}
+.foru_box{
+  width: 346rpx;
+  height: 520rpx;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 20rpx;
+  float: left;
+}
+.foru_box1{
+  margin-left: 20rpx;
+  margin-bottom: 20rpx;
+}
+.box_img{
+  width: 346rpx;
+  height: 346rpx;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 20rpx 20rpx 0 0;
+}
+.box_img image{
+  width: 229rpx;
+  height: 229rpx;
+  margin: 58.5rpx;
+}
+.foru_list_int{
+  width: 281rpx;
+  height: 74rpx;
+  font-size: 28rpx;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  margin-left: 32.5rpx;
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.foru_list_price{
+  width: 96rpx;
+  height: 28rpx;
+  font-size: 28rpx;
+  font-weight: 500;
+  color: rgba(246, 129, 14, 1);
+  line-height: 66rpx;
+  margin-left: 20rpx;
+}
+/* //////////////////////////////////////// */
+.status-bar{
+  width: 100%;
+  background-color: #87D534;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+}
+.status-bar1{
+  width: 100%;
+  height: 80rpx;
+  text-align: center;
+  line-height: 80rpx;
+  background-color:#87D534;
+  z-index: 99;
+  color: #fff;
+  font-size: 36rpx;
+}

@@ -1,0 +1,184 @@
+page{
+  background-color: #f3f5f7;
+}
+.title{
+  width: 100%;
+  height:  127rpx;
+  background-color: #87D534;
+  text-align: center;
+  line-height: 147rpx;
+  color: #fff;
+}
+.titleimg{
+  width: 21rpx;
+  height: 36rpx;
+  position: relative;
+  top: 80.5rpx;
+  left: 24rpx;
+  z-index: 999;
+  }
+
+
+
+.box_item{
+  /* margin-top: 20rpx; */
+  width: 702rpx;
+  height: 260rpx;
+  /* background-color: #fff; */
+  margin: 20rpx auto 0;
+  border-radius:20rpx;
+}
+.movebox{
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+movable-area{
+  width: 620rpx;
+  height: 100%;
+
+}
+movable-view{
+  /* border:5px solid red; */
+  width: 702rpx;
+  height: 100%;
+  background: #fff;
+  box-sizing: border-box;
+  position: absolute;
+  z-index: 999999;
+  top:0rpx;
+  left: 0rpx;
+  text-align: left;
+  line-height: 80rpx;
+  border-radius:20rpx;
+}
+.delbox{
+  width: 110rpx;
+  height: 100%;
+  text-align: center;
+  line-height: 260rpx;
+  color: #fff;
+  font-size: 24rpx;
+  position: absolute;
+  top: 0rpx;
+  right: 0rpx;
+  z-index: 2;
+  border-radius:0px 20px 20px 0px;
+  background-color: #FF9900;
+}
+.contentbox{
+  width: 100%;
+  height: 100%;
+}
+.warp{
+  width: 90%;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+.imgbox{
+  width: 200rpx;
+  height: 200rpx;
+  margin-top: 30rpx;
+}
+.imgbox image{
+  width: 100%;
+  height: 100%;
+}
+.contentfont{
+  width: 400rpx;
+ 
+   text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-height: 30rpx;
+  display: flex;
+  flex-direction: column;
+}
+.contentname{
+  font-size:28rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(51,51,51,1);
+  margin-top: 60rpx;
+}
+.contentprice{
+  margin-top: 20rpx;
+  font-size:32rpx;
+  font-family:PingFang SC;
+  font-weight:500;
+  color:rgba(246,129,14,1);
+}
+.boxcoll{
+  width: 100%;
+  height: 600rpx;
+  margin-top: 210rpx;
+  background: url(https://pic.shanyide.cn/xiaochengxu58.png);
+  filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+  -moz-background-size:100% 100%;
+  background-size:100% 100%;
+}
+.boxcoll view{
+ font-size:30rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(153,153,153,1);
+  position: fixed;
+  top: 770rpx;
+  left: 280rpx;
+}
+/* //////////////////////////////////////// */
+.status-bar{
+  width: 100%;
+  background-color: #87D534;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+}
+.status-bar1{
+  width: 100%;
+  height: 80rpx;
+  text-align: center;
+  line-height: 80rpx;
+  background-color:#87D534;
+  z-index: 99;
+  color: #fff;
+ font-size:36rpx;
+}
+.hh{
+  position: absolute;
+  top: 450rpx;
+  width: 100%;
+  height: 260rpx;
+  /* margin-top: 243rpx; */
+}
+.hh image{
+  width: 434rpx;
+  height: 100%;
+  margin: 0 auto;
+  display: block;
+}
+.hhh{
+  width: 100%;
+  height: 28rpx;
+  /* margin-top: 310rpx; */
+    position: relative;
+  top: 470rpx;
+}
+.hhhh{
+  width: 120px;
+  height: 100%;
+  line-height: 28rpx;
+  margin: 0 auto;
+  text-align: center;
+  font-size:30rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(153,153,153,1);
+}

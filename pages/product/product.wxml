@@ -1,0 +1,229 @@
+
+<view class="status-bar1" style="position: fixed;" wx:if="{{scr_show}}"></view>
+<view class="headimg" bindtap="back">
+    <image src="https://pic.shanyide.cn/xiaochengxu8.png"></image>
+</view>
+
+<view class="background">
+   
+    <view class="head_box" wx:if="{{scr_show}}">
+      
+        <view class="comm {{index==0?'active':''}}" bindtap='toblock1'>商品</view>
+        <view class="comm {{index==1?'active':''}}" bindtap='toblock2'>评价</view>
+        <view class="comm {{index==2?'active':''}}" bindtap='toblock3'>详情</view>
+        <view class="comm {{index==3?'active':''}}" bindtap='toblock4'>推荐</view>
+       
+    </view>
+    <!-- /////////////////////顶部导航结束///////////////////////// -->
+    <view class="lunbo_box">
+        <swiper class="lunbo" indicator-dots="true" autoplay="true" interval="2000" circular="true" indicator-active-color="#fff" indicator-color="rgba(246,129,14,1)">
+        <block>
+              <swiper-item wx:for="{{swiperimg[1].pictureList}}" wx:key="index">
+                    <image src="{{item.url}}" class="lunbo_img"></image>
+              </swiper-item>
+        </block>
+        </swiper>
+    </view>
+<!-- /////////////////轮播图结束/////////////////////////////////////// -->
+    <view class="pro_con">
+          <view class="price_box">
+              <view class="now">￥{{productinfo.price}}</view>
+              <view class="later">原价:￥{{productinfo.originPrice}}</view>
+              <view class="wire"></view>
+               <button open-type="share" id="shar" data-info="{{[msg.goodsInfo.id,msg]}}">
+                      <image src="https://pic.shanyide.cn/xiaochengxu41.png" bindtap="shar" class="mt2 shar41" ></image>
+                </button>
+              
+          </view>
+          <view class="pro_js">{{productinfo.goodsName}}</view>
+    </view>
+<!-- //////////////////////////////////轮播详情结束//////////////////////////////////// -->
+    <view class="transp">
+        <view class="name1 name">发货</view>
+        <view class="name2 name">已选</view>
+        <view class="name3 name">保障</view>
+        <view class="name4 name">送至</view>
+        <view class="background1"></view>
+        <image src="https://pic.shanyide.cn/xiaochengxu43.png" class="fh_img"></image>
+        <view class="fh_box">
+            <view class="fh">{{productinfo.province}}</view>
+            <view class="shu"></view>
+            <view class="yf">快递:{{productinfo.postage}}</view>
+        </view>
+        <view class="month">月销:{{productinfo.salesAmount}}</view>
+        <view class="wirp1"></view>
+        <view class="text" bindtap="showDialogBtn3">默认</view>
+        <image src="https://pic.shanyide.cn/xiaochengxu50.png" class="select1" bindtap="showDialogBtn3"></image>
+        <view class="text1" bindtap="showDialogBtn2">品质优选·便捷物流·正品保障</view>
+        <view class="text2">7天无理由退换</view>
+       
+        <view class="wirp2"></view>
+        <view class="sz_box">
+           
+            <view class="sz" bindtap="showDialogBtn4">{{dzlist.province}}{{dzlist.detail}}</view>
+            <image src="https://pic.shanyide.cn/xiaochengxu50.png" class="sz_img1"  bindtap="showDialogBtn4"></image>
+        </view>
+    </view>
+    <view class="pro_det">
+        <view class="det_title">商品详情</view>
+        <image src="https://pic.shanyide.cn/xiaochengxu60.png" class="det_img"></image>
+       
+        <block wx:for='{{swiperimg[2].pictureList}}' wx:key='index'>
+            <image src="{{item.url}}" class="det_img2"></image>
+        </block>
+        
+    </view>
+    <view class="footer">
+        <view class="ico_list mr30" bindtap="showDialogBtn">
+            <view class="kefu_img">
+                <image src="https://pic.shanyide.cn/xiaochengxu40.png"></image>
+            </view>
+            <view class="kefu">客服</view>
+        </view>
+        <view class="ico_list" bindtap="collect3" data-id="{{productid}}">
+            <view class="kefu_img" bindtap="tab">
+                <image src="https://pic.shanyide.cn/xiaochengxu39.png" wx:if="{{!tab}}"></image>
+                <image src="/images/shop/xiaochengxu62.png" wx:if="{{tab}}"></image>
+            </view>
+            <view class="kefu">收藏</view>
+        </view>
+        <view class="ico_list" bindtap="shopcar">
+            <view class="kefu_img">
+                <image src="https://pic.shanyide.cn/xiaochengxu38.png"></image>
+            </view>
+            <view class="kefu">购物车</view>
+        </view>
+        <view class="footer_btn">
+            <view class="by_car" bindtap="showDialogBtn3">加入购物车</view>
+            <view class="now_by" bindtap="now_buy" data-msg="{{msg}}" data-size="{{size}}">立即购买</view>
+        </view>
+    </view>
+</view>
+
+
+<!--客服弹窗-->
+<view class="hiddenmodel" wx:if="{{showModal}}">
+      <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}">
+      </view>
+      <view class="modal-dialog" wx:if="{{showModal}}">
+        <view class="modal-title">联系我们</view>
+        <view class="wx">微信:KMSC925</view>
+        <view class="phone">电话:010-67870921</view>
+        <view class="emil">邮箱:shanyide@shanyide.cn</view>
+        <view class="true" bindtap="onConfirm">我知道了</view>
+      </view>
+</view>
+
+
+
+<!--转发弹窗-->
+<view class="hiddenmodel" wx:if="{{showModal1}}">
+    <view class="modal-mask1" bindtap="hideModal1" catchtouchmove="preventTouchMove" wx:if="{{showModal1}}"></view>
+<view class="box1" wx:if="{{showModal1}}">
+    <view class="shar_title">
+        <image src="../../images/index/icon@2x.png" class="ico1"></image>
+        <view class="shar_name">分享</view>
+        <image src="../../images/index/icon-@2x.png" class="ico2"></image>
+    </view>
+    <view class="ico_box">
+        <view class="ico_footer f1">
+            <image src="../../images/product/button-Wechat@2x.png"></image>
+            <view class="ico_footer_name">微信好友</view>
+        </view>
+        <view class="ico_footer f2">
+            <image src="../../images/product/button-CircleofFriends@2x.png"></image>
+            <view class="ico_footer_name">朋友圈</view>
+        </view>
+         <view class="ico_footer f3">
+            <image src="../../images/product/button-microblog@2x.png"></image>
+            <view class="ico_footer_name">微博</view>
+        </view>
+         <view class="ico_footer f4">
+            <image src="../../images/product/button-QQ@2x.png"></image>
+            <view class="ico_footer_name">QQ好友</view>
+        </view>
+    </view>
+    <view class="flase_shar" bindtap="onConfirm1">取消分享</view>
+</view>
+</view>
+
+
+
+<!--服务弹窗-->
+<view class="hiddenmodel" wx:if="{{showModal2}}">
+        <view class="modal-mask2" bindtap="hideModal2 hideModal3" catchtouchmove="preventTouchMove" wx:if="{{showModal2}}"></view>
+<view class="box2" wx:if="{{showModal2}}">
+    <view class="title">服务</view>
+    <image src="https://pic.shanyide.cn/xiaochengxu42.png" class="close" bindtap="onConfirm3" bindtap="close3"></image>
+    <view class="explain">服务说明</view>
+    <view class="title1">
+        <image src="https://pic.shanyide.cn/xiaochengxu44.png" class="pledge"></image>正品保证
+    </view>
+    <view class="title1_con">商品支持正品保障服务</view>
+     <view class="title1 title2">
+        <image src="https://pic.shanyide.cn/xiaochengxu46.png" class="pledge"></image>便捷物流
+    </view>
+    <view class="title1_con title2_con">优选物流服务，更高配送时效</view>
+    <view class="title1 title3">
+        <image src="https://pic.shanyide.cn/xiaochengxu45.png" class="pledge"></image>7天无理由退换
+    </view>
+    <view class="title3_con" id="max_box">
+                                消费者在满足7天无理由退货申请条件的前提下，可以
+提出“7天无理由退货”的申请
+                            </view>
+    <view class="ser_true" bindtap="onConfirm2">
+      <view class="back1">确认</view>
+    </view>
+</view>
+</view>
+
+
+
+<!--规格弹窗-->
+<view class="hiddenmodel" wx:if="{{showModal3}}">
+    <view class="modal-mask3" bindtap="hideModal3" catchtouchmove="preventTouchMove" wx:if="{{showModal3}}"></view>
+    <view class="modal-dialog" wx:if="{{showModal3}}">
+        <image src="{{swiperimg[0].pictureList[0].url}}" class="pro_img"></image>
+        <view class="text_tit">{{productinfo.goodsName}}</view>
+        <view class="price_g">￥{{productinfo.price}}</view>
+        <image src="https://pic.shanyide.cn/xiaochengxu42.png" class="close_g" bindtap="close2"></image>
+        
+        <view class="number">数量</view>
+        <view class="btn stepper">
+            <text class="_num1 sign {{num <= 1 ? 'disabled' : 'normal'}}" bindtap="delCount" data-index="{{index}}">-</text>
+            <input id="number1" type="number" bindchange="bindManual" value="{{num}}"  disabled="disabled"/>
+            <text class="_num2 sign {{num >= 10 ? 'disabled' : 'normal'}}" bindtap="addCount" data-index="{{index}}">+</text>
+            <view class="clear"></view>
+        </view>
+        <view class="sure_btn" bindtap="onConfirm3">
+            <view class="sure_text" bindtap="join_car">确认</view>
+        </view>
+    </view>
+</view>
+
+
+
+
+<!--地址弹窗-->
+<view class="hiddenmodel" wx:if="{{showModal4}}">
+      <view class="modal-mask4" bindtap="hideModal4" catchtouchmove="preventTouchMove" wx:if="{{showModal4}}"></view>
+<view class="modal-dialog" wx:if="{{showModal4}}">
+    <view class="distribution">配送至</view>
+    <image src="https://pic.shanyide.cn/xiaochengxu42.png" class="distribution_img" bindtap="close"></image>
+    <view class="back_wirp2"></view>
+    <!-- <block wx:for="{{}}"></block> -->
+    <view class="dz_box">
+        <image src="https://pic.shanyide.cn/xiaochengxu57.png" class="my_ico"></image>
+        <view class="my_con">{{dzlist.region}}{{dzlist.detail}}</view>
+    </view>
+    <view class="footer_distribution" bindtap="onConfirm4">
+        <view class="sure_btn_sz">新增收货地址</view>
+    </view> 
+</view>
+</view>
+
+
+
+
+
+

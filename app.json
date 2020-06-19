@@ -1,13 +1,90 @@
 {
-  "pages":[
+  "pages": [
+    "pages/shop/shop",
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/shopcart/shopcart",
+    "pages/me/me",
+    "pages/product/product",
+    "pages/order/order",
+    "commons/commons",
+    "pages/waitshop/waitshop",
+    "pages/delivergoods/delivergoods",
+    "headHandler/headHandler",
+    "content/content",
+    "popup/popup",
+    "pages/me/shar/shar",
+    "pages/me/site/site",
+    "pages/index/prodection/prodection",
+    "pages/me/set/set",
+    "pages/me/shippingAddress/shippingAddress",
+    "pages/me/aboutUs/aboutUs",
+    "toLog/toLog",
+    "pages/product/success/success",
+    "pages/product/successShop/successShop",
+    "pages/waitPay/waitPay",
+    "pages/waitPut/waitPut",
+    "pages/allClass/allClass",
+    "pages/balance/balance",
+    "pages/index/health/health",
+    "pages/me/news/news",
+    "pages/shop/smartWear/smartWear",
+    "pages/auth/auth",
+    "pages/login/login",
+    "pages/me/closeorder/closeorder",
+    "pages/me/successorder/successorder",
+    "pages/me/overtime/overtime",
+    "pages/index/dedail/dedail",
+    "pages/me/collectshop/collectshop",
+    "pages/orders/orders",
+    "pages/wuliu/wuliu",
+    "pages/me/informationEdit/informationEdit",
+    "pages/index/healthTest/healthtest",
+    "pages/index/healthTest/testEntrance/testEntrance",
+    "pages/index/healthTest/formalTest/formaltest",
+    "pages/index/healthTest/testResult/testresult"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+  "enablePullDownRefresh": true,
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle": "black"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "tabBar": {
+    "color": "#ccc",
+    "selectedColor": "#44484b",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/shop/shop",
+        "text": "商城",
+        "iconPath": "/images/shop/dianpu.@3x.png",
+        "selectedIconPath": "/images/shop/dianpu@3x.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "资讯",
+        "iconPath": "/images/shop/zixun_black.png",
+        "selectedIconPath": "/images/shop/zixun.png"
+      },
+      {
+        "pagePath": "pages/shopcart/shopcart",
+        "text": "购物车",
+        "iconPath": "/images/shop/gouwuche.@3x.png",
+        "selectedIconPath": "/images/shop/gouwuche@3x.png"
+      },
+      {
+        "selectedIconPath": "/images/shop/wode@3x.png",
+        "iconPath": "/images/shop/wode.@3x.png",
+        "pagePath": "pages/me/me",
+        "text": "我的"
+      }
+    ]
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"

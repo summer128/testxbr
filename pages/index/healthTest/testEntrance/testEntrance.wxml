@@ -1,0 +1,16 @@
+<!-- <view class="head_test">
+    <view class="test_headback">{{testtitle}}</view>
+</view>
+<view class="test_headimg" bindtap="back"></view> -->
+<view class="background">
+  <view class="background-img" style="background-image: url('{{coverUrl}}')">
+  <view class="entrance_box">
+    <view class="people_nums" style="background-color:rgba({{label_color}})">
+      <text class="nums">{{people_nums}}</text>
+        人进行测评
+      </view>
+    </view>
+  </view>
+  <view class="start-button" bindtap="start_test" style="background-color:rgba({{button_color}})">开始测试</view>
+</view>
+

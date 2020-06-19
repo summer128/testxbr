@@ -1,0 +1,102 @@
+<!-- 
+<view class="status-bar" style="height:{{statusBarHeight}}px"></view>
+<view class="status-bar1" style="position: fixed;top: {{statusBarHeight}}px;">购物车</view> -->
+<view class="maxbox">
+  <view wx:if="{{state === 200}}" class="box111" >
+    <!-- style="display: {{show == true ? '' : 'none'}};" -->
+      <view class="warp"  wx:if="{{is_show}}">
+        <view class="bj" bindtap="edit" data-id="{{onshow5}}">{{text}}</view>
+      </view>
+     
+        <view class='section section-good'>
+            <view class='good' wx:for='{{goodList}}' wx:key="index" >
+              <view  bindtap="selectListsss" data-index="{{index}}">
+                <checkbox value="{{item.skuId}}" checked="{{item.checked}}" hidden='hidden' />
+                <icon type="circle"  wx:if="{{!item.checked}}" size="23"   class='cart-icon'/>
+                <icon type="success" wx:if="{{item.checked}}" size="23" color="#6FDE26" class='cart-icon'  />
+              </view>
+              <image class='cover' src='{{item.url}}'></image>
+              <view class='content'>
+                <view class='text name'>{{item.goodsName}}</view>
+                <view class='text author'>{{}}</view>
+                <view class='text desc'>{{good.desc}}</view>
+                <view class='text price'>¥{{item.goodsPrice}}</view>
+              </view>
+              <view class='stepper'>
+                <view class='subtract {{good.count == 1 ? "disabled": ""}}' data-index='{{index}}' catchtap='subtracttap'>-</view>
+                <input class='count' type='number' value='{{item.goodsNum}}' bindinput="inputnums"></input>
+                <view class='add' data-index="{{index}}" catchtap='addtap'>+</view>
+              </view>
+            </view>
+        </view>
+        <view  wx:if="{{is_show}}">
+        <!-- 结算 -->
+          <view class='section-bottom' >
+            <!-- 底部结算栏 -->
+            <view class='checkbox-allcheck' >
+              <icon type="circle" wx:if="{{!selectAllStatus}}"  class='cart-iconAll'   bindtap="selectalltap"/>
+              <icon type="success" wx:if="{{selectAllStatus}}"  class='cart-iconAll' bindtap="selectalltap" color="#6FDE26" />
+              <text class='check-all-text' bindtap="selectalltap">全选</text>
+            </view>
+            
+
+            <view class="total" wx:if="{{onshow9}}">
+              <view class='totalCount'>已选择
+                <text>{{totalCounts}}</text>件
+              </view>
+              <view class='totalPrice'>总价：
+                <text>¥{{totalPrices}}</text>
+              </view>
+            </view>
+            <view class='btn {{totalCounts > 0 ? "btn-primary" : "btn-default"}}'  wx:if="{{onshow9}}" bindtap="{{totalCounts > 0 ?'order': ''}}" data-list="{{selectvalue}}">去结算</view>
+          </view>
+
+
+          <view class='section-bottom' wx:if="{{onshow10}}">
+            <view class='checkbox-allcheck' >
+              <icon type="circle" wx:if="{{!selectAllStatus}}"  class='cart-iconAll'   bindtap="selectalltap" />
+              <icon type="success" wx:if="{{selectAllStatus}}" class='cart-iconAll' bindtap="selectalltap"  color="#6FDE26" />
+              <text class='check-all-text' bindtap="selectalltap" >全选</text>
+            </view>
+            <view class='btn1' wx:if="{{onshow10}}" bindtap="delete">删除</view>
+          </view>
+        </view>
+      
+    <view class="cartlist" wx:if="{{!goodList[0]}}" style="padding-top:{{is_show == false ? '20rpx' : ''}}">
+      <image src="https://pic.shanyide.cn/xiaochengxu58.png" class="shopcar"></image>
+      <view>购物车空空如也~</view>
+    </view>
+
+
+
+    <!-- //////////////////////为你推荐///////////////////////////////////// -->
+
+    <view class="foru_title">
+      <view class="contener">
+        <view class="foru_img foru_img1">
+          <image src="https://pic.shanyide.cn/xiaochengxu21.png"></image>
+        </view>
+        <view class="foru_text">为你推荐</view>
+        <view class="foru_img mt">
+          <image src="https://pic.shanyide.cn/xiaochengxu20.png"></image>
+        </view>
+      </view>
+      <block wx:for="{{forucontent}}" wx:key="index">
+        <view class="box12" bindtap="tz" data-id="{{item.id}}">
+          <view class="box13">
+            <image src="{{item.url}}"></image>
+          </view>
+          <view class="box14">{{item.name}}</view>
+          <view class="box15">￥{{item.price}}</view>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <view wx:if='{{state === 401}}'>
+    <view class="backbox">
+      <view class="qq1">登录后才能正常使用购物车</view>
+      <view class="qq2" bindtap="login">授权登录</view>
+    </view>
+  </view>
+</view>
