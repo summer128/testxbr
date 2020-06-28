@@ -99,7 +99,7 @@ Page({
     console.log(e)
     console.log(e.receiver,e.phone,e.province,e.detail)
     util.put(
-      api.urlPath1+'/app/address',
+      api.urlPath1+'/app/address/default',
       {
         addressInfo:JSON.stringify(e.currentTarget.dataset.item),
         'sid': wx.getStorageSync("sid"),

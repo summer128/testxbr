@@ -2,38 +2,59 @@
 <!-- <view class="status-bar" style="height:{{statusBarHeight}}px"></view>
 <view class="status-bar1" style="position: fixed;top: {{statusBarHeight}}px;">我的收藏</view>
 <image src="https://pic.shanyide.cn/xiaochengxu8.png" class="titleimg" bindtap="back"></image> -->
-<view class='box'>
-  <block wx:for="{{delList}}" wx:key="index">
-  <view class='box_item' data-id="{{item.id}}">
-    <view class='movebox'>
-      <movable-area>
-        <movable-view direction="horizontal" x="{{curr==item.id?x:''}}" data-id="{{item.goodsId}}" bindtouchstart='touchStart' bindtouchend='touchEnd' out-of-bounds="{{true}}" friction="150">
-          <view class="contentbox">
-                <view class="warp">
-                    <view class="imgbox">
-                        <image src="{{item.url}}"></image>
-                    </view>
-                    <view class="contentfont">
-                        <view class="contentname">{{item.name}}</view>
-                        <view class="contentprice">{{item.price}}</view>
-                    </view>
-                </view>
-          </view>
-         </movable-view>
-      </movable-area>
-      <view class='delbox' data-delID="{{item.goodsId}}" catchtap='del'>
-        删除
+<view class="background">
+
+  <view class='box'>
+    <block wx:for="{{delList}}" wx:key="index" >
+    <view class='box_item' data-id="{{item.id}}" style="display: {{pro_display}};">
+      <view class='movebox'>
+        <movable-area>
+          <movable-view direction="horizontal" x="{{curr==item.id?x:''}}" data-id="{{item.goodsId}}" bindtouchstart='touchStart' bindtouchend='touchEnd' out-of-bounds="{{true}}" friction="150">
+            <view class="contentbox">
+                  <view class="warp">
+                      <view class="imgbox">
+                          <image src="{{item.url}}"></image>
+                      </view>
+                      <view class="contentfont">
+                          <view class="contentname">{{item.name}}</view>
+                          <view class="contentprice">￥{{item.price}}</view>
+                      </view>
+                  </view>
+            </view>
+           </movable-view>
+        </movable-area>
+        <view class='delbox' data-delID="{{item.goodsId}}" catchtap='del'>
+          删除
+        </view>
       </view>
     </view>
+  </block>
+  <!-- wx:if="{{!delList[0]}}" -->
+  <view class="null_list" style="display: {{displays}};">
+    <image src="https://pic.shanyide.cn/wx_favoritenull.png" class="null_image"></image>
+    <view>收藏空空如也</view>
   </view>
-</block>
+  
+  <view class="foru_title">
+      <view class="recommends">
+        <view class="recommends_img">
+          <image src="https://pic.shanyide.cn/wx_right_icon.png"></image>
+        </view>
+        <view class="recommends_text">为你推荐</view>
+        <view class="recommends_img">
+          <image src="https://pic.shanyide.cn/wx_left_icon.png"></image>
+        </view>
+      </view>
+      <block wx:for="{{forucontent}}" wx:key="index">
+        <view class="box12" bindtap="tz" data-id="{{item.id}}">
+          <view class="box13">
+            <image src="{{item.url}}"></image>
+          </view>
+          <view class="box14">{{item.name}}</view>
+          <view class="box15">￥{{item.price}}</view>
+        </view>
+      </block>
+    </view>
+  </view>
 </view>
 
-
-<view class="hh" wx:if="{{!delList[0]}}">
-  <image src="https://pic.shanyide.cn/wx_favoritenull.png"></image>
-  <view class="hhhh">收藏空空如也</view>
-</view>
-<!-- <view class="hhh" wx:if="{{!delList[0]}}">
-    <view class="hhhh">收藏空空如也</view>
-</view> -->

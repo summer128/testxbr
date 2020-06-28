@@ -35,7 +35,7 @@
   width: 96%;
   height: 1200rpx;
   margin: 0 auto;
-  margin-top: 50rpx;
+  margin-top: 10rpx;
 }
 .for_img{
   width: 344rpx;

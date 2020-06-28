@@ -33,13 +33,13 @@ function request(url, data = {}, method = "GET") {
         'authorization': wx.getStorageSync("sid")
       },
       success: function(res) {
-        console.log('===============================================================================================')
-        console.log('==    接口地址：' + url)
-        console.log('==    接口参数：' + JSON.stringify(data))
-        console.log('==    请求类型：' + method)
-        console.log("==    接口状态：" + res.statusCode);
-        console.log('===============================================================================================')
-        console.log(res)
+        // console.log('===============================================================================================')
+        // console.log('==    接口地址：' + url)
+        // console.log('==    接口参数：' + JSON.stringify(data))
+        // console.log('==    请求类型：' + method)
+        // console.log("==    接口状态：" + res.statusCode);
+        // console.log('===============================================================================================')
+        // console.log(res)
         if (res.statusCode == 200) {
           //请求正常200
           var daesData = res

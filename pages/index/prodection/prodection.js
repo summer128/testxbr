@@ -28,24 +28,39 @@ Page({
     var that=this
     // 获取标签元素上自定义的 data-myindex 属性的值
     let myindex = e.currentTarget.dataset.myindex;
-    console.log(myindex);
     that.setData({
       ishidden: myindex,
       titleid: e.currentTarget.dataset.id
     })
-    util.post(
-      api.urlPath3+'/home/article/category',
-      {
+
+    // util.post(
+    //   api.urlPath3 +'/home/article/category',
+    //   {
+    //     pageNum:that.data.num,
+    //     pageSize:6,
+    //     categoryId: e.currentTarget.dataset.id
+    //   }).then((res)=>{
+    //     console.log(res,'防护手册=======')
+    //     that.setData({
+    //       article: res.data.list,
+    //     })
+    //   })
+
+    wx.request({
+      url: app.globalData.urlPath3 +'/home/article/category',
+      data: {
           pageNum:that.data.num,
           pageSize:6,
           categoryId: e.currentTarget.dataset.id
-      }).then((res)=>{
+      },
+      method:'post',
+      success(res) {
+        console.log(res)
         that.setData({
           article: res.data.list,
         })
-      }).catch((errMsg)=>{
-
-      })
+      }
+    })
   },
  
   /**
@@ -59,17 +74,6 @@ Page({
           categoryList: res.data.result.categoryList
         })
       })
-      // wx.request({
-      //   url: app.globalData.urlPath3+'/home/article/category/list',
-      //   data:{},
-      //   success(res){
-      //       console.log(res)
-      //       that.setData({
-      //         article:res.data.result.article,
-      //         categoryList: res.data.result.categoryList
-      //       })
-      //   }   
-      // })
   },
   onReachBottom: function () {
     var that=this

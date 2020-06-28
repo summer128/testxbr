@@ -62,8 +62,8 @@
           </view>
         </view>
       
-    <view class="cartlist" wx:if="{{!goodList[0]}}" style="padding-top:{{is_show == false ? '20rpx' : ''}}">
-      <image src="https://pic.shanyide.cn/wx_shopnull.png" class="shopcar"></image>
+    <view class="null_list" wx:if="{{!goodList[0]}}" style="padding-top:{{is_show == false ? '20rpx' : ''}}">
+      <image src="https://pic.shanyide.cn/wx_shopnull.png" class="null_image"></image>
       <view>购物车空空如也~</view>
     </view>
 
@@ -71,14 +71,14 @@
 
     <!-- //////////////////////为你推荐///////////////////////////////////// -->
 
-    <view class="foru_title">
-      <view class="contener">
-        <view class="foru_img foru_img1">
-          <image src="https://pic.shanyide.cn/xiaochengxu21.png"></image>
+     <view class="foru_title">
+      <view class="recommends">
+        <view class="recommends_img">
+          <image src="https://pic.shanyide.cn/wx_right_icon.png"></image>
         </view>
-        <view class="foru_text">为你推荐</view>
-        <view class="foru_img mt">
-          <image src="https://pic.shanyide.cn/xiaochengxu20.png"></image>
+        <view class="recommends_text">为你推荐</view>
+        <view class="recommends_img">
+          <image src="https://pic.shanyide.cn/wx_left_icon.png"></image>
         </view>
       </view>
       <block wx:for="{{forucontent}}" wx:key="index">

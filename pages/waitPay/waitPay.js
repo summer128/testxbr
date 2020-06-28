@@ -7,7 +7,7 @@ Page({
     onshow:false,
     onshow1: false,
     info:null,
-    dz:null,
+    bzmsg:null,
     ico1:false,
     ico2: false,
     ico3: false,
@@ -15,22 +15,53 @@ Page({
     text:'',
     wechat:'KMSC925'
   },
-  sure:function(){
+  // 备注
+  bzChange(e){
+    let that = this;
+    console.log(e,'备注',e.detail.value.length)
+    if (e.detail.value.length < 1) {
+      that.setData({
+        bzmsg: null,
+      })
+    } else {
+      that.setData({
+        bzmsg: e.detail.value,
+      })
+    }
+  },
+  sure:function(e){
     var that=this
-    console.log(that.data.info)
+    console.log(that.data.info,e,'提交订单--待付款',that.data.detailgoods)
+    console.log(that.data.detailgoods[0].skuId)
+    // let skuarr = []
+    // let info = {
+    //   id:that.data.detailgoods[0].skuId,
+    //   number: that.data.detailgoods[0].number,
+    //   remark: that.data.bzmsg,
+    //   price: that.data.detailgoods[0].price
+    // }
+    // skuarr.push(info)
+    console.log(that.data.orderNum,'数量')
      util.post(
       api.urlPath1+ '/app/orders/pay',
       {
+        // skuList: JSON.stringify(skuarr),
+        // addressId: that.data.dz.id,
+        // paymentPlatform: 0,
+        type: 2,
+        // openid: wx.getStorageSync("openid"),
         'sid': wx.getStorageSync("sid"),
-        orderNumber: that.data.info.orderInfo.orderNumber
+        orderNumber:that.data.orderNum
       }
       ).then((res)=>{
+        console.log(res)
+        console.log(res.data.result.timeStamp,res.data.result.nonceStr)
         wx.requestPayment({
-          timeStamp: res.data.result.timestamp,
-          nonceStr: res.data.result.noncestr,
-          package: res.data.result.package,
+          timeStamp:res.data.result.timeStamp + "",
+          nonceStr: res.data.result.nonceStr + "",
+          package: res.data.result.package + "",
           signType: 'MD5',
-          paySign: res.data.result.sign,
+          paySign: res.data.result.sign + "",
           success(res) {
             console.log(res)
           },
@@ -42,37 +73,6 @@ Page({
           }
         })
       })
-    // wx.request({
-    //   url: app.globalData.urlPath1 + '/app/orders/pay',
-    //   method: 'post',
-    //   header: {
-    //     'content-type': "application/x-www-form-urlencoded",
-    //     'token': wx.getStorageSync("token"),
-    //   },
-    //   data: {
-    //     'sid': wx.getStorageSync("sid"),
-    //     orderNumber: that.data.info.orderInfo.orderNumber
-    //   },
-    //   success(res) {
-    //     console.log(res)
-    //     wx.requestPayment({
-    //       timeStamp: res.data.result.timestamp,
-    //       nonceStr: res.data.result.noncestr,
-    //       package: res.data.result.package,
-    //       signType: 'MD5',
-    //       paySign: res.data.result.sign,
-    //       success(res) {
-    //         console.log(res)
-    //       },
-    //       fail(res) {
-    //         console.log(res)
-    //       },
-    //       complete(res) {
-    //         console.log(res)
-    //       }
-    //     })
-    //   }
-    // })
   },
   back:function(){
     wx.navigateBack({
@@ -154,10 +154,52 @@ Page({
   onLoad: function (options) {
     var that=this
     var info=JSON.parse(unescape(options.info))
-    console.log(info)
+    let goodsid = JSON.parse(options.info).orderInfo['id']
+    console.log(JSON.parse(options.info).orderInfo['id'])
     that.setData({
       info:info,
       endTime:info.orderInfo.pendingTime
+    })
+    util.get(
+      api.urlPath1 + '/app/orders/'+goodsid
+      ).then((res)=>{
+        console.log(res,'商品详情')
+        let good_detail = res.data.result.orderSkuList
+        let good_orderdetail = res.data.result.orderInfo
+        console.log(res.data.result.orderSkuList[0].number,good_orderdetail.orderNumber)
+        let Delivery = res.data.result.isFreeDelivery
+        let signleYiyuanActivityGoods = res.data.result.signleYiyuanActivityGoods
+        // let Delivery = res.data.result.isFreeDelivery ? 0 : 10
+        // let signleYiyuanActivityGoods = res.data.result.signleYiyuanActivityGoods ? 0 : 10
+        that.setData({
+          orderNum:good_orderdetail.orderNumber
+        })
+        if(signleYiyuanActivityGoods === "true" || Delivery === "true"){
+          console.log('11111')
+           that.setData({
+             deliverymoney:0
+           })
+         }else{
+           console.log('4444444')
+           that.setData({
+             deliverymoney:10
+           })
+         }
+         console.log(that.data.deliverymoney)
+        // var paynumbers = Number(good_orderdetail.payPrice + that.data.deliverymoney).toFixed(2)
+        var paynumbers = Number(good_orderdetail.totalPrice).toFixed(2)
+        var goodprice = Number(res.data.result.orderSkuList[0].price * res.data.result.orderSkuList[0].number).toFixed(2)
+        console.log(res.data.result.signleYiyuanActivityGoods, res.data.result.isFreeDelivery,that.data.deliverymoney,'商品运费')
+        that.setData({
+          detailgoods :good_detail,
+          good_orderdetail:good_orderdetail,
+          paynumbers:paynumbers,
+          Delivery:Delivery,
+          signleYiyuanActivityGoods:signleYiyuanActivityGoods,
+          goodprice:goodprice,
+          goods_num:res.data.result.orderSkuList[0].number
+        })
+        // let detailgoods = res.data.result
     })
   },
   wechatNum_copy(){
@@ -170,10 +212,17 @@ Page({
   },
   onShow: function () {
     var that=this
+    
     util.get(api.urlPath1 +'/app/address/default').then((res)=>{
+      console.log(res,'地址信息')
       that.setData({
         dz:res.data.result
       })
     })
-  }
+  },
+  change_address(){
+    wx.navigateTo({
+      url: '../me/shippingAddress/shippingAddress'
+    })
+  }
 })

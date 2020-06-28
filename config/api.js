@@ -1,4 +1,4 @@
-var urlPath1 = "https://test.shanyide.cn:5555/api/v1";
+// var urlPath1 = "https://test.shanyide.cn:5555/api/v1";
 // prdUrl:'https://www.shanyide.cn:3333/api/v1/';
 // prdUrl2:'https://www.shanyide.cn/api/v2/';
 // prdUrl3:'https://www.shanyide.cn/api/v3/';
@@ -14,7 +14,7 @@ module.exports = {
   // prdUrltoken:'https://www.shanyide.cn/api/v2/'
 
 
-  favorite: urlPath1 + '/app/goods/favorite?pageNum=0&pageSize=100',
+  favorite: "https://test.shanyide.cn:5555/api/v1/app/goods/favorite?pageNum=0&pageSize=100",
   logistics:'http://q.kdpt.net/api',
   urlPath:  "http://test.shanyide.cn",
   urlPath1: "https://test.shanyide.cn:5555/api/v1",

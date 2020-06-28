@@ -1,41 +1,39 @@
 <!-- <view class="headback">待付款</view>
 <image src="https://pic.shanyide.cn/xiaochengxu8.png" class="headimg" bindtap="back"></image> -->
 <view class="waitpay_container">
-    <view class="head1">
-        <image src="https://pic.shanyide.cn/xiaochengxu30.png"></image>
-        <view class="head1_name">等待付款</view>
-        <view class="head1_con">剩余:{{timeLeft}}</view>
-    </view>
-    <view class="card">
-        <view class="col">
-            <view class="user_dz">{{dz.region}}</view>
-            <view class="user_xx">{{dz.detail}}</view>
-            <view class="user_phone">{{dz.receiver}} {{dz.phone}}</view>
+    <view class="wait_box">
+        <view class="head1">
+            <image src="https://pic.shanyide.cn/xiaochengxu30.png"></image>
+            <view class="head1_name">等待付款</view>
+            <view class="head1_con">剩余:{{timeLeft}}</view>
         </view>
-        <image src="https://pic.shanyide.cn/xiaochengxu6.png"></image>
+        <view class="card" bindtap="change_address">
+            <view class="col">
+                <view class="user_dz">{{dz.region}}</view>
+                <view class="user_xx">{{dz.detail}}</view>
+                <view class="user_phone">{{dz.receiver}} {{dz.phone}}</view>
+            </view>
+            <image src="https://pic.shanyide.cn/xiaochengxu6.png"></image>
+        </view>
     </view>
 
-    <view class="box1">
-        <view class="box2">
+    <view class="box1" >
+        <view class="box2" wx:for="{{detailgoods}}" wx:key="index">
             <view class="box3">
                 <view class="box4">
-                    <image src="{{info.goodsPictureList[0]}}"></image>
+                    <image src="{{item.picture}}"></image>
                     <view class="box7">
-                        <view class="t1">{{info.goodsInfo.name}}</view>
+                        <view class="t1">{{item.name}}</view>
                         <view class="box8">
-                            <view>颜色:黑色</view>
-                            <view>x{{info.goodsPictureList.length}}</view>
+                            <view>规格:{{item.attrValList}}</view>
+                            <view>x{{item.number}}</view>
                         </view>
-                        <view class="t2">￥{{info.orderInfo.payPrice}}</view>
+                        <view class="t2">￥{{item.price}}</view>
                     </view>
-                </view>
-                <view class="box5">
-                        <view class="t3">数量</view>
-                        <view class="t4">{{info.goodsPictureList.length}}</view>
                 </view>
                 <view class="box6">
                     <view class="t3">订单备注</view>
-                    <input placeholder="填写之前建议和商家协商一致" placeholder-style="color:#999999;font-size:26rpx;" class="remark_int"></input>
+                    <input placeholder="填写之前建议和商家协商一致" placeholder-style="color:#999999;font-size:26rpx;" bindinput="bzChange" class="remark_int" value="{{bzmsg}}"></input>
                 </view>
             </view>
         </view>
@@ -45,39 +43,43 @@
                     <view>联系客服</view>
             </view> 
         </view>
-        <view class="box11">
+        <view class="goods_ordermsg">
+            <view class="goods_money">
+                <view>商品金额</view>
+                <view class="money_num">￥{{goodprice}}</view>
+            </view>
+            <view class="goods_money">
+                <view>运费</view>
+                <view class="money_num">+￥{{deliverymoney}}</view>
+            </view>
+            <view class="goods_money">
+                <view>实付金额</view>
+                <view class="money_num">￥{{paynumbers}}</view>
+            </view>
+        </view>
+        <!-- <view class="box11">
             <view class="box12">
                 <view>商品金额</view>
-                <view class="fr">￥{{info.orderInfo.payPrice}}</view>
+                <view class="fr">￥{{good_orderdetail.payPrice}}</view>
             </view>
             <view class="box13">
                 <view>运费</view>
-                <view class="fr">+￥{{info.orderInfo.discountPrice}}</view>
+                <view class="fr">+￥{{good_orderdetail.postage}}</view>
             </view>
-            <view class="box14">实付金额：￥{{info.orderInfo.totalPrice}}</view>
-        </view>
+            <view class="box14">实付金额：￥{{paynumbers}}</view>
+        </view> -->
         <view class="box15">
             <view class="box17">订单信息</view>
             <view class="box18">
-                <text>订单编号：{{info.orderInfo.orderNumber}}</text>
+                <text>订单编号：{{good_orderdetail.orderNumber}}</text>
                 <text class="copy" bindtap="orderNum_copy">复制</text>
             </view>
-            <view class="box16 box19">
+            <view class="box16">
                 <view>下单时间:</view>
-                <view class="make_order"> {{info.orderInfo.submitTime}}</view>
+                <view class="make_order"> {{good_orderdetail.pendingTime}}</view>
             </view>
         </view>
-        <view class="box19">
-            <view class="box20">
-                <view class="all_nums">合计:</view>
-                <view class="money_sign">
-                    ￥
-                    <text class="t9">{{info.orderInfo.totalPrice}}</text>
-                </view>
-            </view>
-            <view class="box21" bindtap="cancel">取消订单</view>
-            <view class="box22" bindtap="sure">提交订单</view>
-        </view>
+        
     </view>
 
 
@@ -119,6 +121,18 @@
             <view class="boxf" bindtap="closeorder" data-id="{{info.orderInfo.id}}">提交</view>
         </view>
     </view>
-
+    <view class="box19">
+        <view class="box20">
+            <view class="all_nums">合计:</view>
+            <view class="money_sign">
+                ￥
+                <text class="t9">{{paynumbers}}</text>
+            </view>
+        </view>
+        <view class="box21" bindtap="cancel">取消订单</view>
+        <view class="box22" bindtap="sure">提交订单</view>
+    </view>
 
 </view> 
+
+

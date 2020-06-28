@@ -176,41 +176,6 @@
 .clear{
   clear: both;
 }
-.foru_title{
-  width: 100%;
-  height: 1300rpx;
-  /* position: relative;
-  top: 100rpx;
-  left: 0; */
-  /* margin-top: 330rpx; */
-}
-.foru_img{
-  width: 31rpx;
-  height: 31rpx;
-  float: left;
-  margin-top: 34.5rpx;
-}
-.foru_img image{
-  width: 100%;
-  height: 100%;
-}
-.foru_text{
-  /* width: 136rpx; */
-  height: 100rpx;
-  font-size: 32rpx;
-  font-weight: 500;
-  float: left;
-  /* margin-top: 34.5rpx; */
-  line-height: 100rpx;
-}
-.contener{
-  width: 200rpx;
-  height: 100rpx;
-  margin: 0 auto;
-}
-/* .mt{
-  margin-top: 34.5rpx;
-} */
 .tj_list{
   width: 346rpx;
   height: 520rpx;
@@ -289,7 +254,7 @@ page {
   align-items: center;
   position: relative;
   height: 250rpx;
-  margin-bottom: 30rpx;
+  /* margin-bottom: 20rpx; */
   border-radius:20rpx;
   /* border-bottom: 1px solid #ccc; */
 }
@@ -488,7 +453,7 @@ page {
 }
 
 /* ///////////////////////引用外部样式结束////////////////////////////////////////// */
-.box12{
+/* .box12{
   width: 346rpx;
   height: 520rpx;
   background:rgba(255,255,255,1);
@@ -528,13 +493,13 @@ page {
   font-family:PingFang SC;
   font-weight:500;
   color:rgba(246,129,14,1);
-}
+} */
 .maxbox{
   background-color: #F3F5F7;
   overflow-x: hidden;
   
 }
-.cartlist{
+/* .null_list{
   width: 100%;
   height: 310rpx;
   background-color: #fff;
@@ -548,7 +513,7 @@ page {
     left: 50%;
     margin-left: -174rpx;
 }
-.cartlist view{
+.null_list view{
   font-size:30rpx;
   font-family:PingFang SC;
   font-weight:400;
@@ -556,7 +521,7 @@ page {
   position: relative;
   bottom: 28rpx;
   left: 260rpx;
-}
+} */
 
 
 .backbox{
@@ -614,5 +579,4 @@ page {
 .box111{
   width: 100%;
   height: 300rpx;
-  background: white;
 }

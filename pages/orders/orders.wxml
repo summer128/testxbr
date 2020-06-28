@@ -30,7 +30,7 @@
             <view class="shop_content">
                 <view class="product_con">{{item.goodsName}}</view>
                 <view class="color_num">
-                    <view class="product_color">颜色:黑色</view>
+                    <view class="product_color">{{item.attributeList[0].attrKey}}:{{item.attributeList[0].attrVal}}</view>
                     <view class="product_num">x{{item.goodsNum}}</view>
                 </view>
                 <view class="product_price">￥{{item.goodsPrice}}</view>

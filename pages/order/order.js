@@ -40,8 +40,9 @@ Page({
       bz:e.detail.value
     })
   },
-  pay:function(){
-    console.log(this.data.totalprice1)
+  pay:function(e){
+    console.log(e)
+    console.log(this.data.totalprice3)
     console.log(this.data.num)
     console.log(this.data.id)
     let skuarr=[]
@@ -205,8 +206,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (option) {
-    
-    
     console.log(JSON.parse(option.msg))
     var that = this
     console.log(that.data.totalValue)

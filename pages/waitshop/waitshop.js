@@ -142,33 +142,41 @@ Page({
     })
   },
   now_pay: function(e) {
-    var that=this
-    console.log(e)
-    util.post(
-      api.urlPath1+'/app/orders/pay',
-      {
-        'sid': wx.getStorageSync("sid"),
-        orderNumber:e.currentTarget.dataset.msg.orderInfo.orderNumber
-      }
-      ).then((res)=>{
-        wx.requestPayment({
-          timeStamp: res.data.result.timestamp,
-          nonceStr: res.data.result.noncestr,
-          package: res.data.result.package,
-          signType: 'MD5',
-          paySign: res.data.result.sign,
-          success(res) {
-            console.log(res)
-           
-          },
-          fail(res) {
-            console.log(res)
-          },
-          complete(res) {
-            console.log(res)
-          }
-        })
-    })
+    console.log(e,'待付款---立即支付')
+    var info = JSON.stringify(e.currentTarget.dataset.msg)
+    wx.navigateTo({
+      url: '../waitPay/waitPay?info=' + info,
+    })
+    
+    // var that=this
+    // console.log(e,'待付款---立即支付')
+    // var pay_goods = e.currentTarget.dataset.msg
+    // console.log(pay_goods,'1111111111',pay_goods.goodsInfo.name,pay_goods.orderInfo.id,pay_goods.orderInfo.payPrice)
+
+    // util.post(
+    //   api.urlPath1+'/app/orders/pay',
+    //   {
+    //     'sid': wx.getStorageSync("sid"),
+    //     orderNumber:e.currentTarget.dataset.msg.orderInfo.orderNumber
+    //   }
+    //   ).then((res)=>{
+    //     wx.requestPayment({
+    //       timeStamp: res.data.result.timestamp,
+    //       nonceStr: res.data.result.noncestr,
+    //       package: res.data.result.package,
+    //       signType: 'MD5',
+    //       paySign: res.data.result.sign,
+    //       success(res) {
+    //         console.log(res)
+    //       },
+    //       fail(res) {
+    //         console.log(res)
+    //       },
+    //       complete(res) {
+    //         console.log(res)
+    //       }
+    //     })
+//     )
 
 
     // wx.request({
@@ -266,7 +274,7 @@ Page({
             'authorization': wx.getStorageSync("sid")
           },
           success(res) {
-            console.log(res.data.result)
+            console.log(res.data.result,'fukuan')
             that.setData({
               orderList: res.data.result
             })
@@ -322,7 +330,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log(options.ishidden)
+    console.log(options,'获取传来的值')
+    let  detailgoods = options.goods_detail
+    console.log(detailgoods,'获取传来的值')
     var that = this
     wx.setNavigationBarColor({
       frontColor: '#000000', // 必写项
@@ -331,8 +341,6 @@ Page({
     that.setData({
       ishidden: options.ishidden
     })
-    ///////////////////////////////////////////////////////////
-    
   },
   chancolor: function(e) {
     if (this.data.orderList[e.currentTarget.dataset.myindex].length > 0) {
@@ -353,7 +361,8 @@ Page({
   },
   onShow: function() {
     var that = this
-    util.get(api.urlPath1 + '/app/orders').then((res)=>{
+    util.get(api.urlPath1 + '/app/orders?type=2').then((res)=>{
+      console.log(res,'大夫矿商品')
       if (res.data.result[0].length > 0) {
         that.setData({
           show: false

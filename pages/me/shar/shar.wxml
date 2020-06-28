@@ -16,10 +16,14 @@
 	</swiper>
 </view>
 <view class="shar_footer">
-	<view class="footer_top">
-		<image src="https://pic.shanyide.cn/xiaochengxu21.png"></image>
-		<view>分享</view>
-		<image src="https://pic.shanyide.cn/xiaochengxu20.png"></image>
+	<view class="recommends share_box">
+		<view class="recommends_img left_share">
+			<image src="https://pic.shanyide.cn/wx_right_icon.png"></image>
+		</view>
+		<view class="recommends_text shares">分享</view>
+		<view class="recommends_img right_share">
+			<image src="https://pic.shanyide.cn/wx_left_icon.png"></image>
+		</view>
 	</view>
 	<view class="footer_bottom">
 		<button open-type="share" id="shar" class="ico_img_shar">

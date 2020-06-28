@@ -3,15 +3,11 @@ const api = require('../../../config/api.js')
 const app = getApp()
 Page({
   data: {
-      collectList:null,
       x: 0, // 注意，这里通过x属性设置的宽度的单位是px
       delList: [],
-      statusBarHeight: app.globalData.statusBarHeight
-  },
-  back: function () {
-    wx.navigateBack({
-      delta: 1
-    })
+      statusBarHeight: app.globalData.statusBarHeight,
+      displays:'none',
+      pro_display:'block'
   },
   touchStart: function (e) {
     console.log(e, e.touches[0].clientX)
@@ -36,52 +32,76 @@ Page({
   },
   // 删除按钮
   del: function (e) {
-    var _this = this, id = e.currentTarget.dataset.delID
-    this.data.delList.splice(id, 1)
-    this.setData({
-      delList: this.data.delList,
-      curr: 0
-    })
-    console.log(e.currentTarget.dataset.delid)
     var goodsid = e.currentTarget.dataset.delid
     util.post(
       api.urlPath1+'/app/goods/favorite',
       {
         'sid': wx.getStorageSync("sid"),
-        goodsId:goodsid
+          goodsId:goodsid
       }
       ).then((res)=>{
-        console.log(res,'删除商品收藏')
-      }).catch((errMsg)=>{
-        console.log(errMsg,'删除商品收藏')
-      })
+        console.log(res,'删除收藏列表')
+        this.onShow()
+    })
+    
+  },
+  tz(e) {
+    console.log(e)
+   wx.navigateTo({
+      url: "../../product/product?id=" + e.currentTarget.dataset.id
+    })
   },
   onShow: function () {
     var that = this
-    if (wx.getStorageSync("token")){
-      util.get(api.favorite).then((res)=>{
-        if(res.data.status !== 200){
-        }else{
-          that.setData({
-            delList: res.data.result,
-          })
-        }
-      }).catch((errMsg)=>{
-        console.log(errMsg,'收藏')
+    util.get(api.favorite).then((res)=>{
+      console.log('收藏123',res)
+      let pro_list = res.data.result
+      if(pro_list.length <= 0){
+        console.log('2222')
+        that.setData({
+          displays: 'block',
+          pro_display:'none'
+        })
+      }else{
+        that.setData({
+          delList: pro_list,
+          displays: 'none',
+          pro_display:'block'
+        })
+      }
+       
+    }).catch((errMsg)=>{
+      console.log(errMsg,'收藏')
+    })
+
+
+    // if (wx.getStorageSync("token")){
+    //   util.get(api.favorite).then((res)=>{
+    //     console.log('收藏123',res)
+    //       that.setData({
+    //         delList: res.data.result,
+    //       })
+    //   }).catch((errMsg)=>{
+    //     console.log(errMsg,'收藏')
+    //   })
+    // }else{
+    //   wx.showModal({
+    //     title: '请您先登录',
+    //     success(res) {
+    //       if (res.confirm) {
+    //         wx.switchTab({
+    //           url: '../me'
+    //         })
+    //       } else if (res.cancel) {
+    //         console.log('用户点击取消')
+    //       }
+    //     }
+    //   })
+    // }
+    util.get(api.urlPath1 + '/app/goods/recommend').then((res)=>{
+      that.setData({
+        forucontent: res.data.result
       })
-    }else{
-      wx.showModal({
-        title: '请您先登录',
-        success(res) {
-          if (res.confirm) {
-            wx.switchTab({
-              url: '../me'
-            })
-          } else if (res.cancel) {
-            console.log('用户点击取消')
-          }
-        }
-      })
-    }
+    })
   }
 })

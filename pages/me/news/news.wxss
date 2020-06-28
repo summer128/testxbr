@@ -1,17 +1,17 @@
 .box{
   
-  width: 340rpx;
-  height: 292rpx;
+  width: 460rpx;
+  height: 358rpx;
   position: absolute;
   left: 50%;
   top:50%;
-  margin-top:-146rpx;
-  margin-left: -170rpx;
+  margin-top:-180rpx;
+  margin-left: -230rpx;
   
 }
 .box image{
-  width: 340rpx;
-  height: 292rpx;
+  width: 460rpx;
+  height: 358rpx;
   display: block;
 }
 /* .box1{
@@ -28,7 +28,7 @@
   font-family:PingFang SC;
   font-weight:400;
   color:rgba(153,153,153,1);
-  top: 220rpx;
+  top: 236rpx;
   position: absolute;
   left: 50%;
   margin-left: -130rpx;

@@ -138,8 +138,9 @@ Page({
     console.log(goods_Cart)
     var skuList = [{ "id":goods_Cart[0].skuId, "number":goods_Cart[0].goodsNum}]
     util.get(api.urlPath1+ '/app/orders/coupon?skuList=' + JSON.stringify(skuList)).then((res)=>{
+      console.log(res,'gouwu')
       wx.navigateTo({
-        url: '../orders/orders?list=' + JSON.stringify(goods_Cart) + '&isFreeDelivery=' + res.data.result.isFreeDelivery,
+        url: '../orders/orders?list=' + JSON.stringify(goods_Cart) + '&isFreeDelivery=' + res.data.result.isFreeDelivery + '&signleYiyuanActivityGoods=' + res.data.result.signleYiyuanActivityGoods,
       })
     })
   },

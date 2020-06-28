@@ -152,19 +152,18 @@ Page({
       })
     }
    
-    console.log(e.currentTarget.dataset.id)
+    console.log(e.currentTarget.dataset.id,wx.getStorageSync("sid"))
+
     if (wx.getStorageSync("token")){
-           util.post(
-            api.urlPath1+ '/app/goods/favorite',
-            {
-              'sid': wx.getStorageSync("sid"),
-              'goodsId': e.currentTarget.dataset.id
-            }
-            ).then((res)=>{
-              console.log('收藏',res)
-            }).catch((errMsg)=>{
-              console.log(errMsg,'收藏')
-            })
+      util.post(
+        api.urlPath1 + '/app/goods/favorite',
+        {
+          'sid': wx.getStorageSync("sid"),
+          'goodsId': e.currentTarget.dataset.id
+        }
+        ).then((res)=>{
+          console.log('prouduct收藏',res)
+        })
     }else{
       wx.showModal({
           title: '请您先授权登录',

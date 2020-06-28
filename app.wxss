@@ -250,6 +250,7 @@ page{
 }
 .background{
   background-color: #f3f5f7;
+  overflow-x: hidden;
 }
 
 .remark_int{
@@ -327,7 +328,6 @@ page{
   top: -189rpx;
   font-size:42rpx;
   font-family:PingFang SC;
-  font-weight:bold;
   color:rgba(255,255,255,1);
 }
 .head1_con{
@@ -412,4 +412,157 @@ page{
   line-height: 80rpx;
   color: #fff;
   margin-top: 40rpx;
+}
+
+
+
+/* //收藏为空--购物车为空的共同样式 */
+.foru_title{
+  width: 100%;
+}
+.foru_img{
+  width: 31rpx;
+  height: 31rpx;
+  float: left;
+  margin-top: 34.5rpx;
+}
+.foru_img image{
+  width: 100%;
+  height: 100%;
+}
+.foru_text{
+  /* width: 136rpx; */
+  height: 100rpx;
+  font-size: 32rpx;
+  font-weight: 500;
+  float: left;
+  /* margin-top: 34.5rpx; */
+  line-height: 100rpx;
+}
+.contener{
+  width: 200rpx;
+  height: 100rpx;
+  margin: 0 auto;
+}
+.box12{
+  width: 346rpx;
+  height: 520rpx;
+  background:rgba(255,255,255,1);
+  border-radius:20rpx;
+  float: left;
+  margin-left: 19.33rpx;
+  margin-bottom: 20rpx;
+}
+.box13{
+  width: 346rpx;
+  height: 346rpx;
+}
+.box13 image{
+  width: 100%;
+  height: 100%;
+}
+.box14{
+  width: 80%;
+  margin: 20rpx auto 0;
+  font-size:28rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(51,51,51,1);
+   text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.box15{
+  width: 80%;
+  margin: 20rpx auto 0;
+  text-align: left;
+  font-size:32rpx;
+  font-family:PingFang SC;
+  font-weight:500;
+  color:rgba(246,129,14,1);
+}
+
+
+.null_list{
+  width: 100%;
+  height: 310rpx;
+  background-color: #fff;
+  border-radius:0px 0px 20rpx 20rpx;
+}
+.null_image{
+    width: 350rpx;
+    height: 220rpx;
+    position: relative;
+    top: 60rpx;
+    left: 50%;
+    margin-left: -174rpx;
+}
+.null_list view{
+  font-size:30rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(153,153,153,1);
+  position: relative;
+  bottom: 28rpx;
+  left: 260rpx;
+}
+
+
+/* 为你推荐 */
+.recommends{
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  justify-content: center;
+  margin: 0 20rpx;
+}
+.recommends_img{
+  width: 50rpx;
+  height: 100rpx;
+  text-align: center;
+  position: relative;
+}
+.recommends_img image{
+  width: 35rpx;
+  height: 20rpx;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  margin-top: -8rpx;
+
+}
+.recommends_text{
+  width: 140rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 32rpx;
+  color: #333;
+}
+
+
+.capsule {
+  width: 70px;
+  border: 1px solid hsla(0, 0%, 100%, 0.25);
+  border-radius: 27px;
+  background: hsla(0, 0%, 100%, 0.6);
+  line-height: 1;
+  position: absolute;
+  left: 7pt;
+  top: 24px;     /*iOS*/
+  top: 30px;     /*Android*/
+}
+
+.capsule, .capsule>text {
+  display: flex;
+  align-items: center;
+}
+
+.capsule>text {
+  flex: 1;
+  height: 30px;
+  justify-content: center;
 }

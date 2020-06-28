@@ -1,9 +1,10 @@
 page{
   background-color: #F3F5F7;
+  
 }
 .background{
   height: 3850rpx;
-  /* margin-top: 127rpx; */
+  overflow-x: hidden;
 }
 .background1{
   background-color: rgba(255, 255, 255, 1);
@@ -273,3 +274,6 @@ page{
   color: #fff;
   font-size: 36rpx;
 }
+
+
+

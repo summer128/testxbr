@@ -29,6 +29,7 @@
               <view class="content_r">共1件</view>
             </view>
             <view class="list_three">
+              <view class="pay_prices">合计:￥{{item.orderInfo.totalPrice}}</view>
               <view class="look1" bindtap="closeorder" data-id="{{item}}">取消订单</view>
               <view class="sure" bindtap="now_pay" data-msg="{{item}}">立即支付</view>
             </view>
@@ -61,8 +62,8 @@
 </view>
 <view wx:if="{{ishidden==2}}">
     <view class="waitbox2" wx:if="{{orderList[2].length==0}}">
-                <image src="https://pic.shanyide.cn/wx_waitpaynull.png"></image>
-                <view>暂无订单</view>
+        <image src="https://pic.shanyide.cn/wx_waitpaynull.png"></image>
+        <view>暂无订单</view>
     </view>
     <block wx:for="{{orderList[2]}}" wx:key="index" wx:if="{{ishidden==2}}">
         <view class="box_list">
@@ -119,12 +120,21 @@
     </block>
 </view>
  
-  <view class="foru_head">
+  <!-- <view class="foru_head">
     <view class="fl_img">
       <image src="https://pic.shanyide.cn/wx_right_icon.png"></image>
     </view>
     <view class="cen">为你推荐</view>
     <view class="fr_img">
+      <image src="https://pic.shanyide.cn/wx_left_icon.png"></image>
+    </view>
+  </view> -->
+  <view class="recommends">
+    <view class="recommends_img">
+      <image src="https://pic.shanyide.cn/wx_right_icon.png"></image>
+    </view>
+    <view class="recommends_text">为你推荐</view>
+    <view class="recommends_img">
       <image src="https://pic.shanyide.cn/wx_left_icon.png"></image>
     </view>
   </view>

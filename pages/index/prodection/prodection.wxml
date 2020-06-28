@@ -3,7 +3,7 @@
 <view class="background">
     <view class="headbox">
         <view class="head">
-            <view wx:for="{{ categoryList }}" wx:key="index" class="a {{index==ishidden?'active':''}}" bindtap='showTo' data-myindex="{{index}}" data-id="{{item.id}}">{{item.title}}</view>
+            <view wx:for="{{ categoryList }}" wx:key="index" class="a {{index==ishidden?'active':''}}" bindtap="showTo" data-myindex="{{index}}" data-id="{{item.id}}">{{item.title}}</view>
         </view>
     </view>
     <block wx:for="{{article}}" wx:key="index"  hidden="{{ishidden != index}}">

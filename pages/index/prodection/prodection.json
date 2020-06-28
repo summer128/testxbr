@@ -1,4 +1,6 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "防护手册"
+  "navigationBarTitleText": "防护手册",
+  "navigationBarBackgroundColor": "#87D534",
+  "navigationBarTextStyle": "white"
 }
