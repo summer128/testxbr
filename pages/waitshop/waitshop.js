@@ -1,4 +1,3 @@
-
 const app = getApp()
 const util = require('../../utils/util')
 const api = require('../../config/api')
@@ -47,7 +46,7 @@ Page({
         }, 500)
         console.log(res)
         wx.request({
-          url: app.globalData.urlPath1 + '/app/orders',
+          url: app.globalData.urlPath1 + '/app/orders?type=2',
           method: 'get',
           header: {
             'token': wx.getStorageSync("token"),
@@ -61,44 +60,6 @@ Page({
           }
         })
       })
-
-
-    // wx.request({
-    //   url: app.globalData.urlPath1 +'/app/orders/receive',
-    //   method:'post',
-    //   header: {
-    //     'content-type': "application/x-www-form-urlencoded",
-    //     'token': wx.getStorageSync("token"),
-    //   },
-    //   data: {
-    //     'sid': wx.getStorageSync("sid"),
-    //     id: e.currentTarget.dataset.info.orderInfo.id
-    //   },
-    //   success(res){
-    //     wx.showLoading({
-    //       title: '收货成功',
-    //     })
-
-    //     setTimeout(function () {
-    //       wx.hideLoading()
-    //     }, 500)
-    //     console.log(res)
-    //     wx.request({
-    //       url: app.globalData.urlPath1 + '/app/orders',
-    //       method: 'get',
-    //       header: {
-    //         'token': wx.getStorageSync("token"),
-    //         'authorization': wx.getStorageSync("sid")
-    //       },
-    //       success(res) {
-    //         console.log(res.data.result)
-    //         that.setData({
-    //           orderList: res.data.result
-    //         })
-    //       }
-    //     })
-    //   }
-    // })
   },
   close1: function () {
     this.setData({
@@ -147,70 +108,6 @@ Page({
     wx.navigateTo({
       url: '../waitPay/waitPay?info=' + info,
     })
-    
-    // var that=this
-    // console.log(e,'待付款---立即支付')
-    // var pay_goods = e.currentTarget.dataset.msg
-    // console.log(pay_goods,'1111111111',pay_goods.goodsInfo.name,pay_goods.orderInfo.id,pay_goods.orderInfo.payPrice)
-
-    // util.post(
-    //   api.urlPath1+'/app/orders/pay',
-    //   {
-    //     'sid': wx.getStorageSync("sid"),
-    //     orderNumber:e.currentTarget.dataset.msg.orderInfo.orderNumber
-    //   }
-    //   ).then((res)=>{
-    //     wx.requestPayment({
-    //       timeStamp: res.data.result.timestamp,
-    //       nonceStr: res.data.result.noncestr,
-    //       package: res.data.result.package,
-    //       signType: 'MD5',
-    //       paySign: res.data.result.sign,
-    //       success(res) {
-    //         console.log(res)
-    //       },
-    //       fail(res) {
-    //         console.log(res)
-    //       },
-    //       complete(res) {
-    //         console.log(res)
-    //       }
-    //     })
-//     )
-
-
-    // wx.request({
-    //   url: app.globalData.urlPath1 +'/app/orders/pay',
-    //   method:'post',
-    //   header: {
-    //     'content-type': "application/x-www-form-urlencoded",
-    //     'token': wx.getStorageSync("token"),
-    //   },
-    //   data:{
-    //     'sid': wx.getStorageSync("sid"),
-    //     orderNumber:e.currentTarget.dataset.msg.orderInfo.orderNumber
-    //   },
-    //   success(res){
-    //     console.log(res)
-    //     wx.requestPayment({
-    //       timeStamp: res.data.result.timestamp,
-    //       nonceStr: res.data.result.noncestr,
-    //       package: res.data.result.package,
-    //       signType: 'MD5',
-    //       paySign: res.data.result.sign,
-    //       success(res) {
-    //         console.log(res)
-           
-    //       },
-    //       fail(res) {
-    //         console.log(res)
-    //       },
-    //       complete(res) {
-    //         console.log(res)
-    //       }
-    //     })
-    //   }
-    // })
   },
   tzz: function(e) {
     console.log(e)
@@ -267,7 +164,7 @@ Page({
       }
       ).then((res)=>{
         wx.request({
-          url: app.globalData.urlPath1 + '/app/orders',
+          url: app.globalData.urlPath1 + '/app/orders?type=2',
           method: 'get',
           header: {
             'token': wx.getStorageSync("token"),
@@ -284,39 +181,7 @@ Page({
           onshow1:false
         })
       })
-    // wx.request({
-    //   url: app.globalData.urlPath1 + '/app/orders/cancel',
-    //   method: 'post',
-    //   data: {
-    //     id: that.data.id,
-    //     resson: that.data.text,
-    //     'sid': wx.getStorageSync("sid")
-    //   },
-    //   header: {
-    //     'content-type': "application/x-www-form-urlencoded",
-    //     'token': wx.getStorageSync("token"),
-    //   },
-    //   success(res) {
-    //     console.log(res)
-    //     wx.request({
-    //       url: app.globalData.urlPath1 + '/app/orders',
-    //       method: 'get',
-    //       header: {
-    //         'token': wx.getStorageSync("token"),
-    //         'authorization': wx.getStorageSync("sid")
-    //       },
-    //       success(res) {
-    //         console.log(res.data.result)
-    //         that.setData({
-    //           orderList: res.data.result
-    //         })
-    //       }
-    //     })
-    //     that.setData({
-    //       onshow1:false
-    //     })
-    //    }
-    // })
+    
   },
   tz: function(e) {
     wx.navigateTo({
@@ -362,7 +227,7 @@ Page({
   onShow: function() {
     var that = this
     util.get(api.urlPath1 + '/app/orders?type=2').then((res)=>{
-      console.log(res,'大夫矿商品')
+      console.log(res,'待支付商品列表')
       if (res.data.result[0].length > 0) {
         that.setData({
           show: false
@@ -377,45 +242,11 @@ Page({
         wait_length:res.data.result[0].length
       })
     })
-    // wx.request({
-    //   url: app.globalData.urlPath1 + '/app/orders',
-    //   method: 'get',
-    //   header: {
-    //     'token': wx.getStorageSync("token"),
-    //     'authorization': wx.getStorageSync("sid")
-    //   },
-    //   success(res) {
-    //     console.log(res.data,'代付款商品信息')
-    //     if (res.data.result[0].length > 0) {
-    //       that.setData({
-    //         show: false
-    //       })
-    //     } else {
-    //       that.setData({
-    //         show: true
-    //       })
-    //     }
-    //     that.setData({
-    //       orderList: res.data.result,
-    //       wait_length:res.data.result[0].length
-    //     })
-    //   }
-    // })
+    
     util.get(api.urlPath1 + '/app/goods/recommend').then((res)=>{
       that.setData({
         forucontent: res.data.result
       })
     })
-    // wx.request({
-    //   url: app.globalData.urlPath1 + '/app/goods/recommend',
-    //   data: {},
-    //   success(res) {
-    //     console.log(res)
-    //     that.setData({
-    //       forucontent: res.data.result
-    //     })
-    //     console.log(that.data.forucontent)
-    //   }
-    // })
   }
 })

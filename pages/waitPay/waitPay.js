@@ -33,23 +33,11 @@ Page({
     var that=this
     console.log(that.data.info,e,'提交订单--待付款',that.data.detailgoods)
     console.log(that.data.detailgoods[0].skuId)
-    // let skuarr = []
-    // let info = {
-    //   id:that.data.detailgoods[0].skuId,
-    //   number: that.data.detailgoods[0].number,
-    //   remark: that.data.bzmsg,
-    //   price: that.data.detailgoods[0].price
-    // }
-    // skuarr.push(info)
-    console.log(that.data.orderNum,'数量')
+    // console.log(that.data.orderNum,'订单编号')
      util.post(
       api.urlPath1+ '/app/orders/pay',
       {
-        // skuList: JSON.stringify(skuarr),
-        // addressId: that.data.dz.id,
-        // paymentPlatform: 0,
         type: 2,
-        // openid: wx.getStorageSync("openid"),
         'sid': wx.getStorageSync("sid"),
         orderNumber:that.data.orderNum
       }
