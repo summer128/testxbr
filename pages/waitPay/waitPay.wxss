@@ -583,26 +583,7 @@ page{
 }
 
 
-/* 商品信息 */
-.goods_ordermsg{
-  width: 100%;
-  padding: 20rpx;
-  border-radius: 20rpx;
-  margin-top: 20rpx;
-  background: #fff;
-}
-.money_num{
-  margin-right: 20rpx;
-}
-.goods_money{
-  display: flex;
-  justify-content: space-between;
-  font-size: 28rpx;
-  font-family: PingFang SC;
-  font-weight: 400;
-  color: rgba(51,51,51,1);
-  padding:6rpx 16rpx;
-}
+
 
 
 /* 底部 */

@@ -108,11 +108,18 @@ function getTimeLeft(datetimeTo) {
   return days + "天" + hours + "时" + minutes + "分" + seconds + "秒"
 }
 
+// 手机号中间四位加密
+function toHide(array) {
+  var phone = array.substring(0, 3) + '****' + array.substring(7);
+  return phone;
+}
+
 module.exports = {
   getTimeLeft: getTimeLeft,
   request,
   get,
   post,
   put,
-  deletes
+  deletes,
+  toHide
 }

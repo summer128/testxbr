@@ -1,8 +1,5 @@
-<!-- <view class="status-bar" style="height:{{statusBarHeight}}px"></view>
-<view class="status-bar1" style="position: fixed;top: {{statusBarHeight}}px;">确认订单</view>
-<image src="https://pic.shanyide.cn/xiaochengxu8.png" class="headimg" bindtap="back"></image> -->
 <view class="background">
-    <view class="order_head" bindtap="dztz">
+    <view class="order_head" bindtap="address_fill" wx:if="{{nullplace === true}}">
         <view class="box1">
             <view class="view1">默认</view>
             <view class="d_dz">{{dzlist.province}}</view>
@@ -21,6 +18,22 @@
           <image src="https://pic.shanyide.cn/xiaochengxu37.png"></image>
         </view>
     </view>
+    <!-- 点击填写地址弹框取消 -->
+    <view class="null_filladdress" bindtap="address_fill" wx:if="{{nullplace === false}}">
+        <view class="null_receiptaddress">收货地址</view>
+        <view class="null_rightarrow">
+            <image src="https://pic.shanyide.cn/xiaochengxu6.png"></image>
+        </view>
+        <view class="null_altertext">未选择收货地址</view>
+        <view class="null_bottonicon">
+            <image src="https://pic.shanyide.cn/xiaochengxu37.png"></image>
+        </view>
+    </view>
+   
+
+
+
+
     <view class="order_details">
         <view class="details_box">
             <view class="shop_img">

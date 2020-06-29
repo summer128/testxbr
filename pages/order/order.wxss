@@ -212,6 +212,7 @@
 .num_title{
   float: left;
   margin-top: 20rpx;
+  font-size: 32rpx;
 }
 .remark{
   width: 92%;
@@ -221,6 +222,8 @@
 .remark_title{
   float: left;
   margin-right: 20rpx;
+  font-size: 32rpx;
+  margin-top: 4rpx;
 }
 .remark_int{
   float: left;
@@ -542,3 +545,4 @@
   color: #fff;
  font-size:36rpx;
 }
+

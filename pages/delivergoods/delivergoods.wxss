@@ -1,5 +1,8 @@
 @import "../../headHandler/headHandler";
+page{
+  background-color: #f3f5f7;
 
+}
 
 /* 
 ///////////////////////////////////////////////////////////////////////////// */
@@ -180,7 +183,8 @@
 .box1{
   width: 100%;
   background-color:#f3f5f7;
-  margin-top: 150rpx;
+  margin-top: 112rpx;
+  
 }
 .box2{
   width: 100%;

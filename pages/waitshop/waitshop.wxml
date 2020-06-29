@@ -1,7 +1,3 @@
-
-<!-- <view class="status-bar" style="height:{{statusBarHeight}}px"></view>
-<view class="status-bar1" style="position: fixed;top: {{statusBarHeight}}px;">全部订单</view>
-<image src="https://pic.shanyide.cn/xiaochengxu8.png" class="headimg" bindtap="back"></image> -->
 <view class="background">
 <view class="my_order">
   <view wx:for="{{list}}" wx:key="index" class="boxx">

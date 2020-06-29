@@ -17,7 +17,8 @@ Page({
     bz:null,///备注
     countprice1:null,//加上运费的总价
     tj_product:null , //提交的商品信息
-    wait_goodsdetail:{}
+    wait_goodsdetail:{},
+    nullplace:false
   },
   back: function () {
     wx.navigateBack({
@@ -154,8 +155,15 @@ pay:function(){
      
       /////////////////获取默认地址///////////////////
     util.get(api.urlPath1+'/app/address/default').then((res)=>{
+      
       if(res.data.result.id){
+        that.setData({
+          nullplace:true
+        })
       }else{
+        that.setData({
+          nullplace:false
+        })
           console.log('22222','填写信息地址')
           wx.showModal({
             title: '提示',
@@ -166,9 +174,9 @@ pay:function(){
                   url: '../me/shippingAddress/shippingAddress',
                 })
               }else{
-                wx.navigateTo({
-                  url: '../me/shippingAddress/shippingAddress',
-                })
+                // wx.navigateTo({
+                //   url: '../me/shippingAddress/shippingAddress',
+                // })
               }
             }
           })
@@ -176,6 +184,7 @@ pay:function(){
       that.setData({
         dzlist:res.data.result
       })
+      console.log(typeof that.data.dzlist)
     }).catch((errMsg)=>{
       console.log(errMsg,'获取默认地址')
     })

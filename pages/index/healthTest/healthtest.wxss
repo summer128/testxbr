@@ -14,7 +14,7 @@
 .jion_nums{
   width: 155rpx;
   height: 58rpx;
-  background: #01CB9A;
+  background: linear-gradient(-90deg,rgba(126,210,19,1),rgba(111,222,38,1));
   position: absolute;
   right: 0;
   bottom: 20rpx;

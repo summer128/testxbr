@@ -1,5 +1,5 @@
 .background{
-  height: 1180rpx;
+  /* height: 1180rpx; */
   /* margin-top: 200rpx; */
 }
 .my_yue{

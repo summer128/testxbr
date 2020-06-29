@@ -1,9 +1,3 @@
-/* @import "../../commons/commons.wxss"; */
-.background{
-  top: 0;
-}
-
-
 .bindingPhone{
   position: absolute;
   top: 140rpx;
@@ -16,7 +10,6 @@
   text-align: center;
   color: #fff;
   font-size: 36rpx;
-  /* line-height: 88rpx; */
 }
 .user_box{
   width: 100%;

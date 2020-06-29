@@ -1,9 +1,7 @@
-<!-- <view class="headback">待付款</view>
-<image src="https://pic.shanyide.cn/xiaochengxu8.png" class="headimg" bindtap="back"></image> -->
 <view class="waitpay_container">
     <view class="wait_box">
         <view class="head1">
-            <image src="https://pic.shanyide.cn/xiaochengxu30.png"></image>
+            <image src="https://pic.shanyide.cn/wx_wait_detail_three.png"></image>
             <view class="head1_name">等待付款</view>
             <view class="head1_con">剩余:{{timeLeft}}</view>
         </view>
@@ -11,7 +9,7 @@
             <view class="col">
                 <view class="user_dz">{{dz.region}}</view>
                 <view class="user_xx">{{dz.detail}}</view>
-                <view class="user_phone">{{dz.receiver}} {{dz.phone}}</view>
+                <view class="user_phone">{{dz.receiver}} {{phonenums}}</view>
             </view>
             <image src="https://pic.shanyide.cn/xiaochengxu6.png"></image>
         </view>
@@ -57,17 +55,6 @@
                 <view class="money_num">￥{{paynumbers}}</view>
             </view>
         </view>
-        <!-- <view class="box11">
-            <view class="box12">
-                <view>商品金额</view>
-                <view class="fr">￥{{good_orderdetail.payPrice}}</view>
-            </view>
-            <view class="box13">
-                <view>运费</view>
-                <view class="fr">+￥{{good_orderdetail.postage}}</view>
-            </view>
-            <view class="box14">实付金额：￥{{paynumbers}}</view>
-        </view> -->
         <view class="box15">
             <view class="box17">订单信息</view>
             <view class="box18">

@@ -85,6 +85,7 @@
 } 
 page{
   letter-spacing: 2rpx;
+  background: #f3f5f7;
 }
 .hide{
   display: none;
@@ -249,7 +250,7 @@ page{
   margin-top: 100rpx;
 }
 .background{
-  background-color: #f3f5f7;
+  /* background-color: #f3f5f7; */
   overflow-x: hidden;
 }
 
@@ -320,7 +321,6 @@ page{
 .head1 image{
   width: 100%;
   height: 100%;
-  border-radius: 40rpx 40rpx 0 0;
 }
 .head1_name{
   position: relative;
@@ -565,4 +565,72 @@ page{
   flex: 1;
   height: 30px;
   justify-content: center;
+}
+
+/* 取消填写地址 */
+.null_filladdress{
+  width: 100% - 60rpx;
+  height: 80rpx;
+  padding:10rpx 22rpx;
+  font-size: 26rpx;
+  background: white;
+  line-height: 80rpx;
+  position: relative;
+}
+.null_receiptaddress{
+  width: 128rpx;
+  height: 80rpx;
+  font-size: 32rpx;
+  font-weight: 400;
+  float: left;
+  margin-right: 14rpx;
+}
+.null_rightarrow{
+  width: 30rpx;
+  height: 80rpx;
+  float: right;
+}
+.null_rightarrow image{
+  width: 14rpx;
+  height: 24rpx;
+}
+.null_altertext{
+  color: #999999;
+}
+.null_bottonicon{
+  width: 100%;
+  height: 6rpx;
+  position: absolute;
+  left: 0;
+  bottom: 36rpx;
+}
+.null_bottonicon image{
+  width: 100%;
+  height: 100%;
+}
+
+/* 商品信息 */
+.goods_ordermsg{
+  width: 100%;
+  padding: 20rpx;
+  border-radius: 20rpx;
+  margin-top: 20rpx;
+  background: #fff;
+}
+.money_num{
+  margin-right: 20rpx;
+}
+.goods_money{
+  display: flex;
+  justify-content: space-between;
+  font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: rgba(51,51,51,1);
+  padding:6rpx 16rpx;
+}
+/* 全局 */
+.contianer{
+  width: 100%;
+  overflow-x: hidden;
 }

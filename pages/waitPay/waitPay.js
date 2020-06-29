@@ -1,4 +1,3 @@
-
 const app = getApp()
 const util = require('../../utils/util')
 const api = require('../../config/api')
@@ -152,13 +151,15 @@ Page({
       api.urlPath1 + '/app/orders/'+goodsid
       ).then((res)=>{
         console.log(res,'商品详情')
+        //等待付款----商品详细信息
         let good_detail = res.data.result.orderSkuList
+        //等待付款----商品实付价格-下单时间
         let good_orderdetail = res.data.result.orderInfo
         console.log(res.data.result.orderSkuList[0].number,good_orderdetail.orderNumber)
+        // 商品是否包邮
         let Delivery = res.data.result.isFreeDelivery
+        // 用户号是否包邮
         let signleYiyuanActivityGoods = res.data.result.signleYiyuanActivityGoods
-        // let Delivery = res.data.result.isFreeDelivery ? 0 : 10
-        // let signleYiyuanActivityGoods = res.data.result.signleYiyuanActivityGoods ? 0 : 10
         that.setData({
           orderNum:good_orderdetail.orderNumber
         })
@@ -203,8 +204,10 @@ Page({
     
     util.get(api.urlPath1 +'/app/address/default').then((res)=>{
       console.log(res,'地址信息')
+      let phonenums = util.toHide(res.data.result.phone)
       that.setData({
-        dz:res.data.result
+        dz:res.data.result,
+        phonenums:phonenums
       })
     })
   },

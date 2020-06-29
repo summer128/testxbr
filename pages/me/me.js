@@ -191,7 +191,7 @@ Page({
     var that=this
     // 待支付上面的数量
     // 获取我的待支付，待收货，代发货的数量
-    util.get(api.urlPath1+'/app/users').then((res)=>{
+    util.get(api.urlPath1+'/app/users?type=2').then((res)=>{
       // console.log('待支付等三个数量',res)
       if(res.data.result.paid == undefined && res.data.result.delivering == undefined){
         // console.log('没有那几个参数')

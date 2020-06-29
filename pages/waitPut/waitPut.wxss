@@ -1,8 +1,8 @@
 @import "../../headHandler/headHandler";
+page{
+  background-color: #f3f5f7;
 
-
-/* 
-///////////////////////////////////////////////////////////////////////////// */
+}
 .head1{
   width: 100%;
   height: 196rpx;
@@ -10,23 +10,18 @@
 .head1 image{
   width: 100%;
   height: 100%;
+  border-radius: 24rpx 24rpx 0 0;
 }
 .head1_name{
-  /* position: absolute;
-  left: 22.5rpx;
-  top: 30rpx; */
   position: relative;
   left: 22.5rpx;
   top: -200rpx;
   font-size:42rpx;
   font-family:PingFang SC;
-  font-weight:bold;
   color:rgba(255,255,255,1);
+  padding-top: 14rpx;
 }
 .head1_con{
-  /* position: absolute;
-  left: 22.5rpx;
-  top: 100rpx; */
   position: relative;
   left: 22.5rpx;
   top: -180rpx;
@@ -186,13 +181,13 @@
 .box1{
   width: 100%;
   background-color:#f3f5f7;
-  margin-top: 150rpx;
+  margin-top: 112rpx;
 }
 .box2{
   width: 100%;
-  height: 430rpx;
   background:rgba(255,255,255,1);
   border-radius:20rpx;
+  padding: 20rpx 0;
 }
 .box3{
   width: 94%;

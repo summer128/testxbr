@@ -1,9 +1,5 @@
-
-<!-- <view class="status-bar" style="height:{{statusBarHeight}}px"></view>
-<view class="status-bar1" style="position: fixed;top: {{statusBarHeight}}px;">确认订单</view>
-<image src="https://pic.shanyide.cn/xiaochengxu8.png" class="headimg" bindtap="back"></image> -->
 <view class="background">
-    <view class="order_head" bindtap="change_address">
+    <view class="order_head" bindtap="change_address" wx:if="{{nullplace === true}}">
         <view class="box1">
             <view class="view1">默认</view>
             <view class="d_dz">{{dzlist.province}}</view>
@@ -22,6 +18,18 @@
           <image src="https://pic.shanyide.cn/xiaochengxu37.png"></image>
         </view>
     </view>
+     <!-- 点击填写地址弹框取消 -->
+     <view class="null_filladdress" bindtap="change_address" wx:if="{{nullplace === false}}">
+        <view class="null_receiptaddress">收货地址</view>
+        <view class="null_rightarrow">
+            <image src="https://pic.shanyide.cn/xiaochengxu6.png"></image>
+        </view>
+        <view class="null_altertext">未选择收货地址</view>
+        <view class="null_bottonicon">
+            <image src="https://pic.shanyide.cn/xiaochengxu37.png"></image>
+        </view>
+    </view>
+
     <view class="order_details" wx:for="{{shoplist}}" wx:key="index">
         <view class="details_box">
             <view class="shop_img">
@@ -47,7 +55,6 @@
             <view class="name1">商品金额</view>
             <view class="price1">￥{{countprice}}</view>
         </view>
-       
             <view class="shop_price">
             <view class="name1">运费</view>
             <view class="price1 price2">+￥{{postage}}</view>

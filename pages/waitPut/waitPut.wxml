@@ -1,173 +1,144 @@
-<!-- <view class="headback">待收货</view>
-<image src="https://pic.shanyide.cn/xiaochengxu8.png" class="headimg" bindtap="back"></image> -->
-<view class="head1">
-    <image src="https://pic.shanyide.cn/xiaochengxu1.png"></image>
-    <view class="head1_name">待收货</view>
-    <view class="head1_con">请耐心等待：24小时发货</view>
-</view>
-<view class="card">
-        <view class="col">
-            <view class="user_dz">{{dz.region}}</view>
-            <view class="user_xx">{{dz.detail}}</view>
-            <view class="user_phone">{{dz.receiver}} {{dz.phone}}</view>
-        </view>
-        <image src="https://pic.shanyide.cn/xiaochengxu6.png"></image>
-</view>
-
-
-<view class="box1">
-      <view class="box2">
-          <view class="box3">
-              <view class="box4">
-                  <image src="{{info.goodsPictureList[0]}}"></image>
-                  <view class="box7">
-                      <view class="t1">{{info.goodsInfo.name}}</view>
-                      <view class="box8">
-                          <view>颜色:黑色</view>
-                          <view>x{{info.goodsPictureList.length}}</view>
+<view class="contianer">
+    <view class="head1">
+        <image src="https://pic.shanyide.cn/xiaochengxu1.png"></image>
+        <view class="head1_name">待收货</view>
+        <view class="head1_con">请耐心等待：24小时发货</view>
+    </view>
+    <view class="card">
+            <view class="col">
+                <view class="user_dz">{{dz.region}}</view>
+                <view class="user_xx">{{dz.detail}}</view>
+                <view class="user_phone">{{dz.receiver}} {{dz.phone}}</view>
+            </view>
+            <image src="https://pic.shanyide.cn/xiaochengxu6.png"></image>
+    </view>
+    <view class="box1">
+          <view class="box2">
+              <view class="box3">
+                  <view class="box4">
+                      <image src="{{info.goodsPictureList[0]}}"></image>
+                      <view class="box7">
+                          <view class="t1">{{info.goodsInfo.name}}</view>
+                          <view class="box8">
+                              <view>颜色:黑色</view>
+                              <view>x{{info.goodsPictureList.length}}</view>
+                          </view>
+                          <view class="t2">￥{{info.orderInfo.payPrice}}</view>
                       </view>
-                      <view class="t2">￥{{info.orderInfo.payPrice}}</view>
+                  </view>
+                  <view class="box6">
+                      <view class="t3">订单备注</view>
+                      <input placeholder="填写之前建议和商家协商一致" placeholder-style="color:#999999;font-size:26rpx;" class="remark_int"></input>
                   </view>
               </view>
-              <view class="box5">
-                    <view class="t3">数量</view>
-                    <view class="t4">{{info.goodsPictureList.length}}</view>
-              </view>
-              <view class="box6">
-                  <view class="t3">订单备注</view>
-                  <input placeholder="填写之前建议和商家协商一致" placeholder-style="color:#999999;font-size:26rpx;" class="remark_int"></input>
-              </view>
           </view>
-      </view>
-      <view class="box9" bindtap="service">
-          <view class="box10">
-                <image src="https://pic.shanyide.cn/xiaochengxu31.png"></image>
-                <view>联系客服</view>
-          </view> 
-      </view>
-      <view class="box11">
-          <view class="box12">
-              <view>商品金额</view>
-              <view class="fr">￥{{info.orderInfo.payPrice}}</view>
+          <view class="box9" bindtap="service">
+              <view class="box10">
+                    <image src="https://pic.shanyide.cn/xiaochengxu31.png"></image>
+                    <view>联系客服</view>
+              </view> 
           </view>
-          <view class="box13">
-              <view>运费</view>
-              <view class="fr">+￥{{info.orderInfo.discountPrice}}</view>
-          </view>
-          <view class="box14">实付金额：￥{{info.orderInfo.totalPrice}}</view>
-      </view>
-      <view class="box15">
-        <view class="box17">订单信息</view>
-        <view class="box18">
-            <text>订单编号：{{info.orderInfo.orderNumber}}</text>
-            <text class="copy" bindtap="orderNum_copy">复制</text>
+          <view class="goods_ordermsg">
+            <view class="goods_money">
+                <view>商品金额</view>
+                <view class="money_num">￥{{info.orderInfo.payPrice}}</view>
+            </view>
+            <view class="goods_money">
+                <view>运费</view>
+                <view class="money_num">+￥{{info.orderInfo.discountPrice}}</view>
+            </view>
+            <view class="goods_money">
+                <view>实付金额</view>
+                <view class="money_num">￥{{info.orderInfo.totalPrice}}</view>
+            </view>
         </view>
-        <view class="box16 box19">
-            <view>下单时间:</view>
-            <view class="make_order"> {{info.orderInfo.submitTime}}</view>
+          <view class="box15">
+            <view class="box17">订单信息</view>
+            <view class="box18">
+                <text>订单编号：{{info.orderInfo.orderNumber}}</text>
+                <text class="copy" bindtap="orderNum_copy">复制</text>
+            </view>
+            <view class="box16 box19">
+                <view>下单时间:</view>
+                <view class="make_order"> {{info.orderInfo.submitTime}}</view>
+            </view>
+              <view class="box30">
+                  支付方式:
+                  <text>微信</text>
+              </view>
+              <view class="box31">
+                    <view class="box32">付款时间:</view>
+                    <view class="make_orders"> {{info.orderInfo.pendingTime}}</view>
+              </view>
+          </view>
+    </view>
+    <view class="box111" wx:if="{{onshow}}">
+        <view class="box222">
+              <view class="box333">联系我们</view>
+              <view class="box444">微信：KMSC925</view>
+              <view class="box555">电话：010-67870921</view>
+              <view class="box666">邮箱：shanyide@shanyide.cn</view>
+              <view class="box777" bindtap="hide">我知道了</view>
         </view>
-          <view class="box30">
-              支付方式:
-              <text>微信</text>
-          </view>
-          <view class="box31">
-                <view class="box32">付款时间:</view>
-                <view class="make_orders"> {{info.orderInfo.pendingTime}}</view>
-          </view>
-      </view>
-     
-      
-</view>
-
-
-<view class="box111" wx:if="{{onshow}}">
-    <view class="box222">
-          <view class="box333">联系我们</view>
-          <view class="box444">微信：KMSC925</view>
-          <view class="box555">电话：010-67870921</view>
-          <view class="box666">邮箱：shanyide@shanyide.cn</view>
-          <view class="box777" bindtap="hide">我知道了</view>
     </view>
-</view>
-
-
-<view class="boxa" wx:if="{{onshow1}}">
-    <view class="boxab">
-          <view class="boxc">
-              <view>取消订单</view>
-              <image src="https://pic.shanyide.cn/xiaochengxu42.png"></image>
-          </view>
-          <view class="boxe">请选择取消订单的原因（必选）:
-          </view>
-          <view class="boxd boxz">
-              <image src="https://pic.shanyide.cn/xiaochengxu47.png"></image>
-              <view>不想买了</view>
-          </view>
-          <view class="boxd boxz">
-              <image src="https://pic.shanyide.cn/xiaochengxu47.png"></image>
-              <view>信息填写错误，重新拍</view>
-          </view>
-          <view class="boxd boxz">
-              <image src="https://pic.shanyide.cn/xiaochengxu47.png"></image>
-              <view>卖家缺货</view>
-          </view>
-          <view class="boxd boxz">
-              <image src="https://pic.shanyide.cn/xiaochengxu47.png"></image>
-              <view>其他原因</view>
-          </view>
-          <view class="boxf" bindtap="close">关闭</view>
+    <view class="boxa" wx:if="{{onshow1}}">
+        <view class="boxab">
+              <view class="boxc">
+                  <view>取消订单</view>
+                  <image src="https://pic.shanyide.cn/xiaochengxu42.png"></image>
+              </view>
+              <view class="boxe">请选择取消订单的原因（必选）:
+              </view>
+              <view class="boxd boxz">
+                  <image src="https://pic.shanyide.cn/xiaochengxu47.png"></image>
+                  <view>不想买了</view>
+              </view>
+              <view class="boxd boxz">
+                  <image src="https://pic.shanyide.cn/xiaochengxu47.png"></image>
+                  <view>信息填写错误，重新拍</view>
+              </view>
+              <view class="boxd boxz">
+                  <image src="https://pic.shanyide.cn/xiaochengxu47.png"></image>
+                  <view>卖家缺货</view>
+              </view>
+              <view class="boxd boxz">
+                  <image src="https://pic.shanyide.cn/xiaochengxu47.png"></image>
+                  <view>其他原因</view>
+              </view>
+              <view class="boxf" bindtap="close">关闭</view>
+        </view>
     </view>
-</view>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--客服弹窗-->
-<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
-<view class="modal-dialog" wx:if="{{showModal}}">
-  <view class="modal-title">联系我们</view>
-  <view class="wx">微信:KMSC925</view>
-  <view class="phone">电话:010-67870921</view>
-  <view class="emil">邮箱:shanyide@shanyide.cn</view>
-  <view class="true" bindtap="onConfirm">我知道了</view>
-</view>
-<!--退款弹窗-->
-<view class="modal-mask1" bindtap="hideModal1" catchtouchmove="preventTouchMove" wx:if="{{showModal1}}"></view>
-<view class="modal-dialog1" wx:if="{{showModal1}}">
-    <view class="d1">退款原因</view>
-    <view class="d2">请选择退款原因（必选)：</view>
-    <view class="d3">
-        <image src="../../images/shopcart/微信图片_20200415090016.png"></image>
-    七天无理由退货</view>
-    <view class="d4">
-        <image src="../../images/shopcart/微信图片_20200415090016.png"></image>
-    大小尺寸与商品描述不符</view>
-    <view class="d5">
-        <image src="../../images/shopcart/微信图片_20200415090016.png"></image>
-    材质与商品描述不符</view>
-    <view class="d6">
-        <image src="../../images/shopcart/微信图片_20200415090016.png"></image>
-    质量问题</view>
-    <view class="d7">
-        <image src="../../images/shopcart/微信图片_20200415090016.png"></image>
-    卖家发错货</view>
-    <view class="d8" bindtap="onConfirm1">
-        <view>关闭</view>
+    <!--客服弹窗-->
+    <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+    <view class="modal-dialog" wx:if="{{showModal}}">
+      <view class="modal-title">联系我们</view>
+      <view class="wx">微信:KMSC925</view>
+      <view class="phone">电话:010-67870921</view>
+      <view class="emil">邮箱:shanyide@shanyide.cn</view>
+      <view class="true" bindtap="onConfirm">我知道了</view>
+    </view>
+    <!--退款弹窗-->
+    <view class="modal-mask1" bindtap="hideModal1" catchtouchmove="preventTouchMove" wx:if="{{showModal1}}"></view>
+    <view class="modal-dialog1" wx:if="{{showModal1}}">
+        <view class="d1">退款原因</view>
+        <view class="d2">请选择退款原因（必选)：</view>
+        <view class="d3">
+            <image src="../../images/shopcart/微信图片_20200415090016.png"></image>
+        七天无理由退货</view>
+        <view class="d4">
+            <image src="../../images/shopcart/微信图片_20200415090016.png"></image>
+        大小尺寸与商品描述不符</view>
+        <view class="d5">
+            <image src="../../images/shopcart/微信图片_20200415090016.png"></image>
+        材质与商品描述不符</view>
+        <view class="d6">
+            <image src="../../images/shopcart/微信图片_20200415090016.png"></image>
+        质量问题</view>
+        <view class="d7">
+            <image src="../../images/shopcart/微信图片_20200415090016.png"></image>
+        卖家发错货</view>
+        <view class="d8" bindtap="onConfirm1">
+            <view>关闭</view>
+        </view>
     </view>
 </view>

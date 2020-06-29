@@ -1,4 +1,6 @@
 const app = getApp()
+const util = require('../../utils/util')
+const api = require('../../config/api')
 Page({
   data: {
     onshow: false,
@@ -64,7 +66,7 @@ Page({
   },
   onShow: function () {
     var that = this
-    util.get(api.urlPath1+'/app/address/default').then(()=>{
+    util.get(api.urlPath1+'/app/address/default').then((res)=>{
       that.setData({
         dz: res.data.result
       })

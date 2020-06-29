@@ -192,7 +192,7 @@
   left: 136rpx;
 }
 .select1{
-  width: 50rpx;
+  width: 44rpx;
   height: 12rpx;
   position: absolute;
   top: 171.375rpx;
@@ -249,7 +249,7 @@
   float: left;
 }
 .sz_img1{
-  width: 50rpx;
+  width: 44rpx;
   height: 12rpx;
   float: left;
   position: absolute;

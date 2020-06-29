@@ -11,7 +11,7 @@
                 <view class="con2 con">{{item.title}}</view>
                 <view class="con3 con">{{item.intro}}</view>
                 <image src="{{item.coverUrl}}" class="con4 con" data-info="{{item}}" bindtap="tz"></image>
-                <view class="con5 con"></view>
+                <!-- <view class="con5 con"></view> -->
                 <view class="con6 con">
                     <view class="mt1">{{item.pageView}}阅读</view>
                     <button open-type="share" id="shar" data-info="{{item}}">
