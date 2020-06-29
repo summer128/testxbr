@@ -44,7 +44,7 @@ Page({
           formaltest:res.data
         })
     }).catch((errMsg)=>{
-      console.log(errMsg,'健康测试入口')
+      console.log(errMsg,'健康测试入口err')
     })
   },
   // 开始答题

@@ -4,7 +4,6 @@ const util = require('../../utils/util.js')
 const api = require('../../config/api.js')
 Page({
   addCount: function (e) {
-    console.log("刚刚您点击了加1");
     var num = this.data.num;
     // 总数量-1  
     if (num < 1000) {
@@ -16,7 +15,6 @@ Page({
     });
   },
   delCount: function (e) {
-    console.log("刚刚您点击了减1");
     var num = this.data.num;
     // 商品总数量-1
     if (num > 1) {
@@ -102,8 +100,6 @@ Page({
             wx.switchTab({
               url: '../me/me'
             })
-          } else if (res.cancel) {
-            console.log('用户点击取消')
           }
         }
       })
@@ -113,8 +109,6 @@ Page({
   // 收藏
   collect3:function(e) {
    var that = this
-
-    console.log('点击收藏获取的信息',e)
     if (wx.getStorageSync("token")){
      
       this.setData({
@@ -222,21 +216,18 @@ Page({
     })
 },
   close:function(){
-    console.log("111")
     this.setData({
       showModal2: false
     })
   },
   
   //  * 客服弹窗
-  //  */
   showDialogBtn: function () {
     this.setData({
       showModa1: true
     })
   },
   //  * 转发弹窗
-  //  */
   showDialogBtn1: function () {
     this.setData({
       showModal1: true
@@ -328,7 +319,6 @@ Page({
    */
   onLoad: function (options) {
     console.log('商城商品跳转获取数据',options)
-    console.log(options.id.length)
     // console.log('商城商品跳转获取数据11',JSON.parse(options.id).id)
     console.log( options.id.length)
     if(options.id.length == 4 || options.id.length == 3){

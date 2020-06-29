@@ -57,7 +57,6 @@ Page({
       console.log('收藏123',res)
       let pro_list = res.data.result
       if(pro_list.length <= 0){
-        console.log('2222')
         that.setData({
           displays: 'block',
           pro_display:'none'

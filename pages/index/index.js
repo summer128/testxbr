@@ -114,7 +114,6 @@ Page({
     })
   },
   onShow: function () {
-    console.log('11111111')
     var that = this
     if (wx.getStorageSync("token")){
         that.setData({
@@ -203,9 +202,6 @@ Page({
       icon: 'success',
       duration: 1000
     })
-  },
-  updateBlogs: function () {
-      console.log('1')
   },
   getUserInfo: function() {
     console.log(e)

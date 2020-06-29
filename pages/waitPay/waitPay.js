@@ -164,12 +164,10 @@ Page({
           orderNum:good_orderdetail.orderNumber
         })
         if(signleYiyuanActivityGoods === "true" || Delivery === "true"){
-          console.log('11111')
            that.setData({
              deliverymoney:0
            })
          }else{
-           console.log('4444444')
            that.setData({
              deliverymoney:10
            })

@@ -198,7 +198,6 @@ Page({
   onLoad: function (options) {
     console.log(options)
     if(options == ''){
-      console.log('空空乳液')
       this.setData({
         optioned:options
       })
@@ -215,12 +214,10 @@ Page({
       })
 
        if (click_lists.isDefault =='true') {
-        console.log('1')
         that.setData({
           flag1: true
         })
       } else{
-        console.log('2')
         that.setData({
           flag1: false
         })

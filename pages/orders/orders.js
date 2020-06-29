@@ -63,7 +63,6 @@ pay:function(){
       'sid': wx.getStorageSync("sid")
     }
     ).then((res)=>{
-      console.log(res,'取消付款=1111111111')
       var sign = wx.getStorageSync("appid")
       let orderNumber = res.data.result.orderNumber
       wx.requestPayment({
@@ -73,47 +72,24 @@ pay:function(){
         signType: 'MD5',
         paySign: res.data.result.sign,
         success(res) {
-          console.log(res,'2222222')
         },
         fail(res) {
-          console.log(res,'3333333333333')
-          console.log(that.data.shoplist,'444444444444')
           wx.navigateTo({
             url: '../waitshop/waitshop?goods_detail='+ `${JSON.stringify(that.data.wait_goodsdetail)}`,
           })
-        },
-        complete(res) {
-          console.log(res)
         }
       })
   })
 },
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
     console.log(options.signleYiyuanActivityGoods,options.isFreeDelivery,'购物车商品运费',options)
     var that=this
-    // if (options.isFreeDelivery=='true') {
-    //     console.log('1')
-    //     that.setData({
-    //       postage:0,
-    //       // countprice:0+that.data.countprice
-    //     })
-    // } else {
-    //     that.setData({
-    //     postage: 10,
-    //     // countprice:10+that.data.countprice
-    //   })
-    // }
-    
+   
     if(options.signleYiyuanActivityGoods === "true" || options.isFreeDelivery === "true"){
-      console.log('11111')
       that.setData({
         postage:0,
       })
      }else if(options.signleYiyuanActivityGoods === "false" && options.isFreeDelivery === "false"){
-       console.log('4444444')
        that.setData({
         postage:10,
       })
@@ -132,7 +108,6 @@ pay:function(){
     }
     console.log(countnum, countprice)
     if(options.isFreeDelivery=='true'){
-      console.log('1')
         that.setData({
           // countprice:countprice,
           countprice1: countprice.toFixed(2)
@@ -142,7 +117,6 @@ pay:function(){
         // countprice:countprice,
         countprice1: (countprice+10).toFixed(2)
       })
-      console.log('2')
     }
     that.setData({
       shoplist:shoplist,
@@ -164,7 +138,6 @@ pay:function(){
         that.setData({
           nullplace:false
         })
-          console.log('22222','填写信息地址')
           wx.showModal({
             title: '提示',
             content: '请您先填写地址',
@@ -173,10 +146,6 @@ pay:function(){
                 wx.navigateTo({
                   url: '../me/shippingAddress/shippingAddress',
                 })
-              }else{
-                // wx.navigateTo({
-                //   url: '../me/shippingAddress/shippingAddress',
-                // })
               }
             }
           })

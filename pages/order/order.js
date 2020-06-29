@@ -81,7 +81,6 @@ Page({
           signType: 'MD5',
           paySign: res.data.result.sign,
           success(res){
-            console.log(res)
             if (res.meeMsg = "requestPayment:ok"){
               wx.reLaunch({
                 url: '../product/success/success'
@@ -89,9 +88,6 @@ Page({
             }
           },
           fail(res){
-            console.log(res)
-          },
-          complete(res){
             console.log(res)
           }
         })
@@ -136,27 +132,21 @@ Page({
     if (this.data.num < 1000) {
       this.data.num++;
     }
-    console.log('*********', this.data.num)
     this.setData({
       num:this.data.num
     })
 },
   delCount: function (e) {
-    console.log(this.data.totalValue);
-    console.log(this.data.num)
     var xg = Number((this.data.totalValue - this.data.pricee).toFixed(2))
-    console.log(xg)
     if(this.data.num>1){
       this.setData({
         totalValue: xg
       })
     }
-   
     // 商品总数量-1
     if (this.data.num > 1) {
       this.data.num--;
     }
-    
     this.setData({
       num:this.data.num,
       
@@ -165,11 +155,8 @@ Page({
   onLoad: function (option) {
     // console.log(JSON.parse(option.msg))
     var that = this
-    // console.log(that.data.totalValue)
     var size = JSON.parse(option.msg)
-    // console.log(size)
     if (wx.getStorageSync("isFreeDelivery")==true){
-      // console.log(Number(size.goodsInfo.price))
         that.setData({
           size1: wx.getStorageSync("isFreeDelivery"),
           postage: 0,
@@ -181,7 +168,6 @@ Page({
           pricee: Number(size.goodsInfo.price)
         })
     }else{
-      // console.log(Number(size.goodsInfo.price)+10)
       that.setData({
         postage:10,
         isFreeDelivery: wx.getStorageSync("isFreeDelivery"),
@@ -192,27 +178,21 @@ Page({
         pricee: Number(size.goodsInfo.price)
       })
     }
-    // console.log(that.data.totalValue)
     var size1 = size.itemSkuList[0]
     var newskuarray=[]
     newskuarray.push(size1)
-    // console.log(newskuarray)
-    // console.log(size.itemSkuList[0].skuId)
     
     //////////////////////获取地址列表开始/////////////////////////////////
     util.get(api.urlPath1+'/app/address/default').then((res)=>{
-      console.log('收货地址',res)
       let address_id = res.data.result.id
       that.setData({
         address_id: res.data.result.id  //判断是否有收货地址，没有支付时弹框
       })
       if(res.data.result.id){
-        console.log('1',res)
         that.setData({
           nullplace:true
         })
       }else{
-        console.log('2',res)
         wx.showModal({
           title: '提示',
           content: '请您先填写地址',
@@ -245,9 +225,6 @@ Page({
     var price2=price1.toString();
     var price3=Number(price2.substring(0,price2.indexOf('.')));
     
-    // console.log(Number(that.data.size.goodsInfo.price))
-    // console.log(that.data.size1)
-
     that.setData({
       msg:msg,
       price5: price3

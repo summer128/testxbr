@@ -113,7 +113,6 @@ Page({
     // console.log(this.data.selectedproduct) //  获取选中的几条数据
     // 判断选中的数据有几条，如果一条也没有总价为0
     if(selectnums == 0) {
-      // console.log('没数据了，钱为0')
       this.setData({
         totaldss:0
       })
@@ -208,63 +207,64 @@ Page({
     // console.log(that.data.value)
     // console.log(that.data.listlist)
     // console.log(that.data.selectedproduct)
-   
-  if(this.data.goodList.length === 0 || that.data.selectedproduct.length == 0){
-    console.log('000000000000000000')
-    console.log('未选中商品')
-    wx.showToast({
-      title: '未选择任何商品',
-      icon: 'none',
-      mask: true
-    })
-  }
-    if(that.data.selectAllStatus===true){
-      console.log('888888888888')
-      for (var i = 0; i < that.data.goodList.length;i++){
-        console.log( that.data.selectedproduct)
-        util.deletes(api.urlPath1+ '/app/buyerCart/' + that.data.goodList[i].skuId).then((res)=>{
-          that.setData({
-            goodList:res.data.result,
-            selectAllStatus:false
-          })
-        })
-        that.setData({
-          totalPrices:0,
-          totalCounts:0
-        })
-      }
-    }else if(that.data.goodList.length == 0 || that.data.selectedproduct.length == 0){
-      
-      console.log('ssssssssssssssssssssss')
-      console.log('未选中商品')
-      wx.showToast({
-        title: '未选择任何商品',
-        icon: 'none',
-        mask: true
-      })
-    }
-    else{
-      console.log('777777777777')
-      for (var i = 0; i < that.data.selectedproduct.length;i++){
-            console.log( that.data.selectedproduct)
-            util.deletes(api.urlPath1+ '/app/buyerCart/' + that.data.selectedproduct[i].skuId).then((res)=>{
-              that.data.selectedproduct.splice(0,1)
-                that.setData({
-                  goodList:res.data.result,
-                  selectAllStatus:false
-                })
-            })
-            that.setData({
-              totalPrices:0,
-              totalCounts:0
+    wx.showModal({
+      title: '提示',
+      content:'确定要删除商品吗?',
+      success(res) {
+        if (res.confirm) {
+          if(that.data.goodList.length === 0 || that.data.selectedproduct.length == 0){
+            console.log('未选中商品')
+            wx.showToast({
+              title: '未选择任何商品',
+              icon: 'none',
+              mask: true
             })
+          }
+            if(that.data.selectAllStatus===true){
+              for (var i = 0; i < that.data.goodList.length;i++){
+                console.log( that.data.selectedproduct)
+                util.deletes(api.urlPath1+ '/app/buyerCart/' + that.data.goodList[i].skuId).then((res)=>{
+                  that.setData({
+                    goodList:res.data.result,
+                    selectAllStatus:false
+                  })
+                })
+                that.setData({
+                  totalPrices:0,
+                  totalCounts:0
+                })
+              }
+            }else if(that.data.goodList.length == 0 || that.data.selectedproduct.length == 0){
+              console.log('未选中商品')
+              wx.showToast({
+                title: '未选择任何商品',
+                icon: 'none',
+                mask: true
+              })
+            }
+            else{
+              for (var i = 0; i < that.data.selectedproduct.length;i++){
+                    console.log( that.data.selectedproduct)
+                    util.deletes(api.urlPath1+ '/app/buyerCart/' + that.data.selectedproduct[i].skuId).then((res)=>{
+                      that.data.selectedproduct.splice(0,1)
+                        that.setData({
+                          goodList:res.data.result,
+                          selectAllStatus:false
+                        })
+                    })
+                    that.setData({
+                      totalPrices:0,
+                      totalCounts:0
+                    })
+                }
+            }
+            that.onShow()
+        } else if (res.cancel) {
+          console.log('用户点击取消')
         }
-    }
-    that.onShow()
+      }
+    })
   },
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
     var that = this
     // 用户返回页面时全选状态为false
@@ -287,7 +287,6 @@ Page({
         totalCounts:0
       })
     }
-
     util.get(api.urlPath1 + '/app/goods/recommend').then((res)=>{
       that.setData({
         forucontent: res.data.result
@@ -398,7 +397,6 @@ Page({
    */
   all_select(){
     for (var i = 0; i < this.data.goodList.length; i++) {
-      // console.log(this.data.goodList.length,'33333333333333333333',this.data.selectAllStatus)
       console.log('点击全选的状态',this.data.goodList[i].checked)
       this.data.goodList[i].checked = this.data.selectAllStatus;            // 改变所有商品状态
     }
