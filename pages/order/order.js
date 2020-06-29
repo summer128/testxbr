@@ -122,7 +122,7 @@ Page({
     console.log(this.data.totalValue)
       ///////包邮//////////
       // this.data.totalValue+=this.data.pricee
-      var xg = Number((this.data.totalValue + this.data.pricee).toFixed(2))
+      var xg = (Number(this.data.totalValue ) + this.data.pricee).toFixed(2)
       console.log(xg)
       this.setData({
         totalValue:xg
@@ -153,31 +153,63 @@ Page({
     });
   },
   onLoad: function (option) {
-    // console.log(JSON.parse(option.msg))
     var that = this
     var size = JSON.parse(option.msg)
-    if (wx.getStorageSync("isFreeDelivery")==true){
-        that.setData({
-          size1: wx.getStorageSync("isFreeDelivery"),
-          postage: 0,
-          isFreeDelivery: wx.getStorageSync("isFreeDelivery"),
-          size: size,
-          totalValue: Number(size.goodsInfo.price),
-          totalprice1: Number(size.goodsInfo.price),
-          totalprice2: Number(size.goodsInfo.price),
-          pricee: Number(size.goodsInfo.price)
-        })
-    }else{
+    console.log(option,'order包邮',option.signleYiyuanActivityGoods,option.isFreeDelivery,size.goodsInfo.price,that.data.postage)
+    console.log(JSON.parse(option.msg))
+    // var totalvalue = Number(size.goodsInfo.price + that.data.postage)  //合计商品金额+运费
+    if(option.signleYiyuanActivityGoods === "true" || option.isFreeDelivery === "true"){
+      console.log('111111')
       that.setData({
-        postage:10,
-        isFreeDelivery: wx.getStorageSync("isFreeDelivery"),
-        size: size,
-        totalValue: Number(size.goodsInfo.price)+10,
+        postage:0
+      })
+      var totalvue =  (Number(size.goodsInfo.price) + that.data.postage).toFixed(2)
+      console.log(typeof totalvue,that.data.postage)
+      that.setData({
+        totalValue:totalvue,
         totalprice1: Number(size.goodsInfo.price),
         totalprice2: Number(size.goodsInfo.price),
         pricee: Number(size.goodsInfo.price)
       })
-    }
+     }else if(option.signleYiyuanActivityGoods === "false" && option.isFreeDelivery === "false"){
+       console.log('222222')
+       that.setData({
+        postage:10
+      })
+      var totalvue =  (Number(size.goodsInfo.price) + that.data.postage).toFixed(2)
+      console.log(totalvue,that.data.postage)
+      that.setData({
+        totalValue:totalvue,
+        totalprice1: Number(size.goodsInfo.price),
+        totalprice2: Number(size.goodsInfo.price),
+        pricee: Number(size.goodsInfo.price)
+      })
+     }
+     console.log(that.data.postage)
+    
+    
+    // if (wx.getStorageSync("isFreeDelivery")==true){
+    //     that.setData({
+    //       size1: wx.getStorageSync("isFreeDelivery"),
+    //       // postage: 0,
+    //       isFreeDelivery: wx.getStorageSync("isFreeDelivery"),
+    //       size: size,
+    //       totalValue: Number(size.goodsInfo.price),
+    //       totalprice1: Number(size.goodsInfo.price),
+    //       totalprice2: Number(size.goodsInfo.price),
+    //       pricee: Number(size.goodsInfo.price)
+    //     })
+    // }else{
+    //   that.setData({
+    //     // postage:10,
+    //     isFreeDelivery: wx.getStorageSync("isFreeDelivery"),
+    //     size: size,
+    //     totalValue: Number(size.goodsInfo.price)+10,
+    //     totalprice1: Number(size.goodsInfo.price),
+    //     totalprice2: Number(size.goodsInfo.price),
+    //     pricee: Number(size.goodsInfo.price)
+    //   })
+    // }
     var size1 = size.itemSkuList[0]
     var newskuarray=[]
     newskuarray.push(size1)
@@ -221,6 +253,7 @@ Page({
     })
     ///////////////////////获取地址列表结束////////////////////////////////
     var msg = JSON.parse(option.msg)
+    console.log(msg,'详情商品')
     var price1 = msg.goodsInfo.price;
     var price2=price1.toString();
     var price3=Number(price2.substring(0,price2.indexOf('.')));

@@ -181,17 +181,17 @@
   
 /*数值*/  
 .stepper .number {  
-    width: 30px;  
-    height: 30px;  
+    width: 50rpx;  
+    height: 30rpx;  
     float: left;  
      margin: 0 auto;   
     text-align: center;  
-    font-size: 16px;  
+    font-size: 26rpx;  
     color: #000000;
     border:1rpx solid rgba(204,204,204,1);
     border-radius:5rpx;
     opacity: 0.5;
-    /*给中间的input设置左右边框即可*/  
+    margin-top: 10rpx;
 }  
 .number{
   border: 1rpx solid #818284;

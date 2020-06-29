@@ -258,7 +258,8 @@ page {
   /* border-bottom: 1px solid #ccc; */
 }
 .good:first-child {
-  margin-top: 20rpx;
+  /* margin-top: 20rpx; */
+  margin: 20rpx 0;
 }
 .good:last-child {
   border-bottom: none;

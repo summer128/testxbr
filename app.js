@@ -193,12 +193,12 @@ App({
 
   globalData: {
     userInfo: [{ id: "" }],
-    urlPath:  "http://test.shanyide.cn",
-    urlPath1: "https://test.shanyide.cn:5555/api/v1",
-    urlToken: "http://test.shanyide.cn/api/cash/v2",
-    urlPath2: "http://test.shanyide.cn/api/v2",  
-    urlPath3: "http://test.shanyide.cn/api/v3",
-    urlPath4: "http://test.shanyide.cn/api/cash/v4",
+    // urlPath:  "http://test.shanyide.cn",
+    // urlPath1: "https://test.shanyide.cn:5555/api/v1",
+    // urlToken: "http://test.shanyide.cn/api/cash/v2",
+    // urlPath2: "http://test.shanyide.cn/api/v2",  
+    // urlPath3: "http://test.shanyide.cn/api/v3",
+    // urlPath4: "http://test.shanyide.cn/api/cash/v4",
     statusBarHeight: wx.getSystemInfoSync()['statusBarHeight'],
     personal: null,
     secret: "f9311d84453c88e04efd1d53767fc2f6",

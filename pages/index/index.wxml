@@ -31,7 +31,7 @@
 				<view class="yellow"></view>
 			</view>
 			<view class="health_refresh" bindtap="refresh">
-				<image class="{{isChecked?'':'health_refresh_again'}}" src="/images/shop/healthRefresh.png"></image>
+				<image class="{{isChecked?'':'health_refresh_again'}}" src="https://pic.shanyide.cn/kemu-vid5p-1592965574443"></image>
 			</view>
 			<view class="health_title">
 				希百瑞小课堂

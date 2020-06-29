@@ -99,14 +99,17 @@ Page({
     console.log(e)
     app.globalData.userInfo = e.detail
     if (!wx.getStorageSync("token")){
+      console.log('555555')
         this.setData({
-            showindex:true
+            showindex:true,
+            show:true
         })
     }else{
-      console.log(e.detail.userInfo.avatarUrl)
+      console.log(e.detail.userInfo.avatarUrl,'3333333')
       this.setData({
         avatarUrl: e.detail.userInfo.avatarUrl,
-        username: e.detail.userInfo.nickName
+        username: e.detail.userInfo.nickName,
+        show:false
       })
       wx.setStorageSync("userInfo", e.detail.userInfo)
     }

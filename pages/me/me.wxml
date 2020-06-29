@@ -1,13 +1,12 @@
-<!-- 
-<view class="status-bar" style="height:{{statusBarHeight}}px"></view>
-<view class="status-bar1" style="position: fixed;top: {{statusBarHeight}}px;">我的</view> -->
 <view class="background">
     <view class="user_box">
-          <view class="user_head" wx:if="{{show}}">
-              <image src="{{avatarUrl}}" wx:if="{{show}}"></image>
+          <view class="user_head" wx:if="{{show === false}}">
+              <image src="{{avatarUrl}}"></image>
           </view>
-          
-          <button class="login" open-type="getUserInfo" bindgetuserinfo="onGotUserInfo" wx:if="{{show}}">{{username}}</button>
+          <view class="user_head" wx:if="{{show ===  true}}">
+            <image src="https://pic.shanyide.cn/kemu-w1tp1-1593428872640" ></image>
+        </view>
+          <button class="login" open-type="getUserInfo" bindgetuserinfo="onGotUserInfo">{{username}}</button>
           <view class="user_yue" bindtap="balance">
               <view class="yue_price">0.00</view>
               <view class="yue_name">账户余额（元）</view>

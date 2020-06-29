@@ -144,7 +144,7 @@ Page({
     })
   },
   collet:function(e){
-      console.log(e)
+    console.log(e)
   },
   login:function(){
     if (!wx.getStorageSync("token")){

@@ -368,14 +368,15 @@ Page({
     if (wx.getStorageSync("token") && wx.getStorageSync("userInfo")){
       var model = JSON.stringify(e.currentTarget.dataset.msg)
       var size = JSON.stringify(e.currentTarget.dataset.size)
-      console.log(that.data.msg.itemSkuList[0].skuId)
-      console.log(that.data.num)
+      // console.log(that.data.msg.itemSkuList[0])
+      // console.log(that.data.num)
       var skuList = [{ "id": that.data.msg.itemSkuList[0].skuId, "number": that.data.num }]
       console.log(skuList)
       util.get(api.urlPath1+ '/app/orders/coupon?skuList=' + JSON.stringify(skuList)).then((res)=>{
+        console.log(res,'product页')
         wx.setStorageSync('isFreeDelivery', res.data.result.isFreeDelivery)
         wx.navigateTo({
-          url: '../order/order?msg=' + model + "&size=" + size + '&isFreeDelivery=' + res.data.result.isFreeDelivery,
+          url: '../order/order?msg=' + model + "&size=" + size + '&isFreeDelivery=' + res.data.result.isFreeDelivery + '&signleYiyuanActivityGoods=' + res.data.result.signleYiyuanActivityGoods,
         })
       })
       // wx.request({

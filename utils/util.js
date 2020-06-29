@@ -89,9 +89,6 @@ function request(url, data = {}, method = "GET") {
   });
 }
 
-
-
-
 //取倒计时（天时分秒）
 function getTimeLeft(datetimeTo) {
   // 计算目标与现在时间差（毫秒）

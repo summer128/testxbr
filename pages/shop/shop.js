@@ -20,6 +20,7 @@ Page({
     var that = this;
     // 先拉在自动获取数据  每次10条
     util.get(api.urlPath1+'/app/goods/home/recommend'+'?pageNum='+that.data.pagenum).then((res)=>{
+      
       var arr1 = that.data.datalist; //从data获取当前datalist数组
         var arr2 = res.data.result; //从此次请求返回的数据中获取新数组
         arr1 = arr1.concat(arr2); //合并数组
@@ -56,9 +57,10 @@ Page({
       //错误提示信息
      console.log(errMsg,'错误信息')
     })
+    console.log(that.data.pagenum,'========')
 
     util.get(api.urlPath1+'/app/goods?pageNum='+that.data.pagenum).then((res)=>{
-      // console.log(res,'商城列表')
+      console.log(res,'为你推荐--酒精')
       that.setData({
         datalist:res.data.result
       })

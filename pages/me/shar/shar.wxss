@@ -1,3 +1,6 @@
+page{
+  background: white;
+}
 .swiper{
   width: 458rpx;
   height: 732rpx;

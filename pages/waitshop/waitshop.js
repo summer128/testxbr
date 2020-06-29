@@ -45,20 +45,26 @@ Page({
           wx.hideLoading()
         }, 500)
         console.log(res)
-        wx.request({
-          url: app.globalData.urlPath1 + '/app/orders?type=2',
-          method: 'get',
-          header: {
-            'token': wx.getStorageSync("token"),
-            'authorization': wx.getStorageSync("sid")
-          },
-          success(res) {
-            console.log(res.data.result)
+        util.get(api.urlPath1 + '/app/orders?type=2').then((res)=>{
+          console.log(res.data.result)
             that.setData({
               orderList: res.data.result
             })
-          }
         })
+        // wx.request({
+        //   url: app.globalData.urlPath1 + '/app/orders?type=2',
+        //   method: 'get',
+        //   header: {
+        //     'token': wx.getStorageSync("token"),
+        //     'authorization': wx.getStorageSync("sid")
+        //   },
+        //   success(res) {
+        //     console.log(res.data.result)
+        //     that.setData({
+        //       orderList: res.data.result
+        //     })
+        //   }
+        // })
       })
   },
   close1: function () {
@@ -117,7 +123,7 @@ Page({
     })
   },
   tzzz: function(e) {
-    
+    console.log(e,'-----------------')
     var info = JSON.stringify(e.currentTarget.dataset.info)
     wx.navigateTo({
       url: '../../../../delivergoods/delivergoods?info=' + info,
@@ -163,20 +169,26 @@ Page({
         'sid': wx.getStorageSync("sid")
       }
       ).then((res)=>{
-        wx.request({
-          url: app.globalData.urlPath1 + '/app/orders?type=2',
-          method: 'get',
-          header: {
-            'token': wx.getStorageSync("token"),
-            'authorization': wx.getStorageSync("sid")
-          },
-          success(res) {
-            console.log(res.data.result,'fukuan')
-            that.setData({
-              orderList: res.data.result
-            })
-          }
+        util.get(api.urlPath1 + '/app/orders?type=2').then((res)=>{
+          console.log(res.data.result,'fukuan')
+          that.setData({
+            orderList: res.data.result
+          })
         })
+        // wx.request({
+        //   url: app.globalData.urlPath1 + '/app/orders?type=2',
+        //   method: 'get',
+        //   header: {
+        //     'token': wx.getStorageSync("token"),
+        //     'authorization': wx.getStorageSync("sid")
+        //   },
+        //   success(res) {
+        //     console.log(res.data.result,'fukuan')
+        //     that.setData({
+        //       orderList: res.data.result
+        //     })
+        //   }
+        // })
         that.setData({
           onshow1:false
         })

@@ -84,18 +84,32 @@ pay:function(){
   onLoad: function (options) {
     console.log(options.signleYiyuanActivityGoods,options.isFreeDelivery,'购物车商品运费',options)
     var that=this
-   
+    var shoplist = JSON.parse(options.list)
+    console.log(shoplist[0].goodsNum,'shoplistshoplistshoplistshoplist')
+   var goodsprices = JSON.parse(options.list)[0].goodsPrice   //获取商品的价格
+   var goodsnums = Number(shoplist[0].goodsNum)
+   console.log(goodsnums)
     if(options.signleYiyuanActivityGoods === "true" || options.isFreeDelivery === "true"){
+       //当个人运费和商品运费其中一个 == true,运费为0
       that.setData({
-        postage:0,
+        postage:0
+      })
+      var totalvalue = ((Number(goodsprices) + that.data.postage)*goodsnums).toFixed(2) //合计=商品价格goodsprices+邮费postage
+      that.setData({
+        countprice1:totalvalue
       })
      }else if(options.signleYiyuanActivityGoods === "false" && options.isFreeDelivery === "false"){
-       that.setData({
-        postage:10,
-      })
+       //当个人运费和商品运费 == false,运费为10
+        that.setData({
+          postage:10
+        })
+        var totalvalue = ((Number(goodsprices) + that.data.postage)*goodsnums).toFixed(2)
+        //合计
+        that.setData({
+          countprice1:totalvalue
+        })
      }
-     console.log(that.data.postage)
-    var shoplist = JSON.parse(options.list)
+    
     console.log(shoplist,'商品信息')
     that.data.wait_goodsdetail.gooodsnum = shoplist[0].goodsNum
     that.data.wait_goodsdetail.oneprice = shoplist[0].goodsPrice
@@ -106,18 +120,18 @@ pay:function(){
       countnum += Number(shoplist[i].goodsNum)
       countprice += Number(shoplist[i].goodsPrice) * Number(shoplist[i].goodsNum)
     }
-    console.log(countnum, countprice)
-    if(options.isFreeDelivery=='true'){
-        that.setData({
-          // countprice:countprice,
-          countprice1: countprice.toFixed(2)
-        })
-    }else{
-      that.setData({
-        // countprice:countprice,
-        countprice1: (countprice+10).toFixed(2)
-      })
-    }
+    // console.log(countnum, countprice)
+    // if(options.isFreeDelivery=='true'){
+    //     that.setData({
+    //       // countprice:countprice,
+    //       countprice1: countprice.toFixed(2)
+    //     })
+    // }else{
+    //   that.setData({
+    //     // countprice:countprice,
+    //     countprice1: (countprice+10).toFixed(2)
+    //   })
+    // }
     that.setData({
       shoplist:shoplist,
       countnum:countnum,

@@ -141,14 +141,14 @@ Page({
   onLoad: function (options) {
     var that=this
     var info=JSON.parse(unescape(options.info))
-    let goodsid = JSON.parse(options.info).orderInfo['id']
-    console.log(JSON.parse(options.info).orderInfo['id'])
+    let ordersid = JSON.parse(options.info).orderInfo['id']
+    console.log(ordersid,JSON.parse(options.info),'222222222222222222')
     that.setData({
       info:info,
       endTime:info.orderInfo.pendingTime
     })
     util.get(
-      api.urlPath1 + '/app/orders/'+goodsid
+      api.urlPath1 + '/app/orders/'+ordersid
       ).then((res)=>{
         console.log(res,'商品详情')
         //等待付款----商品详细信息
@@ -160,14 +160,18 @@ Page({
         let Delivery = res.data.result.isFreeDelivery
         // 用户号是否包邮
         let signleYiyuanActivityGoods = res.data.result.signleYiyuanActivityGoods
+        console.log(signleYiyuanActivityGoods,Delivery,'9999999')
         that.setData({
           orderNum:good_orderdetail.orderNumber
         })
-        if(signleYiyuanActivityGoods === "true" || Delivery === "true"){
+        // 个人运费和商品运费其中一个true
+        if(signleYiyuanActivityGoods === true || Delivery === true){
+          console.log('11111')
            that.setData({
              deliverymoney:0
            })
          }else{
+           console.log('4444444')
            that.setData({
              deliverymoney:10
            })
