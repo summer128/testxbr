@@ -103,11 +103,18 @@ pay:function(){
     console.log(that.data.wait_goodsdetail,'传过去的信息')
     var countprice=0;
     var countnum=0;
+    var  shopsidprice = {
+      shopid:'',
+      shopprice:''
+    }
     for(var i=0;i<shoplist.length;i++){
-      // console.log(shoplist[i].goodsNum,shoplist[i].goodsPrice,'------------') //获取每一条数据的id 和 价格
+      console.log(shoplist[i].goodsNum,shoplist[i].goodsPrice,shoplist[i],'------------') //获取每一条数据的id 和 价格
       countnum += Number(shoplist[i].goodsNum)
       countprice += Number(shoplist[i].goodsPrice) * Number(shoplist[i].goodsNum)
+      // shopsidprice.shopid = shoplist[i].goodsNum
+      // shopsidprice.shopprice = shoplist[i].goodsPrice
     }
+    console.log(shopsidprice)
     that.setData({
       shoplist:shoplist,
       countnum:countnum,
