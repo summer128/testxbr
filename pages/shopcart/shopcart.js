@@ -57,9 +57,9 @@ Page({
   selectListsss(e) {
     var that = this
     this.calculateTotal()
-    // console.log('选择的商品',e)
-    // console.log(that.data.goodList)
-    // console.log(that.data.selectedproduct)
+    console.log('选择的商品',e)
+    console.log(that.data.goodList)
+    console.log(that.data.selectedproduct)
     var index  = e.currentTarget.dataset.index
     let selectAllStatus = that.data.selectAllStatus; //是否已经全选
     let str = true;  //用str与每一项进行状态判断

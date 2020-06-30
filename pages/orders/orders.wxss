@@ -6,7 +6,7 @@
 .order_head{
   margin-top: 20rpx;
   width: 100%;
-  height: 230rpx;
+  height: 180rpx;
   border-radius:0px 0px 20rpx 20rpx;
   background-color: #fff;
 }
@@ -100,14 +100,14 @@
 .order_details{
   width: 100%;
   height: 350rpx;
-  margin-top: 30rpx;
+  margin-top: 20rpx;
   border-radius: 20rpx;
   background-color: #fff;
 }
 .details_box{
   width: 92%;
   height: 200rpx;
-  margin: 30rpx auto;
+  margin: 20rpx auto;
 }
 .shop_img{
   width: 200rpx;

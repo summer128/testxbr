@@ -106,7 +106,7 @@
 .details_box{
   width: 92%;
   height: 200rpx;
-  margin: 30rpx auto;
+  margin: 20rpx auto;
 }
 .shop_img{
   width: 200rpx;

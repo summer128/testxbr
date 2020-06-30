@@ -3,7 +3,7 @@
         <view class="head1">
             <image src="https://pic.shanyide.cn/wx_wait_detail_three.png"></image>
             <view class="head1_name">等待付款</view>
-            <view class="head1_con">剩余:{{timeLeft}}</view>
+            <view class="head1_con">请耐心等待:24小时发货</view>
         </view>
         <view class="card" bindtap="change_address">
             <view class="col">

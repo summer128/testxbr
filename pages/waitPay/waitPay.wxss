@@ -192,6 +192,8 @@ page{
 .box1{
   width: 100%;
   background-color:#f3f5f7;
+  margin-top: 50rpx;
+
 }
 .box2{
   width: 100%;

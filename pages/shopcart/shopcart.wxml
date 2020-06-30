@@ -93,7 +93,7 @@
     </view>
   </view>
 
-  <view wx:if='{{state === 401}}'>
+  <view wx:if='{{state === 401}}' class="nullcars">
     <view class="backbox">
       <view class="qq1">登录后才能正常使用购物车</view>
       <view class="qq2" bindtap="login">授权登录</view>

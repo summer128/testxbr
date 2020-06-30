@@ -1,5 +1,5 @@
 .background{
-  top: 0;
+  background: white;
 }
 
 .health_container{
