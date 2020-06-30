@@ -578,6 +578,7 @@ page{
   position: relative;
 }
 .null_receiptaddress{
+  /* width: 146rpx; */
   width: 128rpx;
   height: 80rpx;
   font-size: 32rpx;

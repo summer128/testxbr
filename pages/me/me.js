@@ -226,11 +226,13 @@ Page({
 
     if (wx.getStorageSync("token")){
         that.setData({
-          showindex:false
+          showindex:false,
+          show:false
         })
     }else{
       that.setData({
-        showindex: true
+        showindex: true,
+        show:true
       })
     }
     if (wx.getStorageSync("userInfo")){

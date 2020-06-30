@@ -9,7 +9,7 @@ page{
 }
 .user_list{
   width: 100%;
-  height: 500rpx;
+  height: 404rpx;
   margin: 0 auto;
   display: flex;
   flex-direction:column;
@@ -60,7 +60,6 @@ page{
   height: 182rpx;
   background:rgba(255,255,255,1);
   border-radius:20rpx;
-  margin-top: 30rpx;
 }
 .site{
   width: 94%;

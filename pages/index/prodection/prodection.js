@@ -18,13 +18,11 @@ Page({
   },
   tz:function(e){
     var info = JSON.stringify(e.target.dataset.info)
-    console.log(info)
     wx.navigateTo({
       url: '../dedail/dedail?info=' + info,
     })
   },
   showTo: function (e) {
-    console.log(e.currentTarget.dataset.id)
     var that=this
     // 获取标签元素上自定义的 data-myindex 属性的值
     let myindex = e.currentTarget.dataset.myindex;
@@ -33,36 +31,36 @@ Page({
       titleid: e.currentTarget.dataset.id
     })
 
-    // util.post(
-    //   api.urlPath3 +'/home/article/category',
-    //   {
-    //     pageNum:that.data.num,
-    //     pageSize:6,
-    //     categoryId: e.currentTarget.dataset.id
-    //   }).then((res)=>{
-    //     console.log(res,'防护手册=======')
-    //     that.setData({
-    //       article: res.data.list,
-    //     })
-    //   })
-
-    wx.request({
-      url: app.globalData.urlPath3 +'/home/article/category',
-      data: {
-          pageNum:that.data.num,
-          pageSize:6,
-          categoryId: e.currentTarget.dataset.id
-      },
-      method:'post',
-      success(res) {
-        console.log(res)
+    // wx.request({
+    //   url: app.globalData.urlPath3 +'/home/article/category',
+    //   data: {
+    //       pageNum:that.data.num,
+    //       pageSize:6,
+    //       categoryId: e.currentTarget.dataset.id
+    //   },
+    //   method:'post',
+    //   success(res) {
+    //     console.log(res)
+        // that.setData({
+        //   article: res.data.list,
+        // })
+    //   }
+    // })
+    console.log(that.data.num)
+    util.post(
+      api.urlPath3 +'/home/article/category',
+      {
+        pageNum:that.data.num,
+        pageSize:6,
+        categoryId:e.currentTarget.dataset.id
+       }
+      ).then((res)=>{
+        console.log(res,'防护手册-----')
         that.setData({
           article: res.data.list,
         })
-      }
-    })
+      })
   },
- 
   /**
    * 生命周期函数--监听页面加载
    */

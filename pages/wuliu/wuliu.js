@@ -25,17 +25,16 @@ Page({
         console.log(res.data.result,'物流信息')
         console.log(res.data.result.shipName,res.data.result.shipNumber,res.data.result['token'])
         util.get(
-          // api.logistics + `?id=${res.data.result['token']}&com=${res.data.result['shipName']}&nu=${res.data.result['shipNumber']}&show=json&order=desc&format=kuaidi100'`
-          api.logistics +'?id='+ res.data.result.token + '&com=' + 'shunfeng' + '&nu=' +'299328255922'+'&show='+'json'+'&order'+'desc'+'&format='+'kuaidi100' 
+          api.logistics + `?id=${res.data.result['token']}&com=${res.data.result['shipName']}&nu=${res.data.result['shipNumber']}&show=json&order=desc&format=kuaidi100'`
+          // api.logistics +'?id='+ res.data.result.token + '&com=' + 'shunfeng' + '&nu=' +'299328255922'+'&show='+'json'+'&order'+'desc'+'&format='+'kuaidi100' 
           ).then((res)=>{
-            if(res.data.status == 0){
-              console.log('没有物流信息')
+            console.log(res,'----------')
+            if(res.data.status == 0 || res.data.status == 2){
               console.log(that.data.null_logistics)
               that.setData({
                 null_logistics:true,
               })
             }else{
-              console.log('有物流信息')
               that.setData({
                 wuliu:res.data.data,
                 null_logistics:false

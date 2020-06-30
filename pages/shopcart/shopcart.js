@@ -71,7 +71,7 @@ Page({
    
     that.getTotalPrice()    //从新获取总价
     for (var i = 0; i < carts.length; i++) {
-      console.log(carts[i])
+      // console.log(carts[i])    //返回当前选中的信息
       str = str && carts[i].checked;    
       // console.log(str)       //用str与每一项进行状态判断
     }
@@ -130,14 +130,13 @@ Page({
   // 点击结算的方法
   order:function(e){
     var that = this
-    console.log('去结算',e)
+    // console.log('去结算',e)
     var totalPrice = that.data.totalPrices;
     var goodsCarts = that.data.goodList;
     var goods_Cart = that.data.selectedproduct
-    console.log(goods_Cart)
     var skuList = [{ "id":goods_Cart[0].skuId, "number":goods_Cart[0].goodsNum}]
     util.get(api.urlPath1+ '/app/orders/coupon?skuList=' + JSON.stringify(skuList)).then((res)=>{
-      console.log(res,'gouwu')
+      // console.log(res,'gouwu')
       wx.navigateTo({
         url: '../orders/orders?list=' + JSON.stringify(goods_Cart) + '&isFreeDelivery=' + res.data.result.isFreeDelivery + '&signleYiyuanActivityGoods=' + res.data.result.signleYiyuanActivityGoods,
       })
@@ -154,7 +153,6 @@ Page({
     }
   },
   tz(e) {
-    console.log(e)
    wx.navigateTo({
       url: "../product/product?id=" + e.currentTarget.dataset.id
     })
@@ -222,7 +220,7 @@ Page({
           }
             if(that.data.selectAllStatus===true){
               for (var i = 0; i < that.data.goodList.length;i++){
-                console.log( that.data.selectedproduct)
+                // console.log( that.data.selectedproduct)
                 util.deletes(api.urlPath1+ '/app/buyerCart/' + that.data.goodList[i].skuId).then((res)=>{
                   that.setData({
                     goodList:res.data.result,

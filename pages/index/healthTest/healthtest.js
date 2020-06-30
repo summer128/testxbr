@@ -16,7 +16,6 @@ Page({
       backgroundColor: '#ffffff'
     })
     util.get(api.urlPath3+'/home/exam/list').then((res)=>{
-      console.log('测试',res)
         that.setData({
           health_list:res.data.list
         })
@@ -24,7 +23,6 @@ Page({
   },
   // 测试入口
   test_entrance(e){
-    console.log(e)
     console.log(e.currentTarget.dataset.test_id,e.currentTarget.dataset.value2,'测试rukou')
     var entrance_message = {
       test_id:e.currentTarget.dataset.test_id,

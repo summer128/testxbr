@@ -88,7 +88,6 @@ Page({
           amount: this.data.num
         }
         ).then((res)=>{
- 
         }).catch((errMsg)=>{
           console.log(errMsg)
         })

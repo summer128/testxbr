@@ -15,17 +15,13 @@ Page({
   },
   onLoad: function (options) {
     var that = this
-   
-    console.log(options)
-    console.log(JSON.parse(options.fromaltest))
+    // console.log(JSON.parse(options.fromaltest))
     var tests_data = JSON.parse(options.fromaltest)
     that.setData({
       tests_id:tests_data.info.id,
       problemdata:tests_data.data,
       problemlength:tests_data.data.length
     })
-    // console.log(that.data.problemdata)
-    // console.log(that.data.problemlength)
     wx.setNavigationBarTitle({
       title: tests_data.info.title,
     })
@@ -39,7 +35,6 @@ Page({
    */
   next_problem: function (e) {
     var that = this
-    console.log(e)
     var idx =  e.currentTarget.dataset.selectindex
     that.setData({
       click_is:idx

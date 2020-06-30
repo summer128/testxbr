@@ -20,7 +20,8 @@ function deletes(url, data = {}){
 
 function request(url, data = {}, method = "GET") {
   // 改了
-  var contentType = 'application/x-www-form-urlencoded'
+  // var contentType = 'application/x-www-form-urlencoded'
+  var contentType = 'application/json'
   return new Promise(function(resolve, reject) {
     wx.request({
       url: url,

@@ -4,7 +4,6 @@ Page({
       list:null
   },
   tz(e) {
-    console.log(e.currentTarget.dataset.id)
     wx.navigateTo({
       url: "../../product/product?id=" + e.currentTarget.dataset.id,
       success: function (res) { },

@@ -1,10 +1,10 @@
 <view class="background">
     <view class="user_box">
           <view class="user_head" wx:if="{{show === false}}">
-              <image src="{{avatarUrl}}"></image>
+              <image src="{{avatarUrl}}" wx:if="{{show === false}}"></image>
           </view>
           <view class="user_head" wx:if="{{show ===  true}}">
-            <image src="https://pic.shanyide.cn/kemu-w1tp1-1593428872640" ></image>
+            <image src="https://pic.shanyide.cn/kemu-w1tp1-1593428872640" wx:if="{{show ===  true}}"></image>
         </view>
           <button class="login" open-type="getUserInfo" bindgetuserinfo="onGotUserInfo">{{username}}</button>
           <view class="user_yue" bindtap="balance">

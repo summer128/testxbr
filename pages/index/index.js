@@ -8,7 +8,7 @@ var Y = date.getFullYear();
 var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);
 //获取当日日期 
 var D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
-console.log("当前时间：" + Y + '年' + M + '月' + D + '日');
+// console.log("当前时间：" + Y + '年' + M + '月' + D + '日');
 var hour = date.getHours()
 var minute = date.getMinutes()
 var second = date.getSeconds()
@@ -115,6 +115,18 @@ Page({
   },
   onShow: function () {
     var that = this
+    util.get(api.urlPath3+'/home').then((res)=>{
+      // console.log(res,'希百瑞小课堂')
+        that.setData({
+          info: res.data.adtopicList,
+          health_id:res.data.classroom.id,
+          health_problem:res.data.classroom.title,
+          health_content:res.data.classroom.content
+        })
+    }).catch((errMsg)=>{
+      // console.log(errMsg,'资讯的总接口')
+    })
+
     if (wx.getStorageSync("token")){
         that.setData({
           showindex:false
@@ -129,45 +141,21 @@ Page({
           })
         }
         wx.setStorageSync("userInfo", res.userInfo)
-        console.log(res.userInfo)
+        // console.log(res.userInfo)
         that.setData({
           user: res.userInfo
         })
       }
     })
   },
-  getpage(){
-    var that = this
-    //////////////记载本页面数据/////////////////////////
-    util.get(api.urlPath3+'/home').then((res)=>{
-      // console.log(res)
-      //   console.log(res.data.classroom.id)
-        that.setData({
-          info: res.data.adtopicList,
-          health_id:res.data.classroom.id
-        })
-        if(res.errMsg = "request:ok"){
-          // 健康小课堂
-          util.get(api.urlPath3+'/classroom/flush/'+res.data.classroom.id).then((res)=>{
-            that.setData({
-              health_problem:res.data.title,
-              health_content:res.data.content
-            })
-          }).catch((errMsg)=>{
-            console.log('健康小课堂',errMsg)
-          })
-        }
-    }).catch((errMsg)=>{
-      console.log(errMsg,'资讯的总接口')
-    })
-  },
+  // getpage(){
+  //   var that = this
+  //   //////////////记载本页面数据/////////////////////////
+   
+  // },
   onLoad: function () {
     var that=this
   ///////////////希百瑞小课堂///////////////////
-  
-  // console.log(that.data.health_id)
-  // console.log(that.data.statusBarHeight)
-    that.getpage()
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -186,7 +174,7 @@ Page({
       // 在没有 open-type=getUserInfo 版本的兼容处理
       wx.getUserInfo({
         success: res => {
-          console.log(res)
+          // console.log(res)
           app.globalData.userInfo = res.userInfo
           this.setData({
             userInfo: res.userInfo,
@@ -204,7 +192,7 @@ Page({
     })
   },
   getUserInfo: function() {
-    console.log(e)
+    // console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,
@@ -213,10 +201,19 @@ Page({
   },
    // 健康小课堂刷新////////
    refresh(){
-     console.log('实现希百瑞小课堂刷新')
-    // this.getpage()
-    this.setData({
-      isChecked:!this.data.isChecked
+     var that = this
+    //  console.log('实现希百瑞小课堂刷新',that.data.health_id)
+    that.setData({
+      isChecked:!that.data.isChecked
+    })
+    util.get(api.urlPath3+'/classroom/flush/'+that.data.health_id).then((res)=>{
+      // console.log(res,'小程序----------22222222-')
+      let healthid = res.data.id
+      that.setData({
+        health_problem:res.data.title,
+        health_content:res.data.content,
+        health_id:healthid
+      })
     })
   },
   /////////健康测评/////////
